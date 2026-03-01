@@ -13,15 +13,6 @@ A sleek, single-file personal portfolio website with a dark aesthetic, built wit
 - **Contact Section** — Save and display your email and LinkedIn URL
 - **Persistent Storage** — All data (projects, LeetCode stats, GitHub username, contact info) is saved to `localStorage` and restored on page reload
 
----
-
-## 🎨 Design
-
-- Dark theme with a deep `#0a0a0f` background and mesh gradient overlays
-- Accent palette: Purple `#7c3aed` · Teal `#06d6a0` · Pink `#f72585`
-- Typography: [Syne](https://fonts.google.com/specimen/Syne) (headings) + [Space Mono](https://fonts.google.com/specimen/Space+Mono) (labels/code)
-- Subtle noise texture overlay for depth
-- Smooth hover transitions and animated status indicators
 
 ---
 
