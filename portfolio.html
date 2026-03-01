@@ -1180,19 +1180,17 @@
 
 <script>
 // ── STATE ──────────────────────────────────────────────────────────────
-let projects = JSON.parse(localStorage.getItem('portfolio_projects') || '[]');
-let leetcode = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":0,"medium":0,"hard":0,"rank":""}');
-let github_user = localStorage.getItem('portfolio_gh') || '';
-let li_url = localStorage.getItem('portfolio_li') || '';
+let projects = JSON.parse(localStorage.getItem('portfolio_projects') || 'null');
+let leetcode = JSON.parse(localStorage.getItem('portfolio_lc') || 'null') || {"easy":23,"medium":11,"hard":1,"rank":"2,954,219"};
+let github_user = localStorage.getItem('portfolio_gh') || 'SHIKHAR122';
+let li_url = localStorage.getItem('portfolio_li') || 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
 let editingId = null;
 let currentFilter = 'all';
 
 // Seed data if empty
-if (projects.length === 0) {
+if (!projects) {
   projects = [
-    { id: 1, name: 'Personal Portfolio', desc: 'A sleek portfolio website showcasing my work, skills, and journey as a developer.', status: 'completed', progress: 100, tags: ['HTML', 'CSS', 'JavaScript'], github: '' },
-    { id: 2, name: 'TaskFlow App', desc: 'A real-time collaborative task manager with drag-and-drop boards, notifications, and team features.', status: 'ongoing', progress: 60, tags: ['React', 'Node.js', 'Socket.io', 'MongoDB'], github: '' },
-    { id: 3, name: 'AI Code Reviewer', desc: 'CLI tool that uses LLMs to automatically review pull requests, suggest improvements, and detect bugs.', status: 'future', progress: 5, tags: ['Python', 'OpenAI', 'GitHub API'], github: '' },
+    { id: 1, name: 'SQL Analytical Engine', desc: 'SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.', status: 'ongoing', progress: 40, tags: ['SQL', 'SQLite', 'Git', 'GitHub'], github: 'https://github.com/SHIKHAR122/portfolio' },
   ];
   saveProjects();
 }
@@ -1443,7 +1441,7 @@ function saveLi() {
   }
 
   // Load saved email
-  const saved_email = localStorage.getItem('portfolio_email') || '';
+  const saved_email = localStorage.getItem('portfolio_email') || 'shikharsharmafeb@gmail.com';
   if (saved_email) {
     document.getElementById('emailInput').value = saved_email;
     document.getElementById('emailLink').href = `mailto:${saved_email}`;
