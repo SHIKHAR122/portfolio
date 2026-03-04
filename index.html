@@ -1187,16 +1187,23 @@ let li_url = localStorage.getItem('portfolio_li') || '';
 let editingId = null;
 let currentFilter = 'all';
 
-// Seed data if empty
-if (projects.length === 0) {
-  projects = [
-    { id: 1, name: 'Personal Portfolio', desc: 'A sleek portfolio website showcasing my work, skills, and journey as a developer.', status: 'completed', progress: 100, tags: ['HTML', 'CSS', 'JavaScript'], github: '' },
-    { id: 2, name: 'TaskFlow App', desc: 'A real-time collaborative task manager with drag-and-drop boards, notifications, and team features.', status: 'ongoing', progress: 45, tags: ['React', 'Node.js', 'Socket.io', 'MongoDB'], github: '' },
-    { id: 3, name: 'AI Code Reviewer', desc: 'CLI tool that uses LLMs to automatically review pull requests, suggest improvements, and detect bugs.', status: 'future', progress: 5, tags: ['Python', 'OpenAI', 'GitHub API'], github: '' },
-    { id: 4, name: 'QueryForge — SQL Analytical Engine', desc: 'Analytical query engine with performance benchmarking — 8x query optimization demonstrated. A production-grade analytical query engine built on DuckDB, designed to process and analyze 500k+ row real-world datasets. Features a Python-based query interface across 5 analytical modules covering regional performance, sales aggregation, customer segmentation, time-series trend analysis, and revenue contribution intelligence. Includes a benchmarking layer measuring query optimization gains through indexing, and a Streamlit dashboard for live data visualization.', status: 'future', progress: 0, tags: ['DuckDB', 'Python', 'Pandas', 'Streamlit', 'SQL', 'Git'], github: '' },
-  ];
-  saveProjects();
-}
+// Hardcoded base projects — always present on every device
+const baseProjects = [
+  { id: 1, name: 'SQL Analytical Engine', desc: 'SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.', status: 'ongoing', progress: 45, tags: ['SQL', 'SQLite', 'Git', 'GitHub'], github: 'https://github.com/SHIKHAR122/portfolio' },
+  { id: 2, name: 'QueryForge — SQL Analytical Engine', desc: 'Analytical query engine with performance benchmarking — 8x query optimization demonstrated. A production-grade analytical query engine built on DuckDB, designed to process and analyze 500k+ row real-world datasets. Features a Python-based query interface across 5 analytical modules covering regional performance, sales aggregation, customer segmentation, time-series trend analysis, and revenue contribution intelligence. Includes a benchmarking layer measuring query optimization gains through indexing, and a Streamlit dashboard for live data visualization.', status: 'future', progress: 0, tags: ['DuckDB', 'Python', 'Pandas', 'Streamlit', 'SQL', 'Git'], github: '' },
+];
+
+// Remove old default seed projects and any duplicates
+const blockedNames = ['Personal Portfolio', 'TaskFlow App', 'AI Code Reviewer'];
+const blockedIds = [3, 4];
+projects = projects.filter(p => !blockedNames.includes(p.name) && !blockedIds.includes(p.id));
+
+// Remove any duplicate of base projects by name
+const existingNames = projects.map(p => p.name);
+baseProjects.forEach(bp => {
+  if (!existingNames.includes(bp.name)) projects.unshift(bp);
+});
+saveProjects();
 
 // ── UTILS ──────────────────────────────────────────────────────────────
 function saveProjects() {
@@ -1346,7 +1353,6 @@ async function loadGithub() {
     const total = sorted.reduce((s,[,v])=>s+v,0);
     const colors = ['#7c3aed','#06d6a0','#f72585','#ffd166','#58a6ff'];
 
-    // Hardcode known languages that may not be on GitHub yet
     const knownLangs = [
       ['Python', 45],
       ['SQL', 30],
@@ -1354,7 +1360,6 @@ async function loadGithub() {
       ['JavaScript', 5],
     ];
     const knownTotal = knownLangs.reduce((s,[,v])=>s+v,0);
-
     document.getElementById('ghLangs').innerHTML = knownLangs.map(([lang, pct],i) => `
       <div class="lang-row">
         <div class="lang-name">${lang}</div>
