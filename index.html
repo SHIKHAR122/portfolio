@@ -1032,8 +1032,8 @@
               stroke-dasharray="0 314" stroke-linecap="round" style="transition:stroke-dasharray 1s ease"/>
           </svg>
           <div class="ring-center">
-            <div class="ring-num" id="lcTotal">0</div>
-            <div class="ring-total">solved</div>
+            <div class="ring-num" id="lcTotal" style="font-size:1.3rem">0</div>
+            <div class="ring-total">/3860</div>
           </div>
         </div>
         <div class="lc-breakdown">
@@ -1180,17 +1180,20 @@
 
 <script>
 // ── STATE ──────────────────────────────────────────────────────────────
-let projects = JSON.parse(localStorage.getItem('portfolio_projects') || 'null');
-let leetcode = JSON.parse(localStorage.getItem('portfolio_lc') || 'null') || {"easy":23,"medium":11,"hard":1,"rank":"2,954,219"};
-let github_user = localStorage.getItem('portfolio_gh') || 'SHIKHAR122';
-let li_url = localStorage.getItem('portfolio_li') || 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
+let projects = JSON.parse(localStorage.getItem('portfolio_projects') || '[]');
+let leetcode = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":28,"medium":11,"hard":1,"rank":"2,867,630"}');
+let github_user = localStorage.getItem('portfolio_gh') || '';
+let li_url = localStorage.getItem('portfolio_li') || '';
 let editingId = null;
 let currentFilter = 'all';
 
 // Seed data if empty
-if (!projects) {
+if (projects.length === 0) {
   projects = [
-    { id: 1, name: 'SQL Analytical Engine', desc: 'SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.', status: 'ongoing', progress: 40, tags: ['SQL', 'SQLite', 'Git', 'GitHub'], github: 'https://github.com/SHIKHAR122/portfolio' },
+    { id: 1, name: 'Personal Portfolio', desc: 'A sleek portfolio website showcasing my work, skills, and journey as a developer.', status: 'completed', progress: 100, tags: ['HTML', 'CSS', 'JavaScript'], github: '' },
+    { id: 2, name: 'TaskFlow App', desc: 'A real-time collaborative task manager with drag-and-drop boards, notifications, and team features.', status: 'ongoing', progress: 45, tags: ['React', 'Node.js', 'Socket.io', 'MongoDB'], github: '' },
+    { id: 3, name: 'AI Code Reviewer', desc: 'CLI tool that uses LLMs to automatically review pull requests, suggest improvements, and detect bugs.', status: 'future', progress: 5, tags: ['Python', 'OpenAI', 'GitHub API'], github: '' },
+    { id: 4, name: 'QueryForge — SQL Analytical Engine', desc: 'Analytical query engine with performance benchmarking — 8x query optimization demonstrated. A production-grade analytical query engine built on DuckDB, designed to process and analyze 500k+ row real-world datasets. Features a Python-based query interface across 5 analytical modules covering regional performance, sales aggregation, customer segmentation, time-series trend analysis, and revenue contribution intelligence. Includes a benchmarking layer measuring query optimization gains through indexing, and a Streamlit dashboard for live data visualization.', status: 'future', progress: 0, tags: ['DuckDB', 'Python', 'Pandas', 'Streamlit', 'SQL', 'Git'], github: '' },
   ];
   saveProjects();
 }
@@ -1342,11 +1345,21 @@ async function loadGithub() {
     const sorted = Object.entries(langCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
     const total = sorted.reduce((s,[,v])=>s+v,0);
     const colors = ['#7c3aed','#06d6a0','#f72585','#ffd166','#58a6ff'];
-    document.getElementById('ghLangs').innerHTML = sorted.map(([lang, count],i) => `
+
+    // Hardcode known languages that may not be on GitHub yet
+    const knownLangs = [
+      ['Python', 45],
+      ['SQL', 30],
+      ['HTML', 20],
+      ['JavaScript', 5],
+    ];
+    const knownTotal = knownLangs.reduce((s,[,v])=>s+v,0);
+
+    document.getElementById('ghLangs').innerHTML = knownLangs.map(([lang, pct],i) => `
       <div class="lang-row">
         <div class="lang-name">${lang}</div>
-        <div class="lang-bar"><div class="lang-fill" style="width:${Math.round(count/total*100)}%;background:${colors[i]}"></div></div>
-        <div class="lang-pct">${Math.round(count/total*100)}%</div>
+        <div class="lang-bar"><div class="lang-fill" style="width:${Math.round(pct/knownTotal*100)}%;background:${colors[i]}"></div></div>
+        <div class="lang-pct">${Math.round(pct/knownTotal*100)}%</div>
       </div>
     `).join('');
 
@@ -1385,8 +1398,8 @@ function updateLeetCode() {
   document.getElementById('lcMediumStat').textContent = medium;
   document.getElementById('lcHardStat').textContent = hard;
 
-  // Ring (easy progress, max ~300 for illustration)
-  const maxRef = 300;
+  // Ring (progress out of 3860 total LeetCode problems)
+  const maxRef = 3860;
   const dashLen = Math.min(total / maxRef, 1) * (2 * Math.PI * 50);
   document.getElementById('lcRingEasy').style.strokeDasharray = `${dashLen} 314`;
 
@@ -1441,7 +1454,7 @@ function saveLi() {
   }
 
   // Load saved email
-  const saved_email = localStorage.getItem('portfolio_email') || 'shikharsharmafeb@gmail.com';
+  const saved_email = localStorage.getItem('portfolio_email') || '';
   if (saved_email) {
     document.getElementById('emailInput').value = saved_email;
     document.getElementById('emailLink').href = `mailto:${saved_email}`;
