@@ -1182,8 +1182,9 @@
 // ── STATE ──────────────────────────────────────────────────────────────
 let projects = JSON.parse(localStorage.getItem('portfolio_projects') || '[]');
 let leetcode = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":28,"medium":11,"hard":1,"rank":"2,867,630"}');
-let github_user = localStorage.getItem('portfolio_gh') || '';
-let li_url = localStorage.getItem('portfolio_li') || '';
+let github_user = localStorage.getItem('portfolio_gh') || 'SHIKHAR122';
+let li_url = localStorage.getItem('portfolio_li') || 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
+const default_email = 'shikharsharmafeb@gmail.com';
 let editingId = null;
 let currentFilter = 'all';
 
@@ -1453,17 +1454,14 @@ function saveLi() {
   }
 
   // Load saved LinkedIn
-  if (li_url) {
-    document.getElementById('liUrl').value = li_url;
-    document.getElementById('liLink').href = li_url;
-  }
+  const li_final = li_url || 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
+  document.getElementById('liUrl').value = li_final;
+  document.getElementById('liLink').href = li_final;
 
   // Load saved email
-  const saved_email = localStorage.getItem('portfolio_email') || '';
-  if (saved_email) {
-    document.getElementById('emailInput').value = saved_email;
-    document.getElementById('emailLink').href = `mailto:${saved_email}`;
-  }
+  const saved_email = localStorage.getItem('portfolio_email') || default_email;
+  document.getElementById('emailInput').value = saved_email;
+  document.getElementById('emailLink').href = `mailto:${saved_email}`;
 
   // Render projects
   renderProjects();
