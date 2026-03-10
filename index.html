@@ -1132,7 +1132,7 @@
   </section>
 
   <footer>
-    <span class="footer-text">// crafted with precision</span>
+    <span class="footer-text" id="footerSecret" style="cursor:default;user-select:none">// crafted with precision</span>
     <span class="footer-text" id="footerDate"></span>
   </footer>
 </div>
@@ -1471,7 +1471,299 @@ function saveLi() {
   document.getElementById('projectModal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
   });
+
+  // Admin panel: triple-click footer to open
+  let footerClicks = 0;
+  document.getElementById('footerSecret').addEventListener('click', function() {
+    footerClicks++;
+    if (footerClicks >= 3) { footerClicks = 0; openAdminLogin(); }
+    setTimeout(() => footerClicks = 0, 1500);
+  });
 })();
+
+// ── ADMIN PANEL ────────────────────────────────────────────────────────
+const ADMIN_PASS = 'ssvtforever@2205';
+let adminUnlocked = false;
+let adminEditingId = null;
+
+function openAdminLogin() {
+  if (adminUnlocked) { openAdminPanel(); return; }
+  document.getElementById('adminLoginOverlay').classList.add('active');
+  document.getElementById('adminPassInput').value = '';
+  setTimeout(() => document.getElementById('adminPassInput').focus(), 100);
+}
+
+function submitAdminLogin() {
+  const val = document.getElementById('adminPassInput').value;
+  if (val === ADMIN_PASS) {
+    adminUnlocked = true;
+    document.getElementById('adminLoginOverlay').classList.remove('active');
+    openAdminPanel();
+  } else {
+    document.getElementById('adminLoginError').textContent = 'Wrong password.';
+    document.getElementById('adminPassInput').value = '';
+  }
+}
+
+function openAdminPanel() {
+  document.getElementById('adminOverlay').classList.add('active');
+  loadAdminProjects();
+  loadAdminInfo();
+}
+
+function closeAdminPanel() {
+  document.getElementById('adminOverlay').classList.remove('active');
+}
+
+function loadAdminInfo() {
+  const lc = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":28,"medium":11,"hard":1,"rank":"2,867,630"}');
+  document.getElementById('adEasy').value = lc.easy;
+  document.getElementById('adMedium').value = lc.medium;
+  document.getElementById('adHard').value = lc.hard;
+  document.getElementById('adRank').value = lc.rank;
+  document.getElementById('adEmail').value = localStorage.getItem('portfolio_email') || default_email;
+  document.getElementById('adLinkedin').value = localStorage.getItem('portfolio_li') || 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
+  document.getElementById('adGithub').value = localStorage.getItem('portfolio_gh') || 'SHIKHAR122';
+}
+
+function saveAdminInfo() {
+  const lc = { easy: parseInt(document.getElementById('adEasy').value)||0, medium: parseInt(document.getElementById('adMedium').value)||0, hard: parseInt(document.getElementById('adHard').value)||0, rank: document.getElementById('adRank').value };
+  localStorage.setItem('portfolio_lc', JSON.stringify(lc));
+  localStorage.setItem('portfolio_email', document.getElementById('adEmail').value.trim());
+  localStorage.setItem('portfolio_li', document.getElementById('adLinkedin').value.trim());
+  localStorage.setItem('portfolio_gh', document.getElementById('adGithub').value.trim());
+
+  // Apply changes live
+  leetcode = lc;
+  document.getElementById('lcEasy').value = lc.easy;
+  document.getElementById('lcMedium').value = lc.medium;
+  document.getElementById('lcHard').value = lc.hard;
+  document.getElementById('lcRank').value = lc.rank;
+  updateLeetCode();
+  github_user = document.getElementById('adGithub').value.trim();
+  document.getElementById('ghUsername').value = github_user;
+  loadGithub();
+  const em = document.getElementById('adEmail').value.trim();
+  document.getElementById('emailInput').value = em;
+  document.getElementById('emailLink').href = `mailto:${em}`;
+  const li = document.getElementById('adLinkedin').value.trim();
+  document.getElementById('liUrl').value = li;
+  document.getElementById('liLink').href = li;
+  document.getElementById('adInfoMsg').textContent = '✓ Saved!';
+  setTimeout(() => document.getElementById('adInfoMsg').textContent = '', 2000);
+}
+
+function loadAdminProjects() {
+  const list = document.getElementById('adProjectList');
+  list.innerHTML = projects.map(p => `
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
+      <div>
+        <div style="font-weight:700;font-size:0.9rem">${p.name}</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">${p.status} · ${p.progress}%</div>
+      </div>
+      <div style="display:flex;gap:0.5rem">
+        <button class="card-btn" onclick="adminEditProject(${p.id})">✎</button>
+        <button class="card-btn del" onclick="adminDeleteProject(${p.id})">✕</button>
+      </div>
+    </div>
+  `).join('') + `<button class="btn btn-primary" style="width:100%;margin-top:0.5rem" onclick="adminEditProject(null)">+ Add Project</button>`;
+}
+
+function adminEditProject(id) {
+  adminEditingId = id;
+  document.getElementById('adProjForm').style.display = 'block';
+  if (id) {
+    const p = projects.find(x => x.id === id);
+    document.getElementById('adPName').value = p.name;
+    document.getElementById('adPDesc').value = p.desc;
+    document.getElementById('adPStatus').value = p.status;
+    document.getElementById('adPProgress').value = p.progress;
+    document.getElementById('adPTags').value = p.tags.join(', ');
+    document.getElementById('adPGithub').value = p.github || '';
+  } else {
+    document.getElementById('adPName').value = '';
+    document.getElementById('adPDesc').value = '';
+    document.getElementById('adPStatus').value = 'ongoing';
+    document.getElementById('adPProgress').value = '';
+    document.getElementById('adPTags').value = '';
+    document.getElementById('adPGithub').value = '';
+  }
+}
+
+function adminSaveProject() {
+  const name = document.getElementById('adPName').value.trim();
+  if (!name) { alert('Name required'); return; }
+  const data = {
+    name,
+    desc: document.getElementById('adPDesc').value.trim(),
+    status: document.getElementById('adPStatus').value,
+    progress: parseInt(document.getElementById('adPProgress').value)||0,
+    tags: document.getElementById('adPTags').value.split(',').map(t=>t.trim()).filter(Boolean),
+    github: document.getElementById('adPGithub').value.trim()
+  };
+  if (adminEditingId) {
+    const idx = projects.findIndex(p => p.id === adminEditingId);
+    projects[idx] = { ...projects[idx], ...data };
+  } else {
+    data.id = Date.now();
+    projects.push(data);
+  }
+  saveProjects();
+  renderProjects();
+  loadAdminProjects();
+  document.getElementById('adProjForm').style.display = 'none';
+  adminEditingId = null;
+}
+
+function adminDeleteProject(id) {
+  if (confirm('Delete this project?')) {
+    projects = projects.filter(p => p.id !== id);
+    saveProjects();
+    renderProjects();
+    loadAdminProjects();
+  }
+}
+
+function exportPortfolio() {
+  // Build updated HTML with current data baked in
+  const lc = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":28,"medium":11,"hard":1,"rank":"2,867,630"}');
+  const em = localStorage.getItem('portfolio_email') || default_email;
+  const li = localStorage.getItem('portfolio_li') || 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
+  const gh = localStorage.getItem('portfolio_gh') || 'SHIKHAR122';
+
+  let src = document.documentElement.outerHTML;
+
+  // Update hardcoded defaults in source
+  src = src.replace(/localStorage\.getItem\('portfolio_lc'\) \|\| '[^']*'/, `localStorage.getItem('portfolio_lc') || '${JSON.stringify(lc)}'`);
+  src = src.replace(/localStorage\.getItem\('portfolio_gh'\) \|\| '[^']*'/, `localStorage.getItem('portfolio_gh') || '${gh}'`);
+  src = src.replace(/localStorage\.getItem\('portfolio_li'\) \|\| '[^']*'/, `localStorage.getItem('portfolio_li') || '${li}'`);
+  src = src.replace(/const default_email = '[^']*'/, `const default_email = '${em}'`);
+
+  // Update hardcoded base projects
+  const baseStr = JSON.stringify(projects.filter(p => p.id === 1 || p.id === 2 || baseProjects.find(b => b.name === p.name)));
+  src = src.replace(/const baseProjects = \[[\s\S]*?\];/, `const baseProjects = ${JSON.stringify(baseProjects)};`);
+
+  navigator.clipboard.writeText(src).then(() => {
+    document.getElementById('exportMsg').textContent = '✓ Copied! Now paste it in GitHub editor and commit.';
+    setTimeout(() => document.getElementById('exportMsg').textContent = '', 4000);
+  }).catch(() => {
+    document.getElementById('exportMsg').textContent = '✗ Copy failed. Try a different browser.';
+  });
+}
 </script>
+
+<!-- ADMIN LOGIN -->
+<div class="modal-overlay" id="adminLoginOverlay" style="z-index:200">
+  <div class="modal" style="max-width:380px">
+    <h3 style="margin-bottom:1.2rem">🔐 Admin Access</h3>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="adminPassInput" placeholder="Enter password" onkeydown="if(event.key==='Enter') submitAdminLogin()">
+    </div>
+    <div id="adminLoginError" style="color:var(--hard);font-size:0.8rem;margin-top:0.5rem"></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="document.getElementById('adminLoginOverlay').classList.remove('active')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitAdminLogin()">Enter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="modal-overlay" id="adminOverlay" style="z-index:201;align-items:flex-start;padding:2rem;overflow-y:auto">
+  <div class="modal" style="max-width:640px;width:100%;margin:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+      <h3>⚙️ Admin Panel</h3>
+      <button class="card-btn" onclick="closeAdminPanel()" style="width:32px;height:32px;font-size:1rem">✕</button>
+    </div>
+
+    <!-- INFO SECTION -->
+    <div style="margin-bottom:1.5rem">
+      <div class="stat-label" style="margin-bottom:1rem">Profile & Stats</div>
+      <div class="form-row" style="margin-bottom:1rem">
+        <div class="form-group" style="margin:0">
+          <label>Email</label>
+          <input type="text" id="adEmail">
+        </div>
+        <div class="form-group" style="margin:0">
+          <label>GitHub Username</label>
+          <input type="text" id="adGithub">
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:1rem">
+        <label>LinkedIn URL</label>
+        <input type="text" id="adLinkedin">
+      </div>
+      <div class="stat-label" style="margin-bottom:0.8rem">LeetCode Stats</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1rem">
+        <div class="form-group" style="margin:0"><label>Easy</label><input type="number" id="adEasy"></div>
+        <div class="form-group" style="margin:0"><label>Medium</label><input type="number" id="adMedium"></div>
+        <div class="form-group" style="margin:0"><label>Hard</label><input type="number" id="adHard"></div>
+        <div class="form-group" style="margin:0"><label>Rank</label><input type="text" id="adRank"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem">
+        <button class="btn btn-primary" onclick="saveAdminInfo()">Save Info</button>
+        <span id="adInfoMsg" style="color:var(--accent2);font-size:0.8rem;font-family:'Space Mono',monospace"></span>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid var(--border);margin-bottom:1.5rem"></div>
+
+    <!-- PROJECTS SECTION -->
+    <div style="margin-bottom:1.5rem">
+      <div class="stat-label" style="margin-bottom:1rem">Projects</div>
+      <div id="adProjectList"></div>
+
+      <!-- PROJECT EDIT FORM -->
+      <div id="adProjForm" style="display:none;margin-top:1rem;padding:1.2rem;background:var(--surface2);border:1px solid var(--border);border-radius:8px">
+        <div class="form-group">
+          <label>Project Name *</label>
+          <input type="text" id="adPName">
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="adPDesc" rows="2"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Status</label>
+            <select id="adPStatus">
+              <option value="ongoing">Ongoing</option>
+              <option value="completed">Completed</option>
+              <option value="future">Future</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Progress %</label>
+            <input type="number" id="adPProgress" min="0" max="100">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tech Stack (comma separated)</label>
+          <input type="text" id="adPTags">
+        </div>
+        <div class="form-group">
+          <label>GitHub URL (optional)</label>
+          <input type="text" id="adPGithub">
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" onclick="document.getElementById('adProjForm').style.display='none'">Cancel</button>
+          <button class="btn btn-primary" onclick="adminSaveProject()">Save Project</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid var(--border);margin-bottom:1.5rem"></div>
+
+    <!-- EXPORT SECTION -->
+    <div>
+      <div class="stat-label" style="margin-bottom:0.5rem">Make Changes Permanent</div>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6">Click Export → it copies the updated code → go to your GitHub repo → click index.html → click ✏️ edit → select all → paste → commit. Done in 30 seconds.</p>
+      <button class="btn btn-primary" onclick="exportPortfolio()" style="background:var(--accent2);color:#000;font-weight:700">⬇ Export & Copy to Clipboard</button>
+      <div id="exportMsg" style="margin-top:0.8rem;color:var(--accent2);font-family:'Space Mono',monospace;font-size:0.8rem"></div>
+    </div>
+
+  </div>
+</div>
+
 </body>
 </html>
