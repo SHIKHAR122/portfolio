@@ -905,9 +905,9 @@
       I'm deeply interested in how well-architected data systems drive better decisions, efficiency, and long-term impact.
     </p>
     <div class="hero-badges" id="heroBadges">
-      <span class="badge badge-green" id="badgeOngoing">● 1 Active</span>
-      <span class="badge badge-purple" id="badgeCompleted">✓ 1 Done</span>
-      <span class="badge badge-pink" id="badgeFuture">◇ 0 Planned</span>
+      <span class="badge badge-green" id="badgeOngoing">● 0 Active</span>
+      <span class="badge badge-purple" id="badgeCompleted">✓ 2 Done</span>
+      <span class="badge badge-pink" id="badgeFuture">◇ 1 Planned</span>
     </div>
     <div class="social-row">
       <button class="social-btn btn-github" onclick="document.getElementById('ghUsername').focus(); scrollTo('github')" fdprocessedid="83mke9">
@@ -934,29 +934,29 @@
     </div>
 
     <div class="projects-grid" id="projectsGrid">
-    <div class="project-card ongoing" data-id="2">
+    <div class="project-card completed" data-id="2">
       <div class="card-actions">
-        <button class="card-btn" onclick="editProject(2);event.stopPropagation()" title="Edit" fdprocessedid="e97jms">✎</button>
-        <button class="card-btn del" onclick="deleteProject(2);event.stopPropagation()" title="Delete" fdprocessedid="c25i9g">✕</button>
+        <button class="card-btn" onclick="editProject(2);event.stopPropagation()" title="Edit" fdprocessedid="jj7o3">✎</button>
+        <button class="card-btn del" onclick="deleteProject(2);event.stopPropagation()" title="Delete" fdprocessedid="f6t0gge">✕</button>
       </div>
-      <div class="project-status status-ongoing">
+      <div class="project-status status-completed">
         <span class="status-dot"></span>
-        Ongoing
+        Completed
       </div>
       <div class="project-name">QueryForge — SQL Analytical Engine</div>
       <div class="project-desc">Analytical query engine with performance benchmarking — 8x query optimization demonstrated. A production-grade analytical query engine built on DuckDB, designed to process and analyze 500k+ row real-world datasets. Features a Python-based query interface across 5 analytical modules covering regional performance, sales aggregation, customer segmentation, time-series trend analysis, and revenue contribution intelligence. Includes a benchmarking layer measuring query optimization gains through indexing, and a Streamlit dashboard for live data visualization.</div>
       <div class="project-tags"><span class="tag">DuckDB</span><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Streamlit</span><span class="tag">SQL</span><span class="tag">Git</span></div>
-      
+      <div style="margin-top:0.5rem"><a href="https://github.com/SHIKHAR122/Query_forge" target="_blank" style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--text-muted);text-decoration:none">⬡ View on GitHub</a></div>
       <div class="project-progress">
         <div class="progress-label"><span>Progress</span><span>0%</span></div>
-        <div class="progress-bar"><div class="progress-fill ongoing-fill" style="width:0%"></div></div>
+        <div class="progress-bar"><div class="progress-fill completed-fill" style="width:0%"></div></div>
       </div>
     </div>
   
     <div class="project-card completed" data-id="1">
       <div class="card-actions">
-        <button class="card-btn" onclick="editProject(1);event.stopPropagation()" title="Edit" fdprocessedid="zw6d7p">✎</button>
-        <button class="card-btn del" onclick="deleteProject(1);event.stopPropagation()" title="Delete" fdprocessedid="r4w7mc">✕</button>
+        <button class="card-btn" onclick="editProject(1);event.stopPropagation()" title="Edit" fdprocessedid="4qd0n">✎</button>
+        <button class="card-btn del" onclick="deleteProject(1);event.stopPropagation()" title="Delete" fdprocessedid="wwlz2j">✕</button>
       </div>
       <div class="project-status status-completed">
         <span class="status-dot"></span>
@@ -969,6 +969,25 @@
       <div class="project-progress">
         <div class="progress-label"><span>Progress</span><span>100%</span></div>
         <div class="progress-bar"><div class="progress-fill completed-fill" style="width:100%"></div></div>
+      </div>
+    </div>
+  
+    <div class="project-card future" data-id="1773549103560">
+      <div class="card-actions">
+        <button class="card-btn" onclick="editProject(1773549103560);event.stopPropagation()" title="Edit" fdprocessedid="hhy1e">✎</button>
+        <button class="card-btn del" onclick="deleteProject(1773549103560);event.stopPropagation()" title="Delete" fdprocessedid="p4lqis">✕</button>
+      </div>
+      <div class="project-status status-future">
+        <span class="status-dot"></span>
+        Future
+      </div>
+      <div class="project-name">VaultAPI</div>
+      <div class="project-desc">Production-grade REST API backend built with FastAPI, PostgreSQL, Redis, and Docker. Features JWT authentication, Redis caching, rate limiting, async endpoints, and full test coverage with Pytest.</div>
+      <div class="project-tags"><span class="tag">FastAPI  · PostgreSQL  · Redis  · JWT  · Pytest  · Docker  · Python</span></div>
+      
+      <div class="project-progress">
+        <div class="progress-label"><span>Progress</span><span>0%</span></div>
+        <div class="progress-bar"><div class="progress-fill future-fill" style="width:0%"></div></div>
       </div>
     </div>
   
@@ -999,7 +1018,7 @@
         <div>
           <div class="stat-card" style="margin-bottom:1rem">
             <div class="stat-label">Repositories</div>
-            <div class="stat-value" id="ghRepos" style="color:var(--accent)">2</div>
+            <div class="stat-value" id="ghRepos" style="color:var(--accent)">3</div>
           </div>
           <div class="stat-card" style="margin-bottom:1rem">
             <div class="stat-label">Followers</div>
@@ -1039,7 +1058,7 @@
       </div>
     </div>
             <div class="stat-label" style="margin-top:2rem">Contribution Activity</div>
-            <div class="activity-grid" id="activityGrid" style="margin-top:0.8rem"><div class="activity-cell l1"></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell l2"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l1"></div><div class="activity-cell l3"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell l4"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell l1"></div><div class="activity-cell l1"></div><div class="activity-cell l1"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell l2"></div><div class="activity-cell l3"></div><div class="activity-cell l2"></div><div class="activity-cell l3"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l3"></div><div class="activity-cell l1"></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l2"></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l2"></div><div class="activity-cell l1"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell l2"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l3"></div><div class="activity-cell l1"></div><div class="activity-cell "></div></div>
+            <div class="activity-grid" id="activityGrid" style="margin-top:0.8rem"><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l4"></div><div class="activity-cell l2"></div><div class="activity-cell l2"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l2"></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l3"></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l1"></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell l1"></div><div class="activity-cell l3"></div><div class="activity-cell l3"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell l1"></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l3"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l2"></div><div class="activity-cell l2"></div><div class="activity-cell l2"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell l1"></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l2"></div><div class="activity-cell l3"></div><div class="activity-cell l2"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l4"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell "></div></div>
           </div>
         </div>
       </div>
@@ -1084,17 +1103,17 @@
         <div class="ring-wrap">
           <svg width="120" height="120" viewBox="0 0 120 120">
             <circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface2)" stroke-width="8"></circle>
-            <circle id="lcRingEasy" cx="60" cy="60" r="50" fill="none" stroke="var(--easy)" stroke-width="8" stroke-dasharray="0 314" stroke-linecap="round" style="transition: stroke-dasharray 1s; stroke-dasharray: 3.74387, 314;"></circle>
+            <circle id="lcRingEasy" cx="60" cy="60" r="50" fill="none" stroke="var(--easy)" stroke-width="8" stroke-dasharray="0 314" stroke-linecap="round" style="transition: stroke-dasharray 1s; stroke-dasharray: 4.2322, 314;"></circle>
           </svg>
           <div class="ring-center">
-            <div class="ring-num" id="lcTotal" style="font-size:1.3rem">46</div>
+            <div class="ring-num" id="lcTotal" style="font-size:1.3rem">52</div>
             <div class="ring-total">/3860</div>
           </div>
         </div>
         <div class="lc-breakdown">
           <div class="lc-row">
             <span class="lc-label"><span class="dot-easy"></span>Easy</span>
-            <span class="lc-count lc-easy" id="lcEasyDisplay">34</span>
+            <span class="lc-count lc-easy" id="lcEasyDisplay">40</span>
           </div>
           <div class="lc-row">
             <span class="lc-label"><span class="dot-medium"></span>Medium</span>
@@ -1106,7 +1125,7 @@
           </div>
           <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
             <div class="stat-label">Rank</div>
-            <div style="font-weight:700;font-size:1rem" id="lcRankDisplay">2,531,976</div>
+            <div style="font-weight:700;font-size:1rem" id="lcRankDisplay"> 2,374,832</div>
           </div>
         </div>
       </div>
@@ -1114,7 +1133,7 @@
       <div class="lc-right">
         <div class="lc-stat-row">
           <div class="lc-stat-box">
-            <span class="lc-stat-num lc-easy" id="lcEasyStat">34</span>
+            <span class="lc-stat-num lc-easy" id="lcEasyStat">40</span>
             <span class="lc-stat-label">Easy</span>
           </div>
           <div class="lc-stat-box">
@@ -1131,13 +1150,13 @@
           <div>
             <div class="lang-row">
               <div class="lang-name" style="color:var(--easy)">Easy</div>
-              <div class="lang-bar"><div class="lang-fill" id="lcEasyBar" style="width: 74%; background: var(--easy);"></div></div>
-              <div class="lang-pct" id="lcEasyPct">74%</div>
+              <div class="lang-bar"><div class="lang-fill" id="lcEasyBar" style="width: 77%; background: var(--easy);"></div></div>
+              <div class="lang-pct" id="lcEasyPct">77%</div>
             </div>
             <div class="lang-row">
               <div class="lang-name" style="color:var(--medium)">Medium</div>
-              <div class="lang-bar"><div class="lang-fill" id="lcMediumBar" style="width: 24%; background: var(--medium);"></div></div>
-              <div class="lang-pct" id="lcMediumPct">24%</div>
+              <div class="lang-bar"><div class="lang-fill" id="lcMediumBar" style="width: 21%; background: var(--medium);"></div></div>
+              <div class="lang-pct" id="lcMediumPct">21%</div>
             </div>
             <div class="lang-row">
               <div class="lang-name" style="color:var(--hard)">Hard</div>
@@ -1174,7 +1193,7 @@
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem">
         <div class="stat-label" style="margin-bottom:0.8rem">GitHub Profile</div>
-        <div id="ghConnectDisplay" style="font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--text-muted)">@SHIKHAR122 — 2 repos · 0 followers</div>
+        <div id="ghConnectDisplay" style="font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--text-muted)">@SHIKHAR122 — 3 repos · 0 followers</div>
         <a id="ghConnectLink" href="https://github.com/SHIKHAR122" target="_blank" class="social-btn btn-github" style="display:inline-flex;text-decoration:none;margin-top:1rem">
           Open GitHub →
         </a>
@@ -1232,7 +1251,7 @@
 <script>
 // ── STATE ──────────────────────────────────────────────────────────────
 let projects = JSON.parse(localStorage.getItem('portfolio_projects') || '[]');
-let leetcode = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":34,"medium":11,"hard":1,"rank":"2,531,976"}');
+let leetcode = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":40,"medium":11,"hard":1,"rank":" 2,374,832"}');
 let github_user = localStorage.getItem('portfolio_gh') || 'SHIKHAR122';
 let li_url = localStorage.getItem('portfolio_li') || 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
 const default_email = 'shikharsharmafeb@gmail.com';
@@ -1763,11 +1782,11 @@ function exportPortfolio() {
     <div style="display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
       <div>
         <div style="font-weight:700;font-size:0.9rem">QueryForge — SQL Analytical Engine</div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">ongoing · 0%</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">completed · 0%</div>
       </div>
       <div style="display:flex;gap:0.5rem">
-        <button class="card-btn" onclick="adminEditProject(2)" fdprocessedid="vsb4bh">✎</button>
-        <button class="card-btn del" onclick="adminDeleteProject(2)" fdprocessedid="pdczg">✕</button>
+        <button class="card-btn" onclick="adminEditProject(2)" fdprocessedid="fon71a">✎</button>
+        <button class="card-btn del" onclick="adminDeleteProject(2)" fdprocessedid="v4rh2d">✕</button>
       </div>
     </div>
   
@@ -1777,14 +1796,25 @@ function exportPortfolio() {
         <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">completed · 100%</div>
       </div>
       <div style="display:flex;gap:0.5rem">
-        <button class="card-btn" onclick="adminEditProject(1)" fdprocessedid="c7m0v">✎</button>
-        <button class="card-btn del" onclick="adminDeleteProject(1)" fdprocessedid="lncj2f">✕</button>
+        <button class="card-btn" onclick="adminEditProject(1)" fdprocessedid="b6k2lr">✎</button>
+        <button class="card-btn del" onclick="adminDeleteProject(1)" fdprocessedid="3udwgf">✕</button>
       </div>
     </div>
-  <button class="btn btn-primary" style="width:100%;margin-top:0.5rem" onclick="adminEditProject(null)" fdprocessedid="m5292t">+ Add Project</button></div>
+  
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
+      <div>
+        <div style="font-weight:700;font-size:0.9rem">VaultAPI</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">future · 0%</div>
+      </div>
+      <div style="display:flex;gap:0.5rem">
+        <button class="card-btn" onclick="adminEditProject(1773549103560)" fdprocessedid="dy2f5">✎</button>
+        <button class="card-btn del" onclick="adminDeleteProject(1773549103560)" fdprocessedid="qziuj4">✕</button>
+      </div>
+    </div>
+  <button class="btn btn-primary" style="width:100%;margin-top:0.5rem" onclick="adminEditProject(null)" fdprocessedid="qve5dm">+ Add Project</button></div>
 
       <!-- PROJECT EDIT FORM -->
-      <div id="adProjForm" style="display:none;margin-top:1rem;padding:1.2rem;background:var(--surface2);border:1px solid var(--border);border-radius:8px">
+      <div id="adProjForm" style="display: none; margin-top: 1rem; padding: 1.2rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;">
         <div class="form-group">
           <label>Project Name *</label>
           <input type="text" id="adPName">
@@ -1837,4 +1867,5 @@ function exportPortfolio() {
 
 
 
+<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span>
 <span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body></html>
