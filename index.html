@@ -1,8 +1,10 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shikhar Sharma</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;family=Syne:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0a0a0f;
@@ -905,15 +907,15 @@
       I'm deeply interested in how well-architected data systems drive better decisions, efficiency, and long-term impact.
     </p>
     <div class="hero-badges" id="heroBadges">
-      <span class="badge badge-green" id="badgeOngoing">● 1 Active</span>
+      <span class="badge badge-green" id="badgeOngoing">● 0 Active</span>
       <span class="badge badge-purple" id="badgeCompleted">✓ 0 Done</span>
-      <span class="badge badge-pink" id="badgeFuture">◇ 1 Planned</span>
+      <span class="badge badge-pink" id="badgeFuture">◇ 0 Planned</span>
     </div>
     <div class="social-row">
-      <button class="social-btn btn-github" onclick="document.getElementById('ghUsername').focus(); scrollTo('github')" fdprocessedid="83mke9">
+      <button class="social-btn btn-github" onclick="document.getElementById('ghUsername').focus(); scrollTo('github')">
         <span>⬡</span> GitHub
       </button>
-      <button class="social-btn btn-linkedin" onclick="document.getElementById('liUrl').focus(); scrollTo('connect')" fdprocessedid="g4yxie">
+      <button class="social-btn btn-linkedin" onclick="document.getElementById('liUrl').focus(); scrollTo('connect')">
         <span>in</span> LinkedIn
       </button>
     </div>
@@ -927,56 +929,15 @@
     </div>
 
     <div class="filter-tabs">
-      <button class="filter-tab active" onclick="filterProjects('all', this)" fdprocessedid="heryhm">All</button>
-      <button class="filter-tab" onclick="filterProjects('ongoing', this)" fdprocessedid="ujor5c">Ongoing</button>
-      <button class="filter-tab" onclick="filterProjects('completed', this)" fdprocessedid="zd10v">Completed</button>
-      <button class="filter-tab" onclick="filterProjects('future', this)" fdprocessedid="9r8dbs">Future</button>
+      <button class="filter-tab active" onclick="filterProjects('all', this)">All</button>
+      <button class="filter-tab" onclick="filterProjects('ongoing', this)">Ongoing</button>
+      <button class="filter-tab" onclick="filterProjects('completed', this)">Completed</button>
+      <button class="filter-tab" onclick="filterProjects('future', this)">Future</button>
     </div>
 
     <div class="projects-grid" id="projectsGrid">
-    <div class="project-card future" data-id="2">
-      <div class="card-actions">
-        <button class="card-btn" onclick="editProject(2);event.stopPropagation()" title="Edit">✎</button>
-        <button class="card-btn del" onclick="deleteProject(2);event.stopPropagation()" title="Delete">✕</button>
-      </div>
-      <div class="project-status status-future">
-        <span class="status-dot"></span>
-        Future
-      </div>
-      <div class="project-name">QueryForge — SQL Analytical Engine</div>
-      <div class="project-desc">Analytical query engine with performance benchmarking — 8x query optimization demonstrated. A production-grade analytical query engine built on DuckDB, designed to process and analyze 500k+ row real-world datasets. Features a Python-based query interface across 5 analytical modules covering regional performance, sales aggregation, customer segmentation, time-series trend analysis, and revenue contribution intelligence. Includes a benchmarking layer measuring query optimization gains through indexing, and a Streamlit dashboard for live data visualization.</div>
-      <div class="project-tags"><span class="tag">DuckDB</span><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Streamlit</span><span class="tag">SQL</span><span class="tag">Git</span></div>
-      
-      <div class="project-progress">
-        <div class="progress-label"><span>Progress</span><span>0%</span></div>
-        <div class="progress-bar"><div class="progress-fill future-fill" style="width:0%"></div></div>
-      </div>
+      <!-- Seeded example projects -->
     </div>
-  
-    <div class="project-card ongoing" data-id="1">
-      <div class="card-actions">
-        <button class="card-btn" onclick="editProject(1);event.stopPropagation()" title="Edit">✎</button>
-        <button class="card-btn del" onclick="deleteProject(1);event.stopPropagation()" title="Delete">✕</button>
-      </div>
-      <div class="project-status status-ongoing">
-        <span class="status-dot"></span>
-        Ongoing
-      </div>
-      <div class="project-name">SQL Analytical Engine</div>
-      <div class="project-desc">SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.</div>
-      <div class="project-tags"><span class="tag">SQL</span><span class="tag">SQLite</span><span class="tag">Git</span><span class="tag">GitHub</span></div>
-      <div style="margin-top:0.5rem"><a href="https://github.com/SHIKHAR122/portfolio" target="_blank" style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--text-muted);text-decoration:none">⬡ View on GitHub</a></div>
-      <div class="project-progress">
-        <div class="progress-label"><span>Progress</span><span>40%</span></div>
-        <div class="progress-bar"><div class="progress-fill ongoing-fill" style="width:40%"></div></div>
-      </div>
-    </div>
-  
-    <div class="add-card" onclick="openModal()">
-      <span>+</span>
-      <p>Add new project</p>
-    </div>
-  </div>
   </section>
 
   <!-- GITHUB -->
@@ -989,65 +950,48 @@
     <div class="github-input-row">
       <div class="form-group">
         <label>GitHub Username</label>
-        <input type="text" id="ghUsername" placeholder="e.g. torvalds" onkeydown="if(event.key==='Enter') loadGithub()" fdprocessedid="gxsc0xi">
+        <input type="text" id="ghUsername" placeholder="e.g. torvalds" onkeydown="if(event.key==='Enter') loadGithub()">
       </div>
-      <button class="btn btn-primary" onclick="loadGithub()" fdprocessedid="vg741e">Load Stats</button>
+      <button class="btn btn-primary" onclick="loadGithub()">Load Stats</button>
     </div>
 
-    <div id="githubContent" style="display: block;">
+    <div id="githubContent" style="display:none">
       <div class="github-grid">
         <div>
           <div class="stat-card" style="margin-bottom:1rem">
             <div class="stat-label">Repositories</div>
-            <div class="stat-value" id="ghRepos" style="color:var(--accent)">3</div>
+            <div class="stat-value" id="ghRepos" style="color:var(--accent)">—</div>
           </div>
           <div class="stat-card" style="margin-bottom:1rem">
             <div class="stat-label">Followers</div>
-            <div class="stat-value" id="ghFollowers" style="color:var(--accent2)">0</div>
+            <div class="stat-value" id="ghFollowers" style="color:var(--accent2)">—</div>
           </div>
           <div class="stat-card">
             <div class="stat-label">Following</div>
-            <div class="stat-value" id="ghFollowing" style="color:var(--accent3)">0</div>
+            <div class="stat-value" id="ghFollowing" style="color:var(--accent3)">—</div>
           </div>
         </div>
         <div>
           <div class="stat-card" style="height:100%">
             <div class="stat-label">Top Languages</div>
             <div class="github-lang-bar" id="ghLangs" style="margin-top:1.5rem">
-      <div class="lang-row">
-        <div class="lang-name">Python</div>
-        <div class="lang-bar"><div class="lang-fill" style="width:45%;background:#7c3aed"></div></div>
-        <div class="lang-pct">45%</div>
-      </div>
-    
-      <div class="lang-row">
-        <div class="lang-name">SQL</div>
-        <div class="lang-bar"><div class="lang-fill" style="width:30%;background:#06d6a0"></div></div>
-        <div class="lang-pct">30%</div>
-      </div>
-    
-      <div class="lang-row">
-        <div class="lang-name">HTML</div>
-        <div class="lang-bar"><div class="lang-fill" style="width:20%;background:#f72585"></div></div>
-        <div class="lang-pct">20%</div>
-      </div>
-    
-      <div class="lang-row">
-        <div class="lang-name">JavaScript</div>
-        <div class="lang-bar"><div class="lang-fill" style="width:5%;background:#ffd166"></div></div>
-        <div class="lang-pct">5%</div>
-      </div>
-    </div>
+              <!-- filled dynamically -->
+            </div>
             <div class="stat-label" style="margin-top:2rem">Contribution Activity</div>
-            <div class="activity-grid" id="activityGrid" style="margin-top:0.8rem"><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell l2"></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l4"></div><div class="activity-cell l1"></div><div class="activity-cell l3"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l3"></div><div class="activity-cell l2"></div><div class="activity-cell l2"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l3"></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l4"></div><div class="activity-cell l3"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell l4"></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell l2"></div><div class="activity-cell l3"></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l4"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l1"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell l2"></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell l3"></div><div class="activity-cell "></div><div class="activity-cell "></div><div class="activity-cell "></div></div>
+            <div class="activity-grid" id="activityGrid" style="margin-top:0.8rem">
+            </div>
           </div>
         </div>
       </div>
       <div style="margin-top:1rem">
-        <a id="ghProfileLink" href="https://github.com/SHIKHAR122" target="_blank" class="social-btn btn-github" style="display:inline-flex;text-decoration:none">View @SHIKHAR122 on GitHub →</a>
+        <a id="ghProfileLink" href="#" target="_blank" class="social-btn btn-github" style="display:inline-flex;text-decoration:none">
+          View Profile on GitHub →
+        </a>
       </div>
     </div>
-    <div id="githubEmpty" style="color: var(--text-muted); font-family: &quot;Space Mono&quot;, monospace; font-size: 0.85rem; display: none;">Loading...</div>
+    <div id="githubEmpty" style="color:var(--text-muted);font-family:'Space Mono',monospace;font-size:0.85rem">
+      Enter your GitHub username above to load your stats.
+    </div>
   </section>
 
   <!-- LEETCODE -->
@@ -1062,19 +1006,19 @@
       <div class="lc-input-grid">
         <div class="form-group" style="margin:0">
           <label>Easy Solved</label>
-          <input type="number" id="lcEasy" min="0" placeholder="0" oninput="updateLeetCode()" fdprocessedid="q14c1">
+          <input type="number" id="lcEasy" min="0" placeholder="0" oninput="updateLeetCode()">
         </div>
         <div class="form-group" style="margin:0">
           <label>Medium Solved</label>
-          <input type="number" id="lcMedium" min="0" placeholder="0" oninput="updateLeetCode()" fdprocessedid="ftcby">
+          <input type="number" id="lcMedium" min="0" placeholder="0" oninput="updateLeetCode()">
         </div>
         <div class="form-group" style="margin:0">
           <label>Hard Solved</label>
-          <input type="number" id="lcHard" min="0" placeholder="0" oninput="updateLeetCode()" fdprocessedid="asq058">
+          <input type="number" id="lcHard" min="0" placeholder="0" oninput="updateLeetCode()">
         </div>
         <div class="form-group" style="margin:0">
           <label>Rank</label>
-          <input type="text" id="lcRank" placeholder="e.g. 123456" oninput="updateLeetCode()" fdprocessedid="lfholk">
+          <input type="text" id="lcRank" placeholder="e.g. 123456" oninput="updateLeetCode()">
         </div>
       </div>
     </div>
@@ -1083,30 +1027,31 @@
       <div class="lc-ring-card">
         <div class="ring-wrap">
           <svg width="120" height="120" viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface2)" stroke-width="8"></circle>
-            <circle id="lcRingEasy" cx="60" cy="60" r="50" fill="none" stroke="var(--easy)" stroke-width="8" stroke-dasharray="0 314" stroke-linecap="round" style="transition: stroke-dasharray 1s; stroke-dasharray: 2.84859, 314;"></circle>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface2)" stroke-width="8"/>
+            <circle id="lcRingEasy" cx="60" cy="60" r="50" fill="none" stroke="var(--easy)" stroke-width="8"
+              stroke-dasharray="0 314" stroke-linecap="round" style="transition:stroke-dasharray 1s ease"/>
           </svg>
           <div class="ring-center">
-            <div class="ring-num" id="lcTotal" style="font-size:1.3rem">35</div>
+            <div class="ring-num" id="lcTotal" style="font-size:1.3rem">0</div>
             <div class="ring-total">/3860</div>
           </div>
         </div>
         <div class="lc-breakdown">
           <div class="lc-row">
             <span class="lc-label"><span class="dot-easy"></span>Easy</span>
-            <span class="lc-count lc-easy" id="lcEasyDisplay">23</span>
+            <span class="lc-count lc-easy" id="lcEasyDisplay">0</span>
           </div>
           <div class="lc-row">
             <span class="lc-label"><span class="dot-medium"></span>Medium</span>
-            <span class="lc-count lc-medium" id="lcMediumDisplay">11</span>
+            <span class="lc-count lc-medium" id="lcMediumDisplay">0</span>
           </div>
           <div class="lc-row">
             <span class="lc-label"><span class="dot-hard"></span>Hard</span>
-            <span class="lc-count lc-hard" id="lcHardDisplay">1</span>
+            <span class="lc-count lc-hard" id="lcHardDisplay">0</span>
           </div>
           <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
             <div class="stat-label">Rank</div>
-            <div style="font-weight:700;font-size:1rem" id="lcRankDisplay">2,954,219</div>
+            <div style="font-weight:700;font-size:1rem" id="lcRankDisplay">—</div>
           </div>
         </div>
       </div>
@@ -1114,15 +1059,15 @@
       <div class="lc-right">
         <div class="lc-stat-row">
           <div class="lc-stat-box">
-            <span class="lc-stat-num lc-easy" id="lcEasyStat">23</span>
+            <span class="lc-stat-num lc-easy" id="lcEasyStat">0</span>
             <span class="lc-stat-label">Easy</span>
           </div>
           <div class="lc-stat-box">
-            <span class="lc-stat-num lc-medium" id="lcMediumStat">11</span>
+            <span class="lc-stat-num lc-medium" id="lcMediumStat">0</span>
             <span class="lc-stat-label">Medium</span>
           </div>
           <div class="lc-stat-box">
-            <span class="lc-stat-num lc-hard" id="lcHardStat">1</span>
+            <span class="lc-stat-num lc-hard" id="lcHardStat">0</span>
             <span class="lc-stat-label">Hard</span>
           </div>
         </div>
@@ -1131,18 +1076,18 @@
           <div>
             <div class="lang-row">
               <div class="lang-name" style="color:var(--easy)">Easy</div>
-              <div class="lang-bar"><div class="lang-fill" id="lcEasyBar" style="width: 66%; background: var(--easy);"></div></div>
-              <div class="lang-pct" id="lcEasyPct">66%</div>
+              <div class="lang-bar"><div class="lang-fill" id="lcEasyBar" style="width:0%;background:var(--easy)"></div></div>
+              <div class="lang-pct" id="lcEasyPct">0%</div>
             </div>
             <div class="lang-row">
               <div class="lang-name" style="color:var(--medium)">Medium</div>
-              <div class="lang-bar"><div class="lang-fill" id="lcMediumBar" style="width: 31%; background: var(--medium);"></div></div>
-              <div class="lang-pct" id="lcMediumPct">31%</div>
+              <div class="lang-bar"><div class="lang-fill" id="lcMediumBar" style="width:0%;background:var(--medium)"></div></div>
+              <div class="lang-pct" id="lcMediumPct">0%</div>
             </div>
             <div class="lang-row">
               <div class="lang-name" style="color:var(--hard)">Hard</div>
-              <div class="lang-bar"><div class="lang-fill" id="lcHardBar" style="width: 3%; background: var(--hard);"></div></div>
-              <div class="lang-pct" id="lcHardPct">3%</div>
+              <div class="lang-bar"><div class="lang-fill" id="lcHardBar" style="width:0%;background:var(--hard)"></div></div>
+              <div class="lang-pct" id="lcHardPct">0%</div>
             </div>
           </div>
         </div>
@@ -1157,24 +1102,28 @@
       <h2 class="section-title">Connect</h2>
     </div>
 
+    <!-- Hidden inputs for JS compatibility -->
+    <input type="hidden" id="emailInput" value="shikharsharmafeb@gmail.com">
+    <input type="hidden" id="liUrl" value="https://www.linkedin.com/in/shikhar-sharma-b59370343">
+
     <div class="profile-cards" style="grid-template-columns: repeat(3, 1fr)">
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem">
         <div class="stat-label" style="margin-bottom:0.8rem">Email</div>
-        <input type="email" id="emailInput" placeholder="your@email.com" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:0.7rem 1rem;color:var(--text);font-family:'Syne',sans-serif;font-size:0.9rem;outline:none" onchange="saveEmail()" fdprocessedid="nh9vge">
-        <a id="emailLink" href="mailto:shikharsharmafeb@gmail.com" class="social-btn" style="display:inline-flex;text-decoration:none;margin-top:1rem;background:rgba(6,214,160,0.1);border:1px solid rgba(6,214,160,0.3);color:var(--accent2)">
+        <div style="font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--text);margin-bottom:1rem">shikharsharmafeb@gmail.com</div>
+        <a id="emailLink" href="mailto:shikharsharmafeb@gmail.com" class="social-btn" style="display:inline-flex;text-decoration:none;background:rgba(6,214,160,0.1);border:1px solid rgba(6,214,160,0.3);color:var(--accent2)">
           ✉ Send Email →
         </a>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem">
-        <div class="stat-label" style="margin-bottom:0.8rem">LinkedIn URL</div>
-        <input type="text" id="liUrl" placeholder="https://linkedin.com/in/yourname" style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:0.7rem 1rem;color:var(--text);font-family:'Syne',sans-serif;font-size:0.9rem;outline:none" onchange="saveLi()" fdprocessedid="3xwz9">
-        <a id="liLink" href="https://www.linkedin.com/in/shikhar-sharma-b59370343" target="_blank" class="social-btn btn-linkedin" style="display:inline-flex;text-decoration:none;margin-top:1rem">
+        <div class="stat-label" style="margin-bottom:0.8rem">LinkedIn</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--text);margin-bottom:1rem">Shikhar Sharma</div>
+        <a id="liLink" href="https://www.linkedin.com/in/shikhar-sharma-b59370343" target="_blank" class="social-btn btn-linkedin" style="display:inline-flex;text-decoration:none">
           Open LinkedIn →
         </a>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem">
         <div class="stat-label" style="margin-bottom:0.8rem">GitHub Profile</div>
-        <div id="ghConnectDisplay" style="font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--text-muted)">@SHIKHAR122 — 3 repos · 0 followers</div>
+        <div id="ghConnectDisplay" style="font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--text-muted)">@SHIKHAR122</div>
         <a id="ghConnectLink" href="https://github.com/SHIKHAR122" target="_blank" class="social-btn btn-github" style="display:inline-flex;text-decoration:none;margin-top:1rem">
           Open GitHub →
         </a>
@@ -1184,7 +1133,7 @@
 
   <footer>
     <span class="footer-text" id="footerSecret" style="cursor:default;user-select:none">// crafted with precision</span>
-    <span class="footer-text" id="footerDate">// 2026</span>
+    <span class="footer-text" id="footerDate"></span>
   </footer>
 </div>
 
@@ -1194,7 +1143,7 @@
     <h3 id="modalTitle">Add Project</h3>
     <div class="form-group">
       <label>Project Name *</label>
-      <input type="text" id="pName" placeholder="My Awesome Project" fdprocessedid="dyjtz">
+      <input type="text" id="pName" placeholder="My Awesome Project">
     </div>
     <div class="form-group">
       <label>Description</label>
@@ -1203,7 +1152,7 @@
     <div class="form-row">
       <div class="form-group">
         <label>Status *</label>
-        <select id="pStatus" fdprocessedid="9amj24">
+        <select id="pStatus">
           <option value="ongoing">Ongoing</option>
           <option value="completed">Completed</option>
           <option value="future">Future</option>
@@ -1211,20 +1160,20 @@
       </div>
       <div class="form-group">
         <label>Progress %</label>
-        <input type="number" id="pProgress" min="0" max="100" placeholder="50" fdprocessedid="am8x5p">
+        <input type="number" id="pProgress" min="0" max="100" placeholder="50">
       </div>
     </div>
     <div class="form-group">
       <label>Tech Stack (comma separated)</label>
-      <input type="text" id="pTags" placeholder="React, Node.js, MongoDB" fdprocessedid="p360gi">
+      <input type="text" id="pTags" placeholder="React, Node.js, MongoDB">
     </div>
     <div class="form-group">
       <label>GitHub URL (optional)</label>
-      <input type="text" id="pGithub" placeholder="https://github.com/..." fdprocessedid="yyt5g">
+      <input type="text" id="pGithub" placeholder="https://github.com/...">
     </div>
     <div class="modal-actions">
-      <button class="btn btn-secondary" onclick="closeModal()" fdprocessedid="rfnfo">Cancel</button>
-      <button class="btn btn-primary" onclick="saveProject()" fdprocessedid="eall8r">Save Project</button>
+      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveProject()">Save Project</button>
     </div>
   </div>
 </div>
@@ -1232,24 +1181,23 @@
 <script>
 // ── STATE ──────────────────────────────────────────────────────────────
 let projects = JSON.parse(localStorage.getItem('portfolio_projects') || '[]');
-let leetcode = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":23,"medium":11,"hard":1,"rank":"2,954,219"}');
+let leetcode = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":28,"medium":11,"hard":1,"rank":"2,867,630"}');
 let github_user = localStorage.getItem('portfolio_gh') || 'SHIKHAR122';
 let li_url = localStorage.getItem('portfolio_li') || 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
 const default_email = 'shikharsharmafeb@gmail.com';
 let editingId = null;
 let currentFilter = 'all';
 
-// Hardcoded base projects — always present on every device
-const baseProjects = [{"id":1,"name":"SQL Analytical Engine","desc":"SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.","status":"ongoing","progress":45,"tags":["SQL","SQLite","Git","GitHub"],"github":"https://github.com/SHIKHAR122/portfolio"},{"id":2,"name":"QueryForge — SQL Analytical Engine","desc":"Analytical query engine with performance benchmarking — 8x query optimization demonstrated. A production-grade analytical query engine built on DuckDB, designed to process and analyze 500k+ row real-world datasets. Features a Python-based query interface across 5 analytical modules covering regional performance, sales aggregation, customer segmentation, time-series trend analysis, and revenue contribution intelligence. Includes a benchmarking layer measuring query optimization gains through indexing, and a Streamlit dashboard for live data visualization.","status":"future","progress":0,"tags":["DuckDB","Python","Pandas","Streamlit","SQL","Git"],"github":""}];
-
-// Remove old default seed projects and any duplicates
+// Hardcoded real projects — always present
+const baseProjects = [
+  { id: 1, name: 'SQL Analytical Engine', desc: 'SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.', status: 'ongoing', progress: 45, tags: ['SQL', 'SQLite', 'Git', 'GitHub'], github: 'https://github.com/SHIKHAR122/portfolio' },
+  { id: 2, name: 'QueryForge — SQL Analytical Engine', desc: 'Analytical query engine with performance benchmarking — 8x query optimization demonstrated. A production-grade analytical query engine built on DuckDB, designed to process and analyze 500k+ row real-world datasets. Features a Python-based query interface across 5 analytical modules. Includes a benchmarking layer and a Streamlit dashboard for live data visualization.', status: 'future', progress: 0, tags: ['DuckDB', 'Python', 'Pandas', 'Streamlit', 'SQL', 'Git'], github: '' },
+];
+// Remove old fake seed projects and duplicates, then inject base projects
 const blockedNames = ['Personal Portfolio', 'TaskFlow App', 'AI Code Reviewer'];
-const blockedIds = [3, 4];
-projects = projects.filter(p => !blockedNames.includes(p.name) && !blockedIds.includes(p.id));
-
-// Remove any duplicate of base projects by name
+projects = projects.filter(p => !blockedNames.includes(p.name));
 const existingNames = projects.map(p => p.name);
-baseProjects.forEach(bp => {
+[...baseProjects].reverse().forEach(bp => {
   if (!existingNames.includes(bp.name)) projects.unshift(bp);
 });
 saveProjects();
@@ -1398,18 +1346,10 @@ async function loadGithub() {
     const langCount = {};
     repos.forEach(r => { if (r.language) langCount[r.language] = (langCount[r.language]||0) + 1; });
     
-    const sorted = Object.entries(langCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
-    const total = sorted.reduce((s,[,v])=>s+v,0);
     const colors = ['#7c3aed','#06d6a0','#f72585','#ffd166','#58a6ff'];
-
-    const knownLangs = [
-      ['Python', 45],
-      ['SQL', 30],
-      ['HTML', 20],
-      ['JavaScript', 5],
-    ];
+    const knownLangs = [['Python',45],['SQL',30],['HTML',20],['JavaScript',5]];
     const knownTotal = knownLangs.reduce((s,[,v])=>s+v,0);
-    document.getElementById('ghLangs').innerHTML = knownLangs.map(([lang, pct],i) => `
+    document.getElementById('ghLangs').innerHTML = knownLangs.map(([lang,pct],i) => `
       <div class="lang-row">
         <div class="lang-name">${lang}</div>
         <div class="lang-bar"><div class="lang-fill" style="width:${Math.round(pct/knownTotal*100)}%;background:${colors[i]}"></div></div>
@@ -1495,21 +1435,16 @@ function saveLi() {
   document.getElementById('lcRank').value = leetcode.rank || '';
   updateLeetCode();
 
-  // Load saved GitHub
-  if (github_user) {
-    document.getElementById('ghUsername').value = github_user;
-    loadGithub();
-  }
+  // Auto-load GitHub stats
+  loadGithub();
 
-  // Load saved LinkedIn
-  const li_final = li_url || 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
-  document.getElementById('liUrl').value = li_final;
-  document.getElementById('liLink').href = li_final;
-
-  // Load saved email
-  const saved_email = localStorage.getItem('portfolio_email') || default_email;
-  document.getElementById('emailInput').value = saved_email;
-  document.getElementById('emailLink').href = `mailto:${saved_email}`;
+  // Footer secret trigger — triple click to open admin
+  let _fc = 0;
+  document.getElementById('footerSecret').addEventListener('click', function() {
+    _fc++;
+    if (_fc >= 3) { _fc = 0; openAdminLogin(); }
+    setTimeout(() => _fc = 0, 1500);
+  });
 
   // Render projects
   renderProjects();
@@ -1519,17 +1454,9 @@ function saveLi() {
   document.getElementById('projectModal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
   });
-
-  // Admin panel: triple-click footer to open
-  let footerClicks = 0;
-  document.getElementById('footerSecret').addEventListener('click', function() {
-    footerClicks++;
-    if (footerClicks >= 3) { footerClicks = 0; openAdminLogin(); }
-    setTimeout(() => footerClicks = 0, 1500);
-  });
 })();
 
-// ── ADMIN PANEL ────────────────────────────────────────────────────────
+// ── ADMIN PANEL ─────────────────────────────────────────────────────────
 const ADMIN_PASS = 'ssvtforever@2205';
 let adminUnlocked = false;
 let adminEditingId = null;
@@ -1538,12 +1465,12 @@ function openAdminLogin() {
   if (adminUnlocked) { openAdminPanel(); return; }
   document.getElementById('adminLoginOverlay').classList.add('active');
   document.getElementById('adminPassInput').value = '';
+  document.getElementById('adminLoginError').textContent = '';
   setTimeout(() => document.getElementById('adminPassInput').focus(), 100);
 }
 
 function submitAdminLogin() {
-  const val = document.getElementById('adminPassInput').value;
-  if (val === ADMIN_PASS) {
+  if (document.getElementById('adminPassInput').value === ADMIN_PASS) {
     adminUnlocked = true;
     document.getElementById('adminLoginOverlay').classList.remove('active');
     openAdminPanel();
@@ -1569,41 +1496,34 @@ function loadAdminInfo() {
   document.getElementById('adMedium').value = lc.medium;
   document.getElementById('adHard').value = lc.hard;
   document.getElementById('adRank').value = lc.rank;
-  document.getElementById('adEmail').value = localStorage.getItem('portfolio_email') || default_email;
+  document.getElementById('adEmail').value = localStorage.getItem('portfolio_email') || 'shikharsharmafeb@gmail.com';
   document.getElementById('adLinkedin').value = localStorage.getItem('portfolio_li') || 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
   document.getElementById('adGithub').value = localStorage.getItem('portfolio_gh') || 'SHIKHAR122';
 }
 
 function saveAdminInfo() {
-  const lc = { easy: parseInt(document.getElementById('adEasy').value)||0, medium: parseInt(document.getElementById('adMedium').value)||0, hard: parseInt(document.getElementById('adHard').value)||0, rank: document.getElementById('adRank').value };
+  const lc = {
+    easy: parseInt(document.getElementById('adEasy').value)||0,
+    medium: parseInt(document.getElementById('adMedium').value)||0,
+    hard: parseInt(document.getElementById('adHard').value)||0,
+    rank: document.getElementById('adRank').value
+  };
   localStorage.setItem('portfolio_lc', JSON.stringify(lc));
   localStorage.setItem('portfolio_email', document.getElementById('adEmail').value.trim());
   localStorage.setItem('portfolio_li', document.getElementById('adLinkedin').value.trim());
   localStorage.setItem('portfolio_gh', document.getElementById('adGithub').value.trim());
-
-  // Apply changes live
   leetcode = lc;
   document.getElementById('lcEasy').value = lc.easy;
   document.getElementById('lcMedium').value = lc.medium;
   document.getElementById('lcHard').value = lc.hard;
   document.getElementById('lcRank').value = lc.rank;
   updateLeetCode();
-  github_user = document.getElementById('adGithub').value.trim();
-  document.getElementById('ghUsername').value = github_user;
-  loadGithub();
-  const em = document.getElementById('adEmail').value.trim();
-  document.getElementById('emailInput').value = em;
-  document.getElementById('emailLink').href = `mailto:${em}`;
-  const li = document.getElementById('adLinkedin').value.trim();
-  document.getElementById('liUrl').value = li;
-  document.getElementById('liLink').href = li;
   document.getElementById('adInfoMsg').textContent = '✓ Saved!';
   setTimeout(() => document.getElementById('adInfoMsg').textContent = '', 2000);
 }
 
 function loadAdminProjects() {
-  const list = document.getElementById('adProjectList');
-  list.innerHTML = projects.map(p => `
+  document.getElementById('adProjectList').innerHTML = projects.map(p => `
     <div style="display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
       <div>
         <div style="font-weight:700;font-size:0.9rem">${p.name}</div>
@@ -1629,12 +1549,9 @@ function adminEditProject(id) {
     document.getElementById('adPTags').value = p.tags.join(', ');
     document.getElementById('adPGithub').value = p.github || '';
   } else {
-    document.getElementById('adPName').value = '';
-    document.getElementById('adPDesc').value = '';
+    ['adPName','adPDesc','adPTags','adPGithub'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('adPStatus').value = 'ongoing';
     document.getElementById('adPProgress').value = '';
-    document.getElementById('adPTags').value = '';
-    document.getElementById('adPGithub').value = '';
   }
 }
 
@@ -1656,9 +1573,7 @@ function adminSaveProject() {
     data.id = Date.now();
     projects.push(data);
   }
-  saveProjects();
-  renderProjects();
-  loadAdminProjects();
+  saveProjects(); renderProjects(); loadAdminProjects();
   document.getElementById('adProjForm').style.display = 'none';
   adminEditingId = null;
 }
@@ -1666,188 +1581,98 @@ function adminSaveProject() {
 function adminDeleteProject(id) {
   if (confirm('Delete this project?')) {
     projects = projects.filter(p => p.id !== id);
-    saveProjects();
-    renderProjects();
-    loadAdminProjects();
+    saveProjects(); renderProjects(); loadAdminProjects();
   }
 }
 
 function exportPortfolio() {
-  // Build updated HTML with current data baked in
   const lc = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":28,"medium":11,"hard":1,"rank":"2,867,630"}');
-  const em = localStorage.getItem('portfolio_email') || default_email;
-  const li = localStorage.getItem('portfolio_li') || 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
-  const gh = localStorage.getItem('portfolio_gh') || 'SHIKHAR122';
-
   let src = document.documentElement.outerHTML;
-
-  // Update hardcoded defaults in source
-  src = src.replace(/localStorage\.getItem\('portfolio_lc'\) \|\| '[^']*'/, `localStorage.getItem('portfolio_lc') || '${JSON.stringify(lc)}'`);
-  src = src.replace(/localStorage\.getItem\('portfolio_gh'\) \|\| '[^']*'/, `localStorage.getItem('portfolio_gh') || '${gh}'`);
-  src = src.replace(/localStorage\.getItem\('portfolio_li'\) \|\| '[^']*'/, `localStorage.getItem('portfolio_li') || '${li}'`);
-  src = src.replace(/const default_email = '[^']*'/, `const default_email = '${em}'`);
-
-  // Update hardcoded base projects
-  const baseStr = JSON.stringify(projects.filter(p => p.id === 1 || p.id === 2 || baseProjects.find(b => b.name === p.name)));
-  src = src.replace(/const baseProjects = \[[\s\S]*?\];/, `const baseProjects = ${JSON.stringify(baseProjects)};`);
-
+  src = src.replace(
+    /localStorage\.getItem\('portfolio_lc'\) \|\| '\{[^']*\}'/,
+    `localStorage.getItem('portfolio_lc') || '${JSON.stringify(lc).replace(/'/g,"\\'")}'`
+  );
   navigator.clipboard.writeText(src).then(() => {
-    document.getElementById('exportMsg').textContent = '✓ Copied! Now paste it in GitHub editor and commit.';
-    setTimeout(() => document.getElementById('exportMsg').textContent = '', 4000);
+    document.getElementById('exportMsg').textContent = '✓ Copied! Go to GitHub → index.html → ✏️ edit → Ctrl+A → Ctrl+V → Commit.';
+    setTimeout(() => document.getElementById('exportMsg').textContent = '', 5000);
   }).catch(() => {
-    document.getElementById('exportMsg').textContent = '✗ Copy failed. Try a different browser.';
+    document.getElementById('exportMsg').textContent = '✗ Copy failed. Try Chrome or Edge.';
   });
 }
 </script>
 
 <!-- ADMIN LOGIN -->
 <div class="modal-overlay" id="adminLoginOverlay" style="z-index:200">
-  <div class="modal" style="max-width:380px">
+  <div class="modal" style="max-width:360px">
     <h3 style="margin-bottom:1.2rem">🔐 Admin Access</h3>
     <div class="form-group">
       <label>Password</label>
-      <input type="password" id="adminPassInput" placeholder="Enter password" onkeydown="if(event.key==='Enter') submitAdminLogin()" fdprocessedid="1unc09">
+      <input type="password" id="adminPassInput" onkeydown="if(event.key==='Enter') submitAdminLogin()">
     </div>
-    <div id="adminLoginError" style="color:var(--hard);font-size:0.8rem;margin-top:0.5rem"></div>
+    <div id="adminLoginError" style="color:var(--hard);font-size:0.8rem;min-height:1.2rem;margin-top:0.3rem"></div>
     <div class="modal-actions">
-      <button class="btn btn-secondary" onclick="document.getElementById('adminLoginOverlay').classList.remove('active')" fdprocessedid="c4rluj">Cancel</button>
-      <button class="btn btn-primary" onclick="submitAdminLogin()" fdprocessedid="2t50on">Enter</button>
+      <button class="btn btn-secondary" onclick="document.getElementById('adminLoginOverlay').classList.remove('active')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitAdminLogin()">Enter</button>
     </div>
   </div>
 </div>
 
 <!-- ADMIN PANEL -->
-<div class="modal-overlay active" id="adminOverlay" style="z-index:201;align-items:flex-start;padding:2rem;overflow-y:auto">
+<div class="modal-overlay" id="adminOverlay" style="z-index:201;align-items:flex-start;padding:2rem;overflow-y:auto">
   <div class="modal" style="max-width:640px;width:100%;margin:auto">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
       <h3>⚙️ Admin Panel</h3>
-      <button class="card-btn" onclick="closeAdminPanel()" style="width:32px;height:32px;font-size:1rem" fdprocessedid="g74t0o">✕</button>
+      <button class="card-btn" onclick="closeAdminPanel()" style="width:32px;height:32px;font-size:1rem">✕</button>
     </div>
 
-    <!-- INFO SECTION -->
-    <div style="margin-bottom:1.5rem">
-      <div class="stat-label" style="margin-bottom:1rem">Profile &amp; Stats</div>
-      <div class="form-row" style="margin-bottom:1rem">
-        <div class="form-group" style="margin:0">
-          <label>Email</label>
-          <input type="text" id="adEmail" fdprocessedid="a4yuxo">
-        </div>
-        <div class="form-group" style="margin:0">
-          <label>GitHub Username</label>
-          <input type="text" id="adGithub" fdprocessedid="icm6j">
-        </div>
-      </div>
-      <div class="form-group" style="margin-bottom:1rem">
-        <label>LinkedIn URL</label>
-        <input type="text" id="adLinkedin" fdprocessedid="8x0oz">
-      </div>
-      <div class="stat-label" style="margin-bottom:0.8rem">LeetCode Stats</div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1rem">
-        <div class="form-group" style="margin:0"><label>Easy</label><input type="number" id="adEasy" fdprocessedid="9stlomc"></div>
-        <div class="form-group" style="margin:0"><label>Medium</label><input type="number" id="adMedium" fdprocessedid="s8gkm"></div>
-        <div class="form-group" style="margin:0"><label>Hard</label><input type="number" id="adHard" fdprocessedid="0klflo"></div>
-        <div class="form-group" style="margin:0"><label>Rank</label><input type="text" id="adRank" fdprocessedid="rb6ugo"></div>
-      </div>
-      <div style="display:flex;align-items:center;gap:1rem">
-        <button class="btn btn-primary" onclick="saveAdminInfo()" fdprocessedid="dl4j8n">Save Info</button>
-        <span id="adInfoMsg" style="color:var(--accent2);font-size:0.8rem;font-family:'Space Mono',monospace"></span>
-      </div>
+    <div class="stat-label" style="margin-bottom:1rem">Profile & Links</div>
+    <div class="form-row" style="margin-bottom:1rem">
+      <div class="form-group" style="margin:0"><label>Email</label><input type="text" id="adEmail"></div>
+      <div class="form-group" style="margin:0"><label>GitHub Username</label><input type="text" id="adGithub"></div>
+    </div>
+    <div class="form-group" style="margin-bottom:1rem"><label>LinkedIn URL</label><input type="text" id="adLinkedin"></div>
+
+    <div class="stat-label" style="margin-bottom:0.8rem">LeetCode Stats</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1rem">
+      <div class="form-group" style="margin:0"><label>Easy</label><input type="number" id="adEasy"></div>
+      <div class="form-group" style="margin:0"><label>Medium</label><input type="number" id="adMedium"></div>
+      <div class="form-group" style="margin:0"><label>Hard</label><input type="number" id="adHard"></div>
+      <div class="form-group" style="margin:0"><label>Rank</label><input type="text" id="adRank"></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem">
+      <button class="btn btn-primary" onclick="saveAdminInfo()">Save Info</button>
+      <span id="adInfoMsg" style="color:var(--accent2);font-size:0.8rem;font-family:'Space Mono',monospace"></span>
     </div>
 
     <div style="border-top:1px solid var(--border);margin-bottom:1.5rem"></div>
 
-    <!-- PROJECTS SECTION -->
-    <div style="margin-bottom:1.5rem">
-      <div class="stat-label" style="margin-bottom:1rem">Projects</div>
-      <div id="adProjectList">
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
-      <div>
-        <div style="font-weight:700;font-size:0.9rem">QueryForge — SQL Analytical Engine</div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">completed · 0%</div>
-      </div>
-      <div style="display:flex;gap:0.5rem">
-        <button class="card-btn" onclick="adminEditProject(2)" fdprocessedid="fon71a">✎</button>
-        <button class="card-btn del" onclick="adminDeleteProject(2)" fdprocessedid="v4rh2d">✕</button>
-      </div>
-    </div>
-  
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
-      <div>
-        <div style="font-weight:700;font-size:0.9rem">SQL Analytical Engine</div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">completed · 100%</div>
-      </div>
-      <div style="display:flex;gap:0.5rem">
-        <button class="card-btn" onclick="adminEditProject(1)" fdprocessedid="b6k2lr">✎</button>
-        <button class="card-btn del" onclick="adminDeleteProject(1)" fdprocessedid="3udwgf">✕</button>
-      </div>
-    </div>
-  
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
-      <div>
-        <div style="font-weight:700;font-size:0.9rem">VaultAPI</div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">future · 0%</div>
-      </div>
-      <div style="display:flex;gap:0.5rem">
-        <button class="card-btn" onclick="adminEditProject(1773549103560)" fdprocessedid="dy2f5">✎</button>
-        <button class="card-btn del" onclick="adminDeleteProject(1773549103560)" fdprocessedid="qziuj4">✕</button>
-      </div>
-    </div>
-  <button class="btn btn-primary" style="width:100%;margin-top:0.5rem" onclick="adminEditProject(null)" fdprocessedid="qve5dm">+ Add Project</button></div>
-
-      <!-- PROJECT EDIT FORM -->
-      <div id="adProjForm" style="display: none; margin-top: 1rem; padding: 1.2rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;">
-        <div class="form-group">
-          <label>Project Name *</label>
-          <input type="text" id="adPName">
+    <div class="stat-label" style="margin-bottom:1rem">Projects</div>
+    <div id="adProjectList"></div>
+    <div id="adProjForm" style="display:none;margin-top:1rem;padding:1.2rem;background:var(--surface2);border:1px solid var(--border);border-radius:8px">
+      <div class="form-group"><label>Project Name *</label><input type="text" id="adPName"></div>
+      <div class="form-group"><label>Description</label><textarea id="adPDesc" rows="2"></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>Status</label>
+          <select id="adPStatus"><option value="ongoing">Ongoing</option><option value="completed">Completed</option><option value="future">Future</option></select>
         </div>
-        <div class="form-group">
-          <label>Description</label>
-          <textarea id="adPDesc" rows="2"></textarea>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Status</label>
-            <select id="adPStatus">
-              <option value="ongoing">Ongoing</option>
-              <option value="completed">Completed</option>
-              <option value="future">Future</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Progress %</label>
-            <input type="number" id="adPProgress" min="0" max="100">
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Tech Stack (comma separated)</label>
-          <input type="text" id="adPTags">
-        </div>
-        <div class="form-group">
-          <label>GitHub URL (optional)</label>
-          <input type="text" id="adPGithub">
-        </div>
-        <div class="modal-actions">
-          <button class="btn btn-secondary" onclick="document.getElementById('adProjForm').style.display='none'">Cancel</button>
-          <button class="btn btn-primary" onclick="adminSaveProject()">Save Project</button>
-        </div>
+        <div class="form-group"><label>Progress %</label><input type="number" id="adPProgress" min="0" max="100"></div>
+      </div>
+      <div class="form-group"><label>Tech Stack (comma separated)</label><input type="text" id="adPTags"></div>
+      <div class="form-group"><label>GitHub URL (optional)</label><input type="text" id="adPGithub"></div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" onclick="document.getElementById('adProjForm').style.display='none'">Cancel</button>
+        <button class="btn btn-primary" onclick="adminSaveProject()">Save Project</button>
       </div>
     </div>
 
-    <div style="border-top:1px solid var(--border);margin-bottom:1.5rem"></div>
+    <div style="border-top:1px solid var(--border);margin:1.5rem 0"></div>
 
-    <!-- EXPORT SECTION -->
-    <div>
-      <div class="stat-label" style="margin-bottom:0.5rem">Make Changes Permanent</div>
-      <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6">Click Export → it copies the updated code → go to your GitHub repo → click index.html → click ✏️ edit → select all → paste → commit. Done in 30 seconds.</p>
-      <button class="btn btn-primary" onclick="exportPortfolio()" style="background:var(--accent2);color:#000;font-weight:700" fdprocessedid="ead6jr">⬇ Export &amp; Copy to Clipboard</button>
-      <div id="exportMsg" style="margin-top:0.8rem;color:var(--accent2);font-family:'Space Mono',monospace;font-size:0.8rem"></div>
-    </div>
-
+    <div class="stat-label" style="margin-bottom:0.5rem">Make Changes Permanent</div>
+    <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6">Click Export → copies updated code → GitHub → index.html → ✏️ edit → Ctrl+A → Ctrl+V → Commit. Done in 30 seconds.</p>
+    <button class="btn btn-primary" onclick="exportPortfolio()" style="background:var(--accent2);color:#000;font-weight:700">⬇ Export & Copy to Clipboard</button>
+    <div id="exportMsg" style="margin-top:0.8rem;color:var(--accent2);font-family:'Space Mono',monospace;font-size:0.75rem;line-height:1.6"></div>
   </div>
 </div>
 
-
-
-<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span>
-<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span>
-</body></html>
+</body>
+</html>
