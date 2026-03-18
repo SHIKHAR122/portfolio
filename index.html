@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shikhar Sharma</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;family=Syne:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0a0a0f;
@@ -908,14 +906,14 @@
     </p>
     <div class="hero-badges" id="heroBadges">
       <span class="badge badge-green" id="badgeOngoing">● 0 Active</span>
-      <span class="badge badge-purple" id="badgeCompleted">✓ 0 Done</span>
-      <span class="badge badge-pink" id="badgeFuture">◇ 0 Planned</span>
+      <span class="badge badge-purple" id="badgeCompleted">✓ 2 Done</span>
+      <span class="badge badge-pink" id="badgeFuture">◇ 1 Planned</span>
     </div>
     <div class="social-row">
-      <button class="social-btn btn-github" onclick="document.getElementById('ghUsername').focus(); scrollTo('github')">
+      <button class="social-btn btn-github" onclick="document.getElementById('ghUsername').focus(); scrollTo('github')" fdprocessedid="cvlb44">
         <span>⬡</span> GitHub
       </button>
-      <button class="social-btn btn-linkedin" onclick="document.getElementById('liUrl').focus(); scrollTo('connect')">
+      <button class="social-btn btn-linkedin" onclick="document.getElementById('liUrl').focus(); scrollTo('connect')" fdprocessedid="auxgln">
         <span>in</span> LinkedIn
       </button>
     </div>
@@ -929,15 +927,75 @@
     </div>
 
     <div class="filter-tabs">
-      <button class="filter-tab active" onclick="filterProjects('all', this)">All</button>
-      <button class="filter-tab" onclick="filterProjects('ongoing', this)">Ongoing</button>
-      <button class="filter-tab" onclick="filterProjects('completed', this)">Completed</button>
-      <button class="filter-tab" onclick="filterProjects('future', this)">Future</button>
+      <button class="filter-tab active" onclick="filterProjects('all', this)" fdprocessedid="oid9z5">All</button>
+      <button class="filter-tab" onclick="filterProjects('ongoing', this)" fdprocessedid="2pvoga">Ongoing</button>
+      <button class="filter-tab" onclick="filterProjects('completed', this)" fdprocessedid="r34fx">Completed</button>
+      <button class="filter-tab" onclick="filterProjects('future', this)" fdprocessedid="cexlg3">Future</button>
     </div>
 
     <div class="projects-grid" id="projectsGrid">
-      <!-- Seeded example projects -->
+    <div class="project-card completed" data-id="2">
+      <div class="card-actions">
+        <button class="card-btn" onclick="editProject(2);event.stopPropagation()" title="Edit" fdprocessedid="jev48">✎</button>
+        <button class="card-btn del" onclick="deleteProject(2);event.stopPropagation()" title="Delete" fdprocessedid="mghmbs">✕</button>
+      </div>
+      <div class="project-status status-completed">
+        <span class="status-dot"></span>
+        Completed
+      </div>
+      <div class="project-name">QueryForge — SQL Analytical Engine</div>
+      <div class="project-desc">Analytical query engine with performance benchmarking — 8x query optimization demonstrated. A production-grade analytical query engine built on DuckDB, designed to process and analyze 500k+ row real-world datasets. Features a Python-based query interface across 5 analytical modules covering regional performance, sales aggregation, customer segmentation, time-series trend analysis, and revenue contribution intelligence. Includes a benchmarking layer measuring query optimization gains through indexing, and a Streamlit dashboard for live data visualization.</div>
+      <div class="project-tags"><span class="tag">DuckDB</span><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Streamlit</span><span class="tag">SQL</span><span class="tag">Git</span></div>
+      <div style="margin-top:0.5rem"><a href="https://github.com/SHIKHAR122/Query_forge" target="_blank" style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--text-muted);text-decoration:none">⬡ View on GitHub</a></div>
+      <div class="project-progress">
+        <div class="progress-label"><span>Progress</span><span>0%</span></div>
+        <div class="progress-bar"><div class="progress-fill completed-fill" style="width:0%"></div></div>
+      </div>
     </div>
+  
+    <div class="project-card completed" data-id="1">
+      <div class="card-actions">
+        <button class="card-btn" onclick="editProject(1);event.stopPropagation()" title="Edit" fdprocessedid="rfdb1e">✎</button>
+        <button class="card-btn del" onclick="deleteProject(1);event.stopPropagation()" title="Delete" fdprocessedid="8j9jc">✕</button>
+      </div>
+      <div class="project-status status-completed">
+        <span class="status-dot"></span>
+        Completed
+      </div>
+      <div class="project-name">SQL Analytical Engine</div>
+      <div class="project-desc">SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.</div>
+      <div class="project-tags"><span class="tag">SQL</span><span class="tag">SQLite</span><span class="tag">Git</span><span class="tag">GitHub</span></div>
+      <div style="margin-top:0.5rem"><a href="https://github.com/SHIKHAR122/retail_business_intelligence" target="_blank" style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--text-muted);text-decoration:none">⬡ View on GitHub</a></div>
+      <div class="project-progress">
+        <div class="progress-label"><span>Progress</span><span>100%</span></div>
+        <div class="progress-bar"><div class="progress-fill completed-fill" style="width:100%"></div></div>
+      </div>
+    </div>
+  
+    <div class="project-card future" data-id="1773549103560">
+      <div class="card-actions">
+        <button class="card-btn" onclick="editProject(1773549103560);event.stopPropagation()" title="Edit" fdprocessedid="ui6t6v">✎</button>
+        <button class="card-btn del" onclick="deleteProject(1773549103560);event.stopPropagation()" title="Delete" fdprocessedid="29depo">✕</button>
+      </div>
+      <div class="project-status status-future">
+        <span class="status-dot"></span>
+        Future
+      </div>
+      <div class="project-name">VaultAPI</div>
+      <div class="project-desc">Production-grade REST API backend built with FastAPI, PostgreSQL, Redis, and Docker. Features JWT authentication, Redis caching, rate limiting, async endpoints, and full test coverage with Pytest.</div>
+      <div class="project-tags"><span class="tag">FastAPI  · PostgreSQL  · Redis  · JWT  · Pytest  · Docker  · Python</span></div>
+      
+      <div class="project-progress">
+        <div class="progress-label"><span>Progress</span><span>0%</span></div>
+        <div class="progress-bar"><div class="progress-fill future-fill" style="width:0%"></div></div>
+      </div>
+    </div>
+  
+    <div class="add-card" onclick="openModal()">
+      <span>+</span>
+      <p>Add new project</p>
+    </div>
+  </div>
   </section>
 
   <!-- GITHUB -->
@@ -950,9 +1008,9 @@
     <div class="github-input-row">
       <div class="form-group">
         <label>GitHub Username</label>
-        <input type="text" id="ghUsername" placeholder="e.g. torvalds" onkeydown="if(event.key==='Enter') loadGithub()">
+        <input type="text" id="ghUsername" placeholder="e.g. torvalds" onkeydown="if(event.key==='Enter') loadGithub()" fdprocessedid="ilv8f7">
       </div>
-      <button class="btn btn-primary" onclick="loadGithub()">Load Stats</button>
+      <button class="btn btn-primary" onclick="loadGithub()" fdprocessedid="kteaj">Load Stats</button>
     </div>
 
     <div id="githubContent" style="display:none">
@@ -1006,19 +1064,19 @@
       <div class="lc-input-grid">
         <div class="form-group" style="margin:0">
           <label>Easy Solved</label>
-          <input type="number" id="lcEasy" min="0" placeholder="0" oninput="updateLeetCode()">
+          <input type="number" id="lcEasy" min="0" placeholder="0" oninput="updateLeetCode()" fdprocessedid="mfp89">
         </div>
         <div class="form-group" style="margin:0">
           <label>Medium Solved</label>
-          <input type="number" id="lcMedium" min="0" placeholder="0" oninput="updateLeetCode()">
+          <input type="number" id="lcMedium" min="0" placeholder="0" oninput="updateLeetCode()" fdprocessedid="5b6c1i">
         </div>
         <div class="form-group" style="margin:0">
           <label>Hard Solved</label>
-          <input type="number" id="lcHard" min="0" placeholder="0" oninput="updateLeetCode()">
+          <input type="number" id="lcHard" min="0" placeholder="0" oninput="updateLeetCode()" fdprocessedid="3suge3">
         </div>
         <div class="form-group" style="margin:0">
           <label>Rank</label>
-          <input type="text" id="lcRank" placeholder="e.g. 123456" oninput="updateLeetCode()">
+          <input type="text" id="lcRank" placeholder="e.g. 123456" oninput="updateLeetCode()" fdprocessedid="d473zr">
         </div>
       </div>
     </div>
@@ -1027,31 +1085,30 @@
       <div class="lc-ring-card">
         <div class="ring-wrap">
           <svg width="120" height="120" viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface2)" stroke-width="8"/>
-            <circle id="lcRingEasy" cx="60" cy="60" r="50" fill="none" stroke="var(--easy)" stroke-width="8"
-              stroke-dasharray="0 314" stroke-linecap="round" style="transition:stroke-dasharray 1s ease"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface2)" stroke-width="8"></circle>
+            <circle id="lcRingEasy" cx="60" cy="60" r="50" fill="none" stroke="var(--easy)" stroke-width="8" stroke-dasharray="0 314" stroke-linecap="round" style="transition: stroke-dasharray 1s; stroke-dasharray: 4.39497, 314;"></circle>
           </svg>
           <div class="ring-center">
-            <div class="ring-num" id="lcTotal" style="font-size:1.3rem">0</div>
+            <div class="ring-num" id="lcTotal" style="font-size:1.3rem">54</div>
             <div class="ring-total">/3860</div>
           </div>
         </div>
         <div class="lc-breakdown">
           <div class="lc-row">
             <span class="lc-label"><span class="dot-easy"></span>Easy</span>
-            <span class="lc-count lc-easy" id="lcEasyDisplay">0</span>
+            <span class="lc-count lc-easy" id="lcEasyDisplay">42</span>
           </div>
           <div class="lc-row">
             <span class="lc-label"><span class="dot-medium"></span>Medium</span>
-            <span class="lc-count lc-medium" id="lcMediumDisplay">0</span>
+            <span class="lc-count lc-medium" id="lcMediumDisplay">11</span>
           </div>
           <div class="lc-row">
             <span class="lc-label"><span class="dot-hard"></span>Hard</span>
-            <span class="lc-count lc-hard" id="lcHardDisplay">0</span>
+            <span class="lc-count lc-hard" id="lcHardDisplay">1</span>
           </div>
           <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
             <div class="stat-label">Rank</div>
-            <div style="font-weight:700;font-size:1rem" id="lcRankDisplay">—</div>
+            <div style="font-weight:700;font-size:1rem" id="lcRankDisplay">2,318,980</div>
           </div>
         </div>
       </div>
@@ -1059,15 +1116,15 @@
       <div class="lc-right">
         <div class="lc-stat-row">
           <div class="lc-stat-box">
-            <span class="lc-stat-num lc-easy" id="lcEasyStat">0</span>
+            <span class="lc-stat-num lc-easy" id="lcEasyStat">42</span>
             <span class="lc-stat-label">Easy</span>
           </div>
           <div class="lc-stat-box">
-            <span class="lc-stat-num lc-medium" id="lcMediumStat">0</span>
+            <span class="lc-stat-num lc-medium" id="lcMediumStat">11</span>
             <span class="lc-stat-label">Medium</span>
           </div>
           <div class="lc-stat-box">
-            <span class="lc-stat-num lc-hard" id="lcHardStat">0</span>
+            <span class="lc-stat-num lc-hard" id="lcHardStat">1</span>
             <span class="lc-stat-label">Hard</span>
           </div>
         </div>
@@ -1076,18 +1133,18 @@
           <div>
             <div class="lang-row">
               <div class="lang-name" style="color:var(--easy)">Easy</div>
-              <div class="lang-bar"><div class="lang-fill" id="lcEasyBar" style="width:0%;background:var(--easy)"></div></div>
-              <div class="lang-pct" id="lcEasyPct">0%</div>
+              <div class="lang-bar"><div class="lang-fill" id="lcEasyBar" style="width: 78%; background: var(--easy);"></div></div>
+              <div class="lang-pct" id="lcEasyPct">78%</div>
             </div>
             <div class="lang-row">
               <div class="lang-name" style="color:var(--medium)">Medium</div>
-              <div class="lang-bar"><div class="lang-fill" id="lcMediumBar" style="width:0%;background:var(--medium)"></div></div>
-              <div class="lang-pct" id="lcMediumPct">0%</div>
+              <div class="lang-bar"><div class="lang-fill" id="lcMediumBar" style="width: 20%; background: var(--medium);"></div></div>
+              <div class="lang-pct" id="lcMediumPct">20%</div>
             </div>
             <div class="lang-row">
               <div class="lang-name" style="color:var(--hard)">Hard</div>
-              <div class="lang-bar"><div class="lang-fill" id="lcHardBar" style="width:0%;background:var(--hard)"></div></div>
-              <div class="lang-pct" id="lcHardPct">0%</div>
+              <div class="lang-bar"><div class="lang-fill" id="lcHardBar" style="width: 2%; background: var(--hard);"></div></div>
+              <div class="lang-pct" id="lcHardPct">2%</div>
             </div>
           </div>
         </div>
@@ -1133,7 +1190,7 @@
 
   <footer>
     <span class="footer-text" id="footerSecret" style="cursor:default;user-select:none">// crafted with precision</span>
-    <span class="footer-text" id="footerDate"></span>
+    <span class="footer-text" id="footerDate">// 2026</span>
   </footer>
 </div>
 
@@ -1143,7 +1200,7 @@
     <h3 id="modalTitle">Add Project</h3>
     <div class="form-group">
       <label>Project Name *</label>
-      <input type="text" id="pName" placeholder="My Awesome Project">
+      <input type="text" id="pName" placeholder="My Awesome Project" fdprocessedid="3zwi6s">
     </div>
     <div class="form-group">
       <label>Description</label>
@@ -1152,7 +1209,7 @@
     <div class="form-row">
       <div class="form-group">
         <label>Status *</label>
-        <select id="pStatus">
+        <select id="pStatus" fdprocessedid="e2sue9">
           <option value="ongoing">Ongoing</option>
           <option value="completed">Completed</option>
           <option value="future">Future</option>
@@ -1160,20 +1217,20 @@
       </div>
       <div class="form-group">
         <label>Progress %</label>
-        <input type="number" id="pProgress" min="0" max="100" placeholder="50">
+        <input type="number" id="pProgress" min="0" max="100" placeholder="50" fdprocessedid="ctsg2c">
       </div>
     </div>
     <div class="form-group">
       <label>Tech Stack (comma separated)</label>
-      <input type="text" id="pTags" placeholder="React, Node.js, MongoDB">
+      <input type="text" id="pTags" placeholder="React, Node.js, MongoDB" fdprocessedid="rghdcc">
     </div>
     <div class="form-group">
       <label>GitHub URL (optional)</label>
-      <input type="text" id="pGithub" placeholder="https://github.com/...">
+      <input type="text" id="pGithub" placeholder="https://github.com/..." fdprocessedid="outnlc">
     </div>
     <div class="modal-actions">
-      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
-      <button class="btn btn-primary" onclick="saveProject()">Save Project</button>
+      <button class="btn btn-secondary" onclick="closeModal()" fdprocessedid="bg1b8v">Cancel</button>
+      <button class="btn btn-primary" onclick="saveProject()" fdprocessedid="jkxr7g">Save Project</button>
     </div>
   </div>
 </div>
@@ -1181,7 +1238,7 @@
 <script>
 // ── STATE ──────────────────────────────────────────────────────────────
 let projects = JSON.parse(localStorage.getItem('portfolio_projects') || '[]');
-let leetcode = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":28,"medium":11,"hard":1,"rank":"2,867,630"}');
+let leetcode = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":42,"medium":11,"hard":1,"rank":"2,318,980"}');
 let github_user = localStorage.getItem('portfolio_gh') || 'SHIKHAR122';
 let li_url = localStorage.getItem('portfolio_li') || 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
 const default_email = 'shikharsharmafeb@gmail.com';
@@ -1607,48 +1664,81 @@ function exportPortfolio() {
     <h3 style="margin-bottom:1.2rem">🔐 Admin Access</h3>
     <div class="form-group">
       <label>Password</label>
-      <input type="password" id="adminPassInput" onkeydown="if(event.key==='Enter') submitAdminLogin()">
+      <input type="password" id="adminPassInput" onkeydown="if(event.key==='Enter') submitAdminLogin()" fdprocessedid="nmtui">
     </div>
     <div id="adminLoginError" style="color:var(--hard);font-size:0.8rem;min-height:1.2rem;margin-top:0.3rem"></div>
     <div class="modal-actions">
-      <button class="btn btn-secondary" onclick="document.getElementById('adminLoginOverlay').classList.remove('active')">Cancel</button>
-      <button class="btn btn-primary" onclick="submitAdminLogin()">Enter</button>
+      <button class="btn btn-secondary" onclick="document.getElementById('adminLoginOverlay').classList.remove('active')" fdprocessedid="dnhyn">Cancel</button>
+      <button class="btn btn-primary" onclick="submitAdminLogin()" fdprocessedid="ms0w6h">Enter</button>
     </div>
   </div>
 </div>
 
 <!-- ADMIN PANEL -->
-<div class="modal-overlay" id="adminOverlay" style="z-index:201;align-items:flex-start;padding:2rem;overflow-y:auto">
+<div class="modal-overlay active" id="adminOverlay" style="z-index:201;align-items:flex-start;padding:2rem;overflow-y:auto">
   <div class="modal" style="max-width:640px;width:100%;margin:auto">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
       <h3>⚙️ Admin Panel</h3>
-      <button class="card-btn" onclick="closeAdminPanel()" style="width:32px;height:32px;font-size:1rem">✕</button>
+      <button class="card-btn" onclick="closeAdminPanel()" style="width:32px;height:32px;font-size:1rem" fdprocessedid="k67fk">✕</button>
     </div>
 
-    <div class="stat-label" style="margin-bottom:1rem">Profile & Links</div>
+    <div class="stat-label" style="margin-bottom:1rem">Profile &amp; Links</div>
     <div class="form-row" style="margin-bottom:1rem">
-      <div class="form-group" style="margin:0"><label>Email</label><input type="text" id="adEmail"></div>
-      <div class="form-group" style="margin:0"><label>GitHub Username</label><input type="text" id="adGithub"></div>
+      <div class="form-group" style="margin:0"><label>Email</label><input type="text" id="adEmail" fdprocessedid="kp9298"></div>
+      <div class="form-group" style="margin:0"><label>GitHub Username</label><input type="text" id="adGithub" fdprocessedid="zdgdie"></div>
     </div>
-    <div class="form-group" style="margin-bottom:1rem"><label>LinkedIn URL</label><input type="text" id="adLinkedin"></div>
+    <div class="form-group" style="margin-bottom:1rem"><label>LinkedIn URL</label><input type="text" id="adLinkedin" fdprocessedid="2yrsy6"></div>
 
     <div class="stat-label" style="margin-bottom:0.8rem">LeetCode Stats</div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1rem">
-      <div class="form-group" style="margin:0"><label>Easy</label><input type="number" id="adEasy"></div>
-      <div class="form-group" style="margin:0"><label>Medium</label><input type="number" id="adMedium"></div>
-      <div class="form-group" style="margin:0"><label>Hard</label><input type="number" id="adHard"></div>
-      <div class="form-group" style="margin:0"><label>Rank</label><input type="text" id="adRank"></div>
+      <div class="form-group" style="margin:0"><label>Easy</label><input type="number" id="adEasy" fdprocessedid="dqhrnm"></div>
+      <div class="form-group" style="margin:0"><label>Medium</label><input type="number" id="adMedium" fdprocessedid="mh75ss"></div>
+      <div class="form-group" style="margin:0"><label>Hard</label><input type="number" id="adHard" fdprocessedid="60b1v"></div>
+      <div class="form-group" style="margin:0"><label>Rank</label><input type="text" id="adRank" fdprocessedid="bxg74q"></div>
     </div>
     <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem">
-      <button class="btn btn-primary" onclick="saveAdminInfo()">Save Info</button>
+      <button class="btn btn-primary" onclick="saveAdminInfo()" fdprocessedid="fwjcl">Save Info</button>
       <span id="adInfoMsg" style="color:var(--accent2);font-size:0.8rem;font-family:'Space Mono',monospace"></span>
     </div>
 
     <div style="border-top:1px solid var(--border);margin-bottom:1.5rem"></div>
 
     <div class="stat-label" style="margin-bottom:1rem">Projects</div>
-    <div id="adProjectList"></div>
-    <div id="adProjForm" style="display:none;margin-top:1rem;padding:1.2rem;background:var(--surface2);border:1px solid var(--border);border-radius:8px">
+    <div id="adProjectList">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
+      <div>
+        <div style="font-weight:700;font-size:0.9rem">QueryForge — SQL Analytical Engine</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">completed · 0%</div>
+      </div>
+      <div style="display:flex;gap:0.5rem">
+        <button class="card-btn" onclick="adminEditProject(2)" fdprocessedid="v9xmfd">✎</button>
+        <button class="card-btn del" onclick="adminDeleteProject(2)" fdprocessedid="du5vsh">✕</button>
+      </div>
+    </div>
+  
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
+      <div>
+        <div style="font-weight:700;font-size:0.9rem">SQL Analytical Engine</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">completed · 100%</div>
+      </div>
+      <div style="display:flex;gap:0.5rem">
+        <button class="card-btn" onclick="adminEditProject(1)" fdprocessedid="fcgvjb">✎</button>
+        <button class="card-btn del" onclick="adminDeleteProject(1)" fdprocessedid="hf7da8">✕</button>
+      </div>
+    </div>
+  
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
+      <div>
+        <div style="font-weight:700;font-size:0.9rem">VaultAPI</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">future · 0%</div>
+      </div>
+      <div style="display:flex;gap:0.5rem">
+        <button class="card-btn" onclick="adminEditProject(1773549103560)" fdprocessedid="85rzmh">✎</button>
+        <button class="card-btn del" onclick="adminDeleteProject(1773549103560)" fdprocessedid="0twnmv">✕</button>
+      </div>
+    </div>
+  <button class="btn btn-primary" style="width:100%;margin-top:0.5rem" onclick="adminEditProject(null)" fdprocessedid="pydngt">+ Add Project</button></div>
+    <div id="adProjForm" style="display: none; margin-top: 1rem; padding: 1.2rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;">
       <div class="form-group"><label>Project Name *</label><input type="text" id="adPName"></div>
       <div class="form-group"><label>Description</label><textarea id="adPDesc" rows="2"></textarea></div>
       <div class="form-row">
@@ -1669,10 +1759,11 @@ function exportPortfolio() {
 
     <div class="stat-label" style="margin-bottom:0.5rem">Make Changes Permanent</div>
     <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6">Click Export → copies updated code → GitHub → index.html → ✏️ edit → Ctrl+A → Ctrl+V → Commit. Done in 30 seconds.</p>
-    <button class="btn btn-primary" onclick="exportPortfolio()" style="background:var(--accent2);color:#000;font-weight:700">⬇ Export & Copy to Clipboard</button>
+    <button class="btn btn-primary" onclick="exportPortfolio()" style="background:var(--accent2);color:#000;font-weight:700" fdprocessedid="6qj8mf">⬇ Export &amp; Copy to Clipboard</button>
     <div id="exportMsg" style="margin-top:0.8rem;color:var(--accent2);font-family:'Space Mono',monospace;font-size:0.75rem;line-height:1.6"></div>
   </div>
 </div>
 
-</body>
-</html>
+
+
+<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body></html>
