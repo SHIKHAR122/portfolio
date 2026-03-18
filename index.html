@@ -6,1147 +6,448 @@
 <title>Shikhar Sharma</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0a0f;
-    --surface: #111118;
-    --surface2: #1a1a24;
-    --border: #2a2a3a;
-    --accent: #7c3aed;
-    --accent2: #06d6a0;
-    --accent3: #f72585;
-    --text: #e8e8f0;
-    --text-muted: #6b6b8a;
-    --easy: #06d6a0;
-    --medium: #ffd166;
-    --hard: #ef476f;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Syne', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* Noise overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 999;
-    opacity: 0.4;
-  }
-
-  /* Mesh background */
-  .mesh {
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 60% at 10% 10%, rgba(124,58,237,0.12) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 50% at 90% 80%, rgba(6,214,160,0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(247,37,133,0.05) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* NAV */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.8rem 0;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    z-index: 10;
-  }
-
-  .logo {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-  }
-
-  .logo-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--text);
-    letter-spacing: -0.01em;
-    line-height: 1;
-  }
-
-  .logo-role {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
-    color: var(--accent2);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-    cursor: pointer;
-  }
-  .nav-links a:hover { color: var(--text); }
-
-  /* HERO */
-  .hero {
-    padding: 8rem 0 5rem;
-    position: relative;
-  }
-
-  .hero-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--accent);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .hero-tag::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  .hero h1 {
-    font-size: clamp(3rem, 8vw, 7rem);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    margin-bottom: 2rem;
-  }
-
-  .hero h1 .line1 { color: var(--text); display: block; }
-  .hero h1 .line2 {
-    display: block;
-    background: linear-gradient(135deg, var(--accent), var(--accent3));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero-desc {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    max-width: 480px;
-    line-height: 1.7;
-    margin-bottom: 3rem;
-  }
-
-  .hero-badges {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 3rem;
-  }
-
-  .badge {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    padding: 0.4rem 1rem;
-    border-radius: 2px;
-    border: 1px solid;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .badge-purple { border-color: var(--accent); color: var(--accent); }
-  .badge-green { border-color: var(--accent2); color: var(--accent2); }
-  .badge-pink { border-color: var(--accent3); color: var(--accent3); }
-
-  .social-row {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-
-  .social-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.7rem 1.5rem;
-    border-radius: 4px;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-    transition: all 0.2s;
-  }
-
-  .btn-github {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--text);
-  }
-  .btn-github:hover { border-color: var(--text-muted); background: var(--surface); }
-
-  .btn-linkedin {
-    background: rgba(10,102,194,0.15);
-    border: 1px solid rgba(10,102,194,0.4);
-    color: #58a6ff;
-  }
-  .btn-linkedin:hover { background: rgba(10,102,194,0.25); }
-
-  /* SECTIONS */
-  section {
-    padding: 5rem 0;
-    border-top: 1px solid var(--border);
-  }
-
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 3rem;
-  }
-
-  .section-num {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-  }
-
-  .section-title {
-    font-size: 2.2rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-  }
-
-  /* PROJECTS */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.8rem;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .project-card.ongoing::before { background: var(--accent2); }
-  .project-card.completed::before { background: var(--accent); }
-  .project-card.future::before { background: var(--accent3); }
-
-  .project-card:hover {
-    border-color: var(--border);
-    transform: translateY(-3px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  }
-  .project-card:hover::before { opacity: 1; }
-
-  .project-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.25rem 0.7rem;
-    border-radius: 20px;
-    margin-bottom: 1rem;
-  }
-
-  .status-ongoing { background: rgba(6,214,160,0.1); color: var(--accent2); }
-  .status-completed { background: rgba(124,58,237,0.1); color: var(--accent); }
-  .status-future { background: rgba(247,37,133,0.1); color: var(--accent3); }
-
-  .status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-  }
-  .status-ongoing .status-dot { background: var(--accent2); animation: pulse 1.5s infinite; }
-  .status-completed .status-dot { background: var(--accent); }
-  .status-future .status-dot { background: var(--accent3); }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-
-  .project-name {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
-  }
-
-  .project-desc {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 1.2rem;
-  }
-
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-bottom: 1.2rem;
-  }
-
-  .tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    padding: 0.2rem 0.6rem;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    color: var(--text-muted);
-    letter-spacing: 0.05em;
-  }
-
-  .project-progress {
-    margin-top: 1rem;
-  }
-
-  .progress-label {
-    display: flex;
-    justify-content: space-between;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--text-muted);
-    margin-bottom: 0.4rem;
-  }
-
-  .progress-bar {
-    height: 3px;
-    background: var(--surface2);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    border-radius: 2px;
-    transition: width 1s ease;
-  }
-  .ongoing-fill { background: var(--accent2); }
-  .completed-fill { background: var(--accent); }
-  .future-fill { background: var(--accent3); }
-
-  /* Add Project Button */
-  .add-card {
-    background: transparent;
-    border: 1px dashed var(--border);
-    border-radius: 8px;
-    padding: 1.8rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    min-height: 200px;
-  }
-  .add-card:hover { border-color: var(--accent); background: rgba(124,58,237,0.05); }
-  .add-card span { font-size: 2rem; color: var(--text-muted); }
-  .add-card p { font-size: 0.85rem; color: var(--text-muted); }
-
-  /* MODAL */
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(8px);
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-  }
-  .modal-overlay.active { opacity: 1; pointer-events: all; }
-
-  .modal {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 2.5rem;
-    width: 90%;
-    max-width: 520px;
-    transform: translateY(20px);
-    transition: transform 0.3s;
-  }
-  .modal-overlay.active .modal { transform: translateY(0); }
-
-  .modal h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-  }
-
-  .form-group {
-    margin-bottom: 1.2rem;
-  }
-
-  .form-group label {
-    display: block;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 0.5rem;
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 0.7rem 1rem;
-    color: var(--text);
-    font-family: 'Syne', sans-serif;
-    font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus { border-color: var(--accent); }
-
-  .form-group select option { background: var(--surface); }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-  .modal-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1.5rem;
-    justify-content: flex-end;
-  }
-
-  .btn {
-    padding: 0.7rem 1.5rem;
-    border-radius: 4px;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    transition: all 0.2s;
-  }
-  .btn-primary {
-    background: var(--accent);
-    color: white;
-  }
-  .btn-primary:hover { background: #6d28d9; }
-  .btn-secondary {
-    background: var(--surface2);
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-  }
-  .btn-secondary:hover { color: var(--text); }
-
-  /* GITHUB SECTION */
-  .github-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 1.5rem;
-  }
-
-  .stat-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.5rem;
-  }
-
-  .stat-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 0.5rem;
-  }
-
-  .stat-value {
-    font-size: 2.5rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-  }
-
-  .github-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  .github-lang-bar {
-    margin-top: 1rem;
-  }
-
-  .lang-row {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    margin-bottom: 0.6rem;
-  }
-
-  .lang-name {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    width: 80px;
-    color: var(--text-muted);
-  }
-
-  .lang-bar {
-    flex: 1;
-    height: 4px;
-    background: var(--surface2);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .lang-fill { height: 100%; border-radius: 2px; }
-
-  .lang-pct {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--text-muted);
-    width: 35px;
-    text-align: right;
-  }
-
-  /* GITHUB PROFILE FORM */
-  .github-input-row {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    align-items: flex-end;
-  }
-
-  .github-input-row .form-group { flex: 1; margin: 0; }
-
-  /* LEETCODE */
-  .lc-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-
-  .lc-ring-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .ring-wrap {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    flex-shrink: 0;
-  }
-
-  .ring-wrap svg {
-    transform: rotate(-90deg);
-  }
-
-  .ring-center {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transform: rotate(0deg);
-  }
-
-  .ring-num {
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-  }
-
-  .ring-total {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    color: var(--text-muted);
-  }
-
-  .lc-breakdown {
-    flex: 1;
-  }
-
-  .lc-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.8rem;
-  }
-
-  .lc-label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-  }
-
-  .dot-easy { width: 8px; height: 8px; border-radius: 50%; background: var(--easy); }
-  .dot-medium { width: 8px; height: 8px; border-radius: 50%; background: var(--medium); }
-  .dot-hard { width: 8px; height: 8px; border-radius: 50%; background: var(--hard); }
-
-  .lc-count {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.8rem;
-    font-weight: 700;
-  }
-
-  .lc-right {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .lc-stat-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-
-  .lc-stat-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 1.2rem;
-    text-align: center;
-  }
-
-  .lc-stat-num {
-    font-size: 1.6rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    display: block;
-  }
-
-  .lc-stat-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-top: 0.3rem;
-    display: block;
-  }
-
-  .lc-easy { color: var(--easy); }
-  .lc-medium { color: var(--medium); }
-  .lc-hard { color: var(--hard); }
-
-  /* Input Section for LeetCode */
-  .lc-input-section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.5rem;
-  }
-
-  .lc-input-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin-top: 1rem;
-    align-items: flex-end;
-  }
-
-  /* Profile Cards */
-  .profile-cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .profile-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .profile-card:hover {
-    border-color: var(--text-muted);
-    transform: translateY(-2px);
-  }
-
-  .profile-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    flex-shrink: 0;
-  }
-  .icon-gh { background: rgba(255,255,255,0.05); }
-  .icon-li { background: rgba(10,102,194,0.15); }
-
-  .profile-info { flex: 1; }
-
-  .profile-name {
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 0.2rem;
-  }
-
-  .profile-handle {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--text-muted);
-  }
-
-  .profile-arrow { color: var(--text-muted); font-size: 1.2rem; }
-
-  /* Activity grid (contribution-style) */
-  .activity-grid {
-    display: flex;
-    gap: 3px;
-    flex-wrap: wrap;
-    margin-top: 0.8rem;
-  }
-
-  .activity-cell {
-    width: 10px;
-    height: 10px;
-    border-radius: 2px;
-    background: var(--surface2);
-  }
-  .activity-cell.l1 { background: rgba(124,58,237,0.3); }
-  .activity-cell.l2 { background: rgba(124,58,237,0.55); }
-  .activity-cell.l3 { background: rgba(124,58,237,0.75); }
-  .activity-cell.l4 { background: var(--accent); }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .footer-text {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--text-muted);
-  }
-
-  /* Animations */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero { animation: fadeUp 0.8s ease both; }
-  .hero h1 { animation: fadeUp 0.8s 0.1s ease both; }
-  .hero-desc { animation: fadeUp 0.8s 0.2s ease both; }
-  .hero-badges { animation: fadeUp 0.8s 0.3s ease both; }
-  .social-row { animation: fadeUp 0.8s 0.4s ease both; }
-
-  /* Edit/delete buttons on cards */
-  .card-actions {
-    position: absolute;
-    top: 0.8rem;
-    right: 0.8rem;
-    display: flex;
-    gap: 0.3rem;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-  .project-card:hover .card-actions { opacity: 1; }
-
-  .card-btn {
-    width: 28px;
-    height: 28px;
-    border-radius: 4px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 0.7rem;
-    transition: all 0.2s;
-  }
-  .card-btn:hover { color: var(--text); border-color: var(--text-muted); }
-  .card-btn.del:hover { color: var(--hard); border-color: var(--hard); }
-
-  /* Filter tabs */
-  .filter-tabs {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .filter-tab {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .filter-tab.active, .filter-tab:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: white;
-  }
-
-  @media (max-width: 768px) {
-    .github-grid, .lc-layout, .profile-cards { grid-template-columns: 1fr; }
-    .lc-stat-row { grid-template-columns: repeat(3, 1fr); }
-    .lc-input-grid { grid-template-columns: repeat(2, 1fr); }
-    .form-row { grid-template-columns: 1fr; }
-    .projects-grid { grid-template-columns: 1fr; }
-    nav { flex-direction: column; gap: 1rem; }
-  }
+:root {
+  --bg: #0a0a0f;
+  --surface: #111118;
+  --surface2: #1a1a24;
+  --border: #2a2a3a;
+  --accent: #7c3aed;
+  --accent2: #06d6a0;
+  --accent3: #f72585;
+  --text: #e8e8f0;
+  --muted: #6b6b8a;
+  --easy: #06d6a0;
+  --medium: #ffd166;
+  --hard: #ef476f;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+/* noise */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:0.35;}
+
+.mesh{position:fixed;inset:0;background:radial-gradient(ellipse 60% 60% at 10% 10%,rgba(124,58,237,.12) 0%,transparent 70%),radial-gradient(ellipse 50% 50% at 90% 80%,rgba(6,214,160,.08) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 50% 50%,rgba(247,37,133,.05) 0%,transparent 70%);pointer-events:none;z-index:0;}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+
+/* ── NAV ── */
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.8rem 0;border-bottom:1px solid var(--border);}
+.logo-name{font-size:1.3rem;font-weight:800;letter-spacing:-.01em;}
+.logo-role{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--accent2);letter-spacing:.14em;text-transform:uppercase;margin-top:.15rem;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:color .2s;}
+.nav-links a:hover{color:var(--text);}
+
+/* ── HERO ── */
+.hero{padding:8rem 0 5rem;animation:fadeUp .8s ease both;}
+.hero-tag{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem;}
+.hero-tag::before{content:'';display:inline-block;width:24px;height:1px;background:var(--accent);}
+.hero h1{font-size:clamp(3rem,8vw,7rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:2rem;}
+.hero h1 .l1{color:var(--text);display:block;}
+.hero h1 .l2{display:block;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-desc{font-size:1.05rem;color:var(--muted);max-width:500px;line-height:1.75;margin-bottom:2.5rem;}
+.badges{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.badge{font-family:'Space Mono',monospace;font-size:.7rem;padding:.4rem 1rem;border-radius:2px;border:1px solid;letter-spacing:.1em;text-transform:uppercase;}
+.b-green{border-color:var(--accent2);color:var(--accent2);}
+.b-purple{border-color:var(--accent);color:var(--accent);}
+.b-pink{border-color:var(--accent3);color:var(--accent3);}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.hbtn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;border-radius:4px;font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.05em;text-decoration:none;cursor:pointer;border:none;transition:all .2s;}
+.hbtn-gh{background:var(--surface2);border:1px solid var(--border);color:var(--text);}
+.hbtn-gh:hover{border-color:var(--muted);}
+.hbtn-li{background:rgba(10,102,194,.15);border:1px solid rgba(10,102,194,.4);color:#58a6ff;}
+.hbtn-li:hover{background:rgba(10,102,194,.25);}
+
+/* ── SECTIONS ── */
+section{padding:5rem 0;border-top:1px solid var(--border);}
+.sec-header{display:flex;align-items:baseline;gap:1rem;margin-bottom:3rem;}
+.sec-num{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--accent);letter-spacing:.1em;}
+.sec-title{font-size:2.2rem;font-weight:800;letter-spacing:-.02em;}
+
+/* ── PROJECTS ── */
+.filter-tabs{display:flex;gap:.5rem;margin-bottom:2rem;flex-wrap:wrap;}
+.ftab{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:.4rem 1rem;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;}
+.ftab.active,.ftab:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;}
+.pcard{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.8rem;position:relative;overflow:hidden;transition:all .3s;cursor:default;}
+.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity .3s;}
+.pcard.ongoing::before{background:var(--accent2);}
+.pcard.completed::before{background:var(--accent);}
+.pcard.future::before{background:var(--accent3);}
+.pcard:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,.3);}
+.pcard:hover::before{opacity:1;}
+.pstatus{display:inline-flex;align-items:center;gap:.4rem;font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .7rem;border-radius:20px;margin-bottom:1rem;}
+.s-ongoing{background:rgba(6,214,160,.1);color:var(--accent2);}
+.s-completed{background:rgba(124,58,237,.1);color:var(--accent);}
+.s-future{background:rgba(247,37,133,.1);color:var(--accent3);}
+.sdot{width:6px;height:6px;border-radius:50%;}
+.s-ongoing .sdot{background:var(--accent2);animation:pulse 1.5s infinite;}
+.s-completed .sdot{background:var(--accent);}
+.s-future .sdot{background:var(--accent3);}
+.pname{font-size:1.15rem;font-weight:700;margin-bottom:.4rem;letter-spacing:-.01em;}
+.pdesc{font-size:.85rem;color:var(--muted);line-height:1.65;margin-bottom:1.2rem;}
+.ptags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem;}
+.ptag{font-family:'Space Mono',monospace;font-size:.62rem;padding:.2rem .6rem;background:var(--surface2);border:1px solid var(--border);border-radius:2px;color:var(--muted);}
+.pgh a{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);text-decoration:none;}
+.pgh a:hover{color:var(--text);}
+.prog{margin-top:1rem;}
+.prog-label{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);margin-bottom:.4rem;}
+.prog-bar{height:3px;background:var(--surface2);border-radius:2px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:2px;transition:width 1s ease;}
+.ongoing .prog-fill{background:var(--accent2);}
+.completed .prog-fill{background:var(--accent);}
+.future .prog-fill{background:var(--accent3);}
+
+/* ── GITHUB ── */
+.gh-grid{display:grid;grid-template-columns:1fr 2fr;gap:1.5rem;}
+.scard{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;}
+.slabel{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;}
+.sval{font-size:2.5rem;font-weight:800;letter-spacing:-.03em;}
+.lang-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.6rem;}
+.lang-name{font-family:'Space Mono',monospace;font-size:.7rem;width:80px;color:var(--muted);}
+.lang-bar{flex:1;height:4px;background:var(--surface2);border-radius:2px;overflow:hidden;}
+.lang-fill{height:100%;border-radius:2px;transition:width 1s ease;}
+.lang-pct{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);width:35px;text-align:right;}
+.act-grid{display:flex;gap:3px;flex-wrap:wrap;margin-top:.8rem;}
+.acell{width:10px;height:10px;border-radius:2px;background:var(--surface2);}
+.acell.l1{background:rgba(124,58,237,.3);}
+.acell.l2{background:rgba(124,58,237,.55);}
+.acell.l3{background:rgba(124,58,237,.75);}
+.acell.l4{background:var(--accent);}
+.gh-loading{font-family:'Space Mono',monospace;font-size:.8rem;color:var(--muted);padding:1rem 0;}
+
+/* ── LEETCODE ── */
+.lc-layout{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.lc-ring-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:2rem;display:flex;align-items:center;gap:2rem;}
+.ring-wrap{position:relative;width:120px;height:120px;flex-shrink:0;}
+.ring-wrap svg{transform:rotate(-90deg);}
+.ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.ring-num{font-size:1.4rem;font-weight:800;letter-spacing:-.03em;}
+.ring-sub{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);}
+.lc-rows{flex:1;}
+.lc-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem;}
+.lc-label{display:flex;align-items:center;gap:.5rem;font-family:'Space Mono',monospace;font-size:.7rem;}
+.dot{width:8px;height:8px;border-radius:50%;}
+.de{background:var(--easy);}
+.dm{background:var(--medium);}
+.dh{background:var(--hard);}
+.lc-count{font-family:'Space Mono',monospace;font-size:.85rem;font-weight:700;}
+.ce{color:var(--easy);}
+.cm{color:var(--medium);}
+.ch{color:var(--hard);}
+.lc-right{display:flex;flex-direction:column;gap:1rem;}
+.lc-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.lc-box{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1.2rem;text-align:center;}
+.lc-box-num{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;display:block;}
+.lc-box-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;display:block;}
+.dist-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;}
+
+/* ── CONNECT ── */
+.connect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.ccard{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;}
+.ccard-top{display:flex;align-items:center;gap:1rem;}
+.cicon{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.ci-gh{background:rgba(255,255,255,.05);}
+.ci-li{background:rgba(10,102,194,.15);}
+.ci-em{background:rgba(6,214,160,.1);}
+.cname{font-weight:700;font-size:1rem;}
+.chandle{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);margin-top:.1rem;word-break:break-all;}
+.cbtn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.2rem;border-radius:4px;font-family:'Space Mono',monospace;font-size:.75rem;text-decoration:none;transition:all .2s;align-self:flex-start;}
+.cbtn-gh{background:var(--surface2);border:1px solid var(--border);color:var(--text);}
+.cbtn-gh:hover{border-color:var(--muted);}
+.cbtn-li{background:rgba(10,102,194,.15);border:1px solid rgba(10,102,194,.4);color:#58a6ff;}
+.cbtn-li:hover{background:rgba(10,102,194,.25);}
+.cbtn-em{background:rgba(6,214,160,.1);border:1px solid rgba(6,214,160,.3);color:var(--accent2);}
+.cbtn-em:hover{background:rgba(6,214,160,.2);}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:2rem 0;display:flex;justify-content:space-between;align-items:center;}
+.foot-text{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);}
+
+/* ── MODAL BASE ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;}
+.overlay.open{opacity:1;pointer-events:all;}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2.5rem;width:90%;max-width:520px;transform:translateY(20px);transition:transform .3s;}
+.overlay.open .modal{transform:translateY(0);}
+.modal h3{font-size:1.3rem;font-weight:700;margin-bottom:1.5rem;}
+.fg{margin-bottom:1.2rem;}
+.fg label{display:block;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;}
+.fg input,.fg select,.fg textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.7rem 1rem;color:var(--text);font-family:'Syne',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--accent);}
+.fg select option{background:var(--surface);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.mactions{display:flex;gap:1rem;margin-top:1.5rem;justify-content:flex-end;}
+.btn{padding:.7rem 1.5rem;border-radius:4px;font-family:'Syne',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;border:none;transition:all .2s;}
+.btn-p{background:var(--accent);color:#fff;}
+.btn-p:hover{background:#6d28d9;}
+.btn-s{background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
+.btn-s:hover{color:var(--text);}
+
+/* card edit/delete */
+.cactions{position:absolute;top:.8rem;right:.8rem;display:flex;gap:.3rem;opacity:0;transition:opacity .2s;}
+.pcard:hover .cactions{opacity:1;}
+.cbtn2{width:28px;height:28px;border-radius:4px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.7rem;transition:all .2s;}
+.cbtn2:hover{color:var(--text);border-color:var(--muted);}
+.cbtn2.del:hover{color:var(--hard);border-color:var(--hard);}
+
+/* ── ADMIN PANEL ── */
+.admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);z-index:200;display:flex;align-items:flex-start;padding:2rem 1rem;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .2s;}
+.admin-overlay.open{opacity:1;pointer-events:all;}
+.admin-panel{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2.5rem;width:100%;max-width:640px;margin:0 auto 4rem;}
+.admin-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;}
+.admin-head h3{font-size:1.2rem;font-weight:700;}
+.admin-section{margin-bottom:1.5rem;}
+.admin-section-title{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);}
+.admin-4grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-bottom:1rem;}
+.admin-2grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.msg{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--accent2);min-height:1.2rem;}
+.export-btn{width:100%;padding:.9rem;border-radius:6px;background:var(--accent2);color:#000;font-family:'Space Mono',monospace;font-size:.85rem;font-weight:700;letter-spacing:.05em;cursor:pointer;border:none;transition:all .2s;}
+.export-btn:hover{background:#04b888;}
+.export-note{font-size:.78rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;}
+.proj-item{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:.4rem;}
+.proj-item-info .pitem-name{font-weight:700;font-size:.88rem;}
+.proj-item-info .pitem-meta{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);margin-top:.2rem;}
+.proj-item-btns{display:flex;gap:.4rem;}
+.proj-form{display:none;margin-top:1rem;padding:1.2rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;}
+.divider{border:none;border-top:1px solid var(--border);margin:1.5rem 0;}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hero{animation:fadeUp .8s ease both;}
+.hero h1{animation:fadeUp .8s .1s ease both;}
+.hero-desc{animation:fadeUp .8s .2s ease both;}
+.badges{animation:fadeUp .8s .3s ease both;}
+.hero-btns{animation:fadeUp .8s .4s ease both;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .gh-grid,.lc-layout,.connect-grid{grid-template-columns:1fr;}
+  .lc-stat-row{grid-template-columns:repeat(3,1fr);}
+  .frow{grid-template-columns:1fr;}
+  .proj-grid{grid-template-columns:1fr;}
+  nav{flex-direction:column;gap:1rem;}
+  .nav-links{gap:1rem;}
+  .admin-4grid{grid-template-columns:repeat(2,1fr);}
+}
 </style>
 </head>
 <body>
-
 <div class="mesh"></div>
+<div class="wrap">
 
-<div class="container">
-  <nav>
-    <div class="logo">
-      <span class="logo-name">Shikhar Sharma</span>
-    </div>
-    <ul class="nav-links">
-      <li><a onclick="scrollTo('projects')">Projects</a></li>
-      <li><a onclick="scrollTo('github')">GitHub</a></li>
-      <li><a onclick="scrollTo('leetcode')">LeetCode</a></li>
-      <li><a onclick="scrollTo('connect')">Connect</a></li>
-    </ul>
-  </nav>
+<!-- NAV -->
+<nav>
+  <div>
+    <div class="logo-name">Shikhar Sharma</div>
+    <div class="logo-role">Data Engineer · Backend Dev</div>
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="scrollSec('projects')">Projects</a></li>
+    <li><a onclick="scrollSec('github')">GitHub</a></li>
+    <li><a onclick="scrollSec('leetcode')">LeetCode</a></li>
+    <li><a onclick="scrollSec('connect')">Connect</a></li>
+  </ul>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero" style="border:none;padding-top:6rem">
-    <div class="hero-tag">Available for opportunities</div>
-    <h1>
-      <span class="line1">Building things</span>
-      <span class="line2">that matter.</span>
-    </h1>
-    <p class="hero-desc">
-      I build structured systems that turn complex data into measurable business intelligence.
-      My focus lies in designing scalable analytical workflows, modeling growth patterns, and extracting performance signals from large datasets.
-      I'm deeply interested in how well-architected data systems drive better decisions, efficiency, and long-term impact.
-    </p>
-    <div class="hero-badges" id="heroBadges">
-      <span class="badge badge-green" id="badgeOngoing">● 0 Active</span>
-      <span class="badge badge-purple" id="badgeCompleted">✓ 0 Done</span>
-      <span class="badge badge-pink" id="badgeFuture">◇ 0 Planned</span>
-    </div>
-    <div class="social-row">
-      <button class="social-btn btn-github" onclick="scrollTo('github')">
-        <span>⬡</span> GitHub
-      </button>
-      <button class="social-btn btn-linkedin" onclick="document.getElementById('liUrl').focus(); scrollTo('connect')">
-        <span>in</span> LinkedIn
-      </button>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <h2 class="section-title">Projects</h2>
-    </div>
-
-    <div class="filter-tabs">
-      <button class="filter-tab active" onclick="filterProjects('all', this)">All</button>
-      <button class="filter-tab" onclick="filterProjects('ongoing', this)">Ongoing</button>
-      <button class="filter-tab" onclick="filterProjects('completed', this)">Completed</button>
-      <button class="filter-tab" onclick="filterProjects('future', this)">Future</button>
-    </div>
-
-    <div class="projects-grid" id="projectsGrid">
-      <!-- Seeded example projects -->
-    </div>
-  </section>
-
-  <!-- GITHUB -->
-  <section id="github">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <h2 class="section-title">GitHub Status</h2>
-    </div>
-
-    <div class="github-input-row" style="display:none">
-      <div class="form-group">
-        <label>GitHub Username</label>
-        <input type="text" id="ghUsername" placeholder="e.g. torvalds" onkeydown="if(event.key==='Enter') loadGithub()">
-      </div>
-      <button class="btn btn-primary" onclick="loadGithub()">Load Stats</button>
-    </div>
-
-    <div id="githubContent" style="display:none">
-      <div class="github-grid">
-        <div>
-          <div class="stat-card" style="margin-bottom:1rem">
-            <div class="stat-label">Repositories</div>
-            <div class="stat-value" id="ghRepos" style="color:var(--accent)">—</div>
-          </div>
-          <div class="stat-card" style="margin-bottom:1rem">
-            <div class="stat-label">Followers</div>
-            <div class="stat-value" id="ghFollowers" style="color:var(--accent2)">—</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Following</div>
-            <div class="stat-value" id="ghFollowing" style="color:var(--accent3)">—</div>
-          </div>
-        </div>
-        <div>
-          <div class="stat-card" style="height:100%">
-            <div class="stat-label">Top Languages</div>
-            <div class="github-lang-bar" id="ghLangs" style="margin-top:1.5rem">
-              <!-- filled dynamically -->
-            </div>
-            <div class="stat-label" style="margin-top:2rem">Contribution Activity</div>
-            <div class="activity-grid" id="activityGrid" style="margin-top:0.8rem">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top:1rem">
-        <a id="ghProfileLink" href="#" target="_blank" class="social-btn btn-github" style="display:inline-flex;text-decoration:none">
-          View Profile on GitHub →
-        </a>
-      </div>
-    </div>
-    <div id="githubEmpty" style="color:var(--text-muted);font-family:'Space Mono',monospace;font-size:0.85rem">
-      Enter your GitHub username above to load your stats.
-    </div>
-  </section>
-
-  <!-- LEETCODE -->
-  <section id="leetcode">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <h2 class="section-title">LeetCode Progress</h2>
-    </div>
-
-    <div class="lc-input-section" style="margin-bottom:1.5rem">
-      <div class="stat-label">Update Your Progress</div>
-      <div class="lc-input-grid">
-        <div class="form-group" style="margin:0">
-          <label>Easy Solved</label>
-          <input type="number" id="lcEasy" min="0" placeholder="0" oninput="updateLeetCode()">
-        </div>
-        <div class="form-group" style="margin:0">
-          <label>Medium Solved</label>
-          <input type="number" id="lcMedium" min="0" placeholder="0" oninput="updateLeetCode()">
-        </div>
-        <div class="form-group" style="margin:0">
-          <label>Hard Solved</label>
-          <input type="number" id="lcHard" min="0" placeholder="0" oninput="updateLeetCode()">
-        </div>
-        <div class="form-group" style="margin:0">
-          <label>Rank</label>
-          <input type="text" id="lcRank" placeholder="e.g. 123456" oninput="updateLeetCode()">
-        </div>
-      </div>
-    </div>
-
-    <div class="lc-layout">
-      <div class="lc-ring-card">
-        <div class="ring-wrap">
-          <svg width="120" height="120" viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface2)" stroke-width="8"/>
-            <circle id="lcRingEasy" cx="60" cy="60" r="50" fill="none" stroke="var(--easy)" stroke-width="8"
-              stroke-dasharray="0 314" stroke-linecap="round" style="transition:stroke-dasharray 1s ease"/>
-          </svg>
-          <div class="ring-center">
-            <div class="ring-num" id="lcTotal" style="font-size:1.2rem">0</div>
-            <div class="ring-total">/3860</div>
-          </div>
-        </div>
-        <div class="lc-breakdown">
-          <div class="lc-row">
-            <span class="lc-label"><span class="dot-easy"></span>Easy</span>
-            <span class="lc-count lc-easy" id="lcEasyDisplay">0</span>
-          </div>
-          <div class="lc-row">
-            <span class="lc-label"><span class="dot-medium"></span>Medium</span>
-            <span class="lc-count lc-medium" id="lcMediumDisplay">0</span>
-          </div>
-          <div class="lc-row">
-            <span class="lc-label"><span class="dot-hard"></span>Hard</span>
-            <span class="lc-count lc-hard" id="lcHardDisplay">0</span>
-          </div>
-          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
-            <div class="stat-label">Rank</div>
-            <div style="font-weight:700;font-size:1rem" id="lcRankDisplay">—</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lc-right">
-        <div class="lc-stat-row">
-          <div class="lc-stat-box">
-            <span class="lc-stat-num lc-easy" id="lcEasyStat">0</span>
-            <span class="lc-stat-label">Easy</span>
-          </div>
-          <div class="lc-stat-box">
-            <span class="lc-stat-num lc-medium" id="lcMediumStat">0</span>
-            <span class="lc-stat-label">Medium</span>
-          </div>
-          <div class="lc-stat-box">
-            <span class="lc-stat-num lc-hard" id="lcHardStat">0</span>
-            <span class="lc-stat-label">Hard</span>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label" style="margin-bottom:0.8rem">Difficulty Distribution</div>
-          <div>
-            <div class="lang-row">
-              <div class="lang-name" style="color:var(--easy)">Easy</div>
-              <div class="lang-bar"><div class="lang-fill" id="lcEasyBar" style="width:0%;background:var(--easy)"></div></div>
-              <div class="lang-pct" id="lcEasyPct">0%</div>
-            </div>
-            <div class="lang-row">
-              <div class="lang-name" style="color:var(--medium)">Medium</div>
-              <div class="lang-bar"><div class="lang-fill" id="lcMediumBar" style="width:0%;background:var(--medium)"></div></div>
-              <div class="lang-pct" id="lcMediumPct">0%</div>
-            </div>
-            <div class="lang-row">
-              <div class="lang-name" style="color:var(--hard)">Hard</div>
-              <div class="lang-bar"><div class="lang-fill" id="lcHardBar" style="width:0%;background:var(--hard)"></div></div>
-              <div class="lang-pct" id="lcHardPct">0%</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONNECT -->
-  <section id="connect">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <h2 class="section-title">Connect</h2>
-    </div>
-
-    <div class="profile-cards" style="grid-template-columns: repeat(3, 1fr)">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem">
-        <div class="stat-label" style="margin-bottom:0.8rem">Email</div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.82rem;color:var(--text);margin-bottom:1rem;word-break:break-all">shikharsharmafeb@gmail.com</div>
-        <a href="mailto:shikharsharmafeb@gmail.com" class="social-btn" style="display:inline-flex;text-decoration:none;background:rgba(6,214,160,0.1);border:1px solid rgba(6,214,160,0.3);color:var(--accent2)">
-          ✉ Send Email →
-        </a>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem">
-        <div class="stat-label" style="margin-bottom:0.8rem">LinkedIn</div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.82rem;color:var(--text);margin-bottom:1rem">Shikhar Sharma</div>
-        <a href="https://www.linkedin.com/in/shikhar-sharma-b59370343" target="_blank" class="social-btn btn-linkedin" style="display:inline-flex;text-decoration:none">
-          Open LinkedIn →
-        </a>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem">
-        <div class="stat-label" style="margin-bottom:0.8rem">GitHub Profile</div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.82rem;color:var(--text);margin-bottom:1rem">@SHIKHAR122</div>
-        <a href="https://github.com/SHIKHAR122" target="_blank" class="social-btn btn-github" style="display:inline-flex;text-decoration:none">
-          Open GitHub →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <span class="footer-text" id="footerSecret" style="cursor:default;user-select:none">// crafted with precision</span>
-    <span class="footer-text" id="footerDate"></span>
-  </footer>
+<!-- HERO -->
+<div class="hero" style="border:none;padding-top:6rem">
+  <div class="hero-tag">Available for opportunities</div>
+  <h1>
+    <span class="l1">Building things</span>
+    <span class="l2">that matter.</span>
+  </h1>
+  <p class="hero-desc">
+    I build structured systems that turn complex data into measurable business intelligence.
+    My focus lies in designing scalable analytical workflows, modeling growth patterns, and extracting performance signals from large datasets.
+  </p>
+  <div class="badges">
+    <span class="badge b-green" id="badgeOngoing">● 0 Active</span>
+    <span class="badge b-purple" id="badgeCompleted">✓ 0 Done</span>
+    <span class="badge b-pink" id="badgeFuture">◇ 0 Planned</span>
+  </div>
+  <div class="hero-btns">
+    <a href="https://github.com/SHIKHAR122" target="_blank" class="hbtn hbtn-gh">⬡ GitHub</a>
+    <a href="https://www.linkedin.com/in/shikhar-sharma-b59370343" target="_blank" class="hbtn hbtn-li">in LinkedIn</a>
+  </div>
 </div>
 
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title">Projects</h2>
+  </div>
+  <div class="filter-tabs">
+    <button class="ftab active" onclick="filterProj('all',this)">All</button>
+    <button class="ftab" onclick="filterProj('ongoing',this)">Ongoing</button>
+    <button class="ftab" onclick="filterProj('completed',this)">Completed</button>
+    <button class="ftab" onclick="filterProj('future',this)">Future</button>
+  </div>
+  <div class="proj-grid" id="projGrid"></div>
+</section>
+
+<!-- GITHUB -->
+<section id="github">
+  <div class="sec-header">
+    <span class="sec-num">02</span>
+    <h2 class="sec-title">GitHub Status</h2>
+  </div>
+  <div id="ghContent">
+    <div class="gh-grid">
+      <div>
+        <div class="scard" style="margin-bottom:1rem">
+          <div class="slabel">Repositories</div>
+          <div class="sval" id="ghRepos" style="color:var(--accent)">—</div>
+        </div>
+        <div class="scard" style="margin-bottom:1rem">
+          <div class="slabel">Followers</div>
+          <div class="sval" id="ghFollowers" style="color:var(--accent2)">—</div>
+        </div>
+        <div class="scard">
+          <div class="slabel">Following</div>
+          <div class="sval" id="ghFollowing" style="color:var(--accent3)">—</div>
+        </div>
+      </div>
+      <div>
+        <div class="scard" style="height:100%">
+          <div class="slabel">Top Languages</div>
+          <div id="ghLangs" style="margin-top:1.5rem"></div>
+          <div class="slabel" style="margin-top:2rem">Contribution Activity</div>
+          <div class="act-grid" id="actGrid"></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:1rem">
+      <a href="https://github.com/SHIKHAR122" target="_blank" class="hbtn hbtn-gh" style="display:inline-flex;text-decoration:none">
+        View @SHIKHAR122 on GitHub →
+      </a>
+    </div>
+  </div>
+  <div id="ghMsg" class="gh-loading" style="display:none"></div>
+</section>
+
+<!-- LEETCODE -->
+<section id="leetcode">
+  <div class="sec-header">
+    <span class="sec-num">03</span>
+    <h2 class="sec-title">LeetCode Progress</h2>
+  </div>
+  <div class="lc-layout">
+    <div class="lc-ring-card">
+      <div class="ring-wrap">
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface2)" stroke-width="8"/>
+          <circle id="lcRing" cx="60" cy="60" r="50" fill="none" stroke="var(--easy)" stroke-width="8" stroke-dasharray="0 314" stroke-linecap="round" style="transition:stroke-dasharray 1.2s ease"/>
+        </svg>
+        <div class="ring-center">
+          <div class="ring-num" id="lcTotal">0</div>
+          <div class="ring-sub">/3860</div>
+        </div>
+      </div>
+      <div class="lc-rows">
+        <div class="lc-row">
+          <span class="lc-label"><span class="dot de"></span>Easy</span>
+          <span class="lc-count ce" id="lcEasyD">0</span>
+        </div>
+        <div class="lc-row">
+          <span class="lc-label"><span class="dot dm"></span>Medium</span>
+          <span class="lc-count cm" id="lcMedD">0</span>
+        </div>
+        <div class="lc-row">
+          <span class="lc-label"><span class="dot dh"></span>Hard</span>
+          <span class="lc-count ch" id="lcHardD">0</span>
+        </div>
+        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
+          <div class="slabel">Global Rank</div>
+          <div style="font-weight:700;font-size:1rem;margin-top:.3rem" id="lcRankD">—</div>
+        </div>
+      </div>
+    </div>
+    <div class="lc-right">
+      <div class="lc-stat-row">
+        <div class="lc-box"><span class="lc-box-num ce" id="lcES">0</span><span class="lc-box-label">Easy</span></div>
+        <div class="lc-box"><span class="lc-box-num cm" id="lcMS">0</span><span class="lc-box-label">Medium</span></div>
+        <div class="lc-box"><span class="lc-box-num ch" id="lcHS">0</span><span class="lc-box-label">Hard</span></div>
+      </div>
+      <div class="dist-card">
+        <div class="slabel" style="margin-bottom:1rem">Difficulty Distribution</div>
+        <div class="lang-row">
+          <div class="lang-name" style="color:var(--easy)">Easy</div>
+          <div class="lang-bar"><div class="lang-fill" id="lcEB" style="width:0%;background:var(--easy)"></div></div>
+          <div class="lang-pct" id="lcEP">0%</div>
+        </div>
+        <div class="lang-row">
+          <div class="lang-name" style="color:var(--medium)">Medium</div>
+          <div class="lang-bar"><div class="lang-fill" id="lcMB" style="width:0%;background:var(--medium)"></div></div>
+          <div class="lang-pct" id="lcMP">0%</div>
+        </div>
+        <div class="lang-row">
+          <div class="lang-name" style="color:var(--hard)">Hard</div>
+          <div class="lang-bar"><div class="lang-fill" id="lcHB" style="width:0%;background:var(--hard)"></div></div>
+          <div class="lang-pct" id="lcHP">0%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section id="connect">
+  <div class="sec-header">
+    <span class="sec-num">04</span>
+    <h2 class="sec-title">Connect</h2>
+  </div>
+  <div class="connect-grid">
+    <div class="ccard">
+      <div class="ccard-top">
+        <div class="cicon ci-em">✉</div>
+        <div>
+          <div class="cname">Email</div>
+          <div class="chandle">shikharsharmafeb@gmail.com</div>
+        </div>
+      </div>
+      <a href="mailto:shikharsharmafeb@gmail.com" class="cbtn cbtn-em">Send Email →</a>
+    </div>
+    <div class="ccard">
+      <div class="ccard-top">
+        <div class="cicon ci-li" style="font-weight:700;color:#58a6ff;font-size:1rem">in</div>
+        <div>
+          <div class="cname">LinkedIn</div>
+          <div class="chandle">Shikhar Sharma</div>
+        </div>
+      </div>
+      <a href="https://www.linkedin.com/in/shikhar-sharma-b59370343" target="_blank" class="cbtn cbtn-li">Open LinkedIn →</a>
+    </div>
+    <div class="ccard">
+      <div class="ccard-top">
+        <div class="cicon ci-gh">⬡</div>
+        <div>
+          <div class="cname">GitHub</div>
+          <div class="chandle">@SHIKHAR122</div>
+        </div>
+      </div>
+      <a href="https://github.com/SHIKHAR122" target="_blank" class="cbtn cbtn-gh">Open GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="foot-text" id="footerTrigger" style="cursor:default;user-select:none">// crafted with precision</span>
+  <span class="foot-text" id="footerYear"></span>
+</footer>
+
+</div><!-- /wrap -->
+
 <!-- ADD/EDIT PROJECT MODAL -->
-<div class="modal-overlay" id="projectModal">
+<div class="overlay" id="projModal">
   <div class="modal">
     <h3 id="modalTitle">Add Project</h3>
-    <div class="form-group">
-      <label>Project Name *</label>
-      <input type="text" id="pName" placeholder="My Awesome Project">
-    </div>
-    <div class="form-group">
-      <label>Description</label>
-      <textarea id="pDesc" rows="2" placeholder="What does this project do?"></textarea>
-    </div>
-    <div class="form-row">
-      <div class="form-group">
+    <div class="fg"><label>Project Name *</label><input type="text" id="pName"></div>
+    <div class="fg"><label>Description</label><textarea id="pDesc" rows="3"></textarea></div>
+    <div class="frow">
+      <div class="fg">
         <label>Status *</label>
         <select id="pStatus">
           <option value="ongoing">Ongoing</option>
@@ -1154,497 +455,414 @@
           <option value="future">Future</option>
         </select>
       </div>
-      <div class="form-group">
-        <label>Progress %</label>
-        <input type="number" id="pProgress" min="0" max="100" placeholder="50">
-      </div>
+      <div class="fg"><label>Progress %</label><input type="number" id="pProg" min="0" max="100"></div>
     </div>
-    <div class="form-group">
-      <label>Tech Stack (comma separated)</label>
-      <input type="text" id="pTags" placeholder="React, Node.js, MongoDB">
-    </div>
-    <div class="form-group">
-      <label>GitHub URL (optional)</label>
-      <input type="text" id="pGithub" placeholder="https://github.com/...">
-    </div>
-    <div class="modal-actions">
-      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
-      <button class="btn btn-primary" onclick="saveProject()">Save Project</button>
+    <div class="fg"><label>Tech Stack (comma separated)</label><input type="text" id="pTags"></div>
+    <div class="fg"><label>GitHub URL (optional)</label><input type="text" id="pGithub"></div>
+    <div class="mactions">
+      <button class="btn btn-s" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-p" onclick="saveProj()">Save Project</button>
     </div>
   </div>
 </div>
 
+<!-- ADMIN LOGIN -->
+<div class="overlay" id="adminLogin" style="z-index:300">
+  <div class="modal" style="max-width:360px">
+    <h3>🔐 Admin Access</h3>
+    <div class="fg"><label>Password</label><input type="password" id="adminPass" onkeydown="if(event.key==='Enter')doLogin()" style="letter-spacing:.1em"></div>
+    <div id="loginErr" style="color:var(--hard);font-size:.78rem;min-height:1rem;margin-top:.2rem"></div>
+    <div class="mactions">
+      <button class="btn btn-s" onclick="closeLogin()">Cancel</button>
+      <button class="btn btn-p" onclick="doLogin()">Enter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-overlay" id="adminPanel">
+  <div class="admin-panel">
+    <div class="admin-head">
+      <h3>⚙️ Admin Panel</h3>
+      <button class="cbtn2" onclick="closeAdmin()" style="width:30px;height:30px;font-size:1rem">✕</button>
+    </div>
+
+    <!-- LEETCODE -->
+    <div class="admin-section">
+      <div class="admin-section-title">LeetCode Stats</div>
+      <div class="admin-4grid">
+        <div class="fg" style="margin:0"><label>Easy</label><input type="number" id="adEasy" min="0"></div>
+        <div class="fg" style="margin:0"><label>Medium</label><input type="number" id="adMed" min="0"></div>
+        <div class="fg" style="margin:0"><label>Hard</label><input type="number" id="adHard" min="0"></div>
+        <div class="fg" style="margin:0"><label>Rank</label><input type="text" id="adRank"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem">
+        <button class="btn btn-p" onclick="saveLeetcode()">Save LeetCode</button>
+        <span class="msg" id="lcMsg"></span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- PROJECTS -->
+    <div class="admin-section">
+      <div class="admin-section-title">Projects</div>
+      <div id="adminProjList"></div>
+      <div class="proj-form" id="adminProjForm">
+        <div class="fg"><label>Name *</label><input type="text" id="apName"></div>
+        <div class="fg"><label>Description</label><textarea id="apDesc" rows="3"></textarea></div>
+        <div class="frow">
+          <div class="fg"><label>Status</label>
+            <select id="apStatus"><option value="ongoing">Ongoing</option><option value="completed">Completed</option><option value="future">Future</option></select>
+          </div>
+          <div class="fg"><label>Progress %</label><input type="number" id="apProg" min="0" max="100"></div>
+        </div>
+        <div class="fg"><label>Tech Stack (comma separated)</label><input type="text" id="apTags"></div>
+        <div class="fg"><label>GitHub URL (optional)</label><input type="text" id="apGithub"></div>
+        <div class="mactions">
+          <button class="btn btn-s" onclick="document.getElementById('adminProjForm').style.display='none'">Cancel</button>
+          <button class="btn btn-p" onclick="saveAdminProj()">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- EXPORT -->
+    <div class="admin-section">
+      <div class="admin-section-title">Publish Changes</div>
+      <p class="export-note">After saving your changes above, click Export. It copies the full updated code to your clipboard. Then go to GitHub → your repo → index.html → ✏️ Edit → <strong>Ctrl+A</strong> → <strong>Ctrl+V</strong> → Commit. Your site updates in ~2 minutes.</p>
+      <button class="export-btn" id="exportBtn" onclick="doExport()">⬇ Export & Copy to Clipboard</button>
+      <div class="msg" id="exportMsg" style="margin-top:.8rem;line-height:1.6"></div>
+    </div>
+
+  </div>
+</div>
+
 <script>
-// ── STATE ──────────────────────────────────────────────────────────────
-let projects = JSON.parse(localStorage.getItem('portfolio_projects') || '[]');
-// Always ensure real projects exist and fake ones are removed
-(function() {
-  const real = [
-    { id:1, name:'SQL Analytical Engine', desc:'SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.', status:'completed', progress:100, tags:['SQL','SQLite','Git','GitHub'], github:'https://github.com/SHIKHAR122/portfolio' },
-    { id:2, name:'QueryForge — SQL Analytical Engine', desc:'Analytical query engine with performance benchmarking — 8x query optimization demonstrated. Production-grade engine built on DuckDB to process 500k+ row datasets. Features Python-based query interface across 5 analytical modules. Includes benchmarking layer and Streamlit dashboard for live data visualization.', status:'completed', progress:100, tags:['DuckDB','Python','Pandas','Streamlit','SQL','Git'], github:'' },
-    { id:3, name:'VaultAPI', desc:'Production-grade REST API backend built with FastAPI, PostgreSQL, Redis, and Docker. Features JWT authentication, Redis caching, rate limiting, async endpoints, and full test coverage with Pytest.', status:'future', progress:0, tags:['FastAPI','PostgreSQL','Redis','JWT','Pytest','Docker','Python'], github:'' }
-  ];
-  const fake = ['Personal Portfolio','TaskFlow App','AI Code Reviewer'];
-  projects = projects.filter(p => !fake.includes(p.name));
-  real.forEach(r => { if (!projects.find(p => p.name === r.name)) projects.unshift(r); });
-  localStorage.setItem('portfolio_projects', JSON.stringify(projects));
+// ══════════════════════════════════════════════════════
+// STATE — all hardcoded, no localStorage dependency
+// ══════════════════════════════════════════════════════
+const GITHUB_USER = 'SHIKHAR122';
+const ADMIN_PASS  = 'ssvtforever@2205';
+
+// LeetCode — update these via admin panel
+let LC = { easy: 42, medium: 11, hard: 1, rank: '2,318,980' };
+
+// Projects — update these via admin panel
+let PROJECTS = [
+  { id:1, name:'SQL Analytical Engine', desc:'SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.', status:'completed', progress:100, tags:['SQL','SQLite','Git','GitHub'], github:'https://github.com/SHIKHAR122/retail_business_intelligence' },
+  { id:2, name:'QueryForge — SQL Analytical Engine', desc:'Analytical query engine with performance benchmarking — 8x query optimization demonstrated. Production-grade engine built on DuckDB to process 500k+ row datasets. Features Python-based query interface across 5 analytical modules. Includes benchmarking layer and Streamlit dashboard for live data visualization.', status:'completed', progress:100, tags:['DuckDB','Python','Pandas','Streamlit','SQL','Git'], github:'https://github.com/SHIKHAR122/Query_forge' },
+  { id:3, name:'VaultAPI', desc:'Production-grade REST API backend built with FastAPI, PostgreSQL, Redis, and Docker. Features JWT authentication, Redis caching, rate limiting, async endpoints, and full test coverage with Pytest.', status:'future', progress:0, tags:['FastAPI','PostgreSQL','Redis','JWT','Pytest','Docker','Python'], github:'' },
+];
+
+let editingId = null, adminEditId = null, adminUnlocked = false, curFilter = 'all';
+
+// ══════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════
+(function init() {
+  document.getElementById('footerYear').textContent = `// ${new Date().getFullYear()}`;
+  renderProjects();
+  renderLeetcode();
+  loadGithub();
+
+  // Secret triple-click on footer to open admin
+  let clicks = 0, timer;
+  document.getElementById('footerTrigger').addEventListener('click', () => {
+    clearTimeout(timer);
+    clicks++;
+    if (clicks >= 3) { clicks = 0; openLogin(); }
+    else timer = setTimeout(() => clicks = 0, 1400);
+  });
+
+  // Close project modal on overlay click
+  document.getElementById('projModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
 })();
-let leetcode = {"easy":42,"medium":11,"hard":1,"rank":"2,318,980"};
-let github_user = 'SHIKHAR122';
-let li_url = 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
-let editingId = null;
-let currentFilter = 'all';
 
-// projects already initialized above
-
-// ── UTILS ──────────────────────────────────────────────────────────────
-function saveProjects() {
-  localStorage.setItem('portfolio_projects', JSON.stringify(projects));
+// ══════════════════════════════════════════════════════
+// PROJECTS
+// ══════════════════════════════════════════════════════
+function renderProjects() {
+  const grid = document.getElementById('projGrid');
+  const list = curFilter === 'all' ? PROJECTS : PROJECTS.filter(p => p.status === curFilter);
+  grid.innerHTML = list.map(p => `
+    <div class="pcard ${p.status}">
+      <div class="cactions">
+        <button class="cbtn2" onclick="editProj(${p.id});event.stopPropagation()" title="Edit">✎</button>
+        <button class="cbtn2 del" onclick="delProj(${p.id});event.stopPropagation()" title="Delete">✕</button>
+      </div>
+      <div class="pstatus s-${p.status}"><span class="sdot"></span>${p.status==='ongoing'?'Ongoing':p.status==='completed'?'Completed':'Future'}</div>
+      <div class="pname">${p.name}</div>
+      <div class="pdesc">${p.desc}</div>
+      <div class="ptags">${p.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div>
+      ${p.github ? `<div class="pgh"><a href="${p.github}" target="_blank">⬡ View on GitHub</a></div>` : ''}
+      <div class="prog">
+        <div class="prog-label"><span>Progress</span><span>${p.progress}%</span></div>
+        <div class="prog-bar"><div class="prog-fill" style="width:${p.progress}%"></div></div>
+      </div>
+    </div>
+  `).join('');
   updateBadges();
 }
 
-function scrollTo(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-}
-
 function updateBadges() {
-  document.getElementById('badgeOngoing').textContent = `● ${projects.filter(p=>p.status==='ongoing').length} Active`;
-  document.getElementById('badgeCompleted').textContent = `✓ ${projects.filter(p=>p.status==='completed').length} Done`;
-  document.getElementById('badgeFuture').textContent = `◇ ${projects.filter(p=>p.status==='future').length} Planned`;
+  document.getElementById('badgeOngoing').textContent  = `● ${PROJECTS.filter(p=>p.status==='ongoing').length} Active`;
+  document.getElementById('badgeCompleted').textContent= `✓ ${PROJECTS.filter(p=>p.status==='completed').length} Done`;
+  document.getElementById('badgeFuture').textContent   = `◇ ${PROJECTS.filter(p=>p.status==='future').length} Planned`;
 }
 
-// ── PROJECTS ──────────────────────────────────────────────────────────
-function filterProjects(f, btn) {
-  currentFilter = f;
-  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+function filterProj(f, btn) {
+  curFilter = f;
+  document.querySelectorAll('.ftab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
   renderProjects();
 }
 
-function renderProjects() {
-  const grid = document.getElementById('projectsGrid');
-  const filtered = currentFilter === 'all' ? projects : projects.filter(p => p.status === currentFilter);
-  
-  let html = filtered.map(p => `
-    <div class="project-card ${p.status}" data-id="${p.id}">
-      <div class="card-actions">
-        <button class="card-btn" onclick="editProject(${p.id});event.stopPropagation()" title="Edit">✎</button>
-        <button class="card-btn del" onclick="deleteProject(${p.id});event.stopPropagation()" title="Delete">✕</button>
-      </div>
-      <div class="project-status status-${p.status}">
-        <span class="status-dot"></span>
-        ${p.status === 'ongoing' ? 'Ongoing' : p.status === 'completed' ? 'Completed' : 'Future'}
-      </div>
-      <div class="project-name">${p.name}</div>
-      <div class="project-desc">${p.desc}</div>
-      <div class="project-tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-      ${p.github ? `<div style="margin-top:0.5rem"><a href="${p.github}" target="_blank" style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--text-muted);text-decoration:none">⬡ View on GitHub</a></div>` : ''}
-      <div class="project-progress">
-        <div class="progress-label"><span>Progress</span><span>${p.progress}%</span></div>
-        <div class="progress-bar"><div class="progress-fill ${p.status}-fill" style="width:${p.progress}%"></div></div>
-      </div>
-    </div>
-  `).join('');
-
-  html += `
-    <div class="add-card" onclick="openModal()">
-      <span>+</span>
-      <p>Add new project</p>
-    </div>
-  `;
-  grid.innerHTML = html;
-}
-
-function openModal(id = null) {
+function openModal(id=null) {
   editingId = id;
   document.getElementById('modalTitle').textContent = id ? 'Edit Project' : 'Add Project';
   if (id) {
-    const p = projects.find(x => x.id === id);
-    document.getElementById('pName').value = p.name;
-    document.getElementById('pDesc').value = p.desc;
+    const p = PROJECTS.find(x => x.id === id);
+    document.getElementById('pName').value   = p.name;
+    document.getElementById('pDesc').value   = p.desc;
     document.getElementById('pStatus').value = p.status;
-    document.getElementById('pProgress').value = p.progress;
-    document.getElementById('pTags').value = p.tags.join(', ');
-    document.getElementById('pGithub').value = p.github || '';
+    document.getElementById('pProg').value   = p.progress;
+    document.getElementById('pTags').value   = p.tags.join(', ');
+    document.getElementById('pGithub').value = p.github||'';
   } else {
-    document.getElementById('pName').value = '';
-    document.getElementById('pDesc').value = '';
+    ['pName','pDesc','pTags','pGithub'].forEach(i => document.getElementById(i).value='');
     document.getElementById('pStatus').value = 'ongoing';
-    document.getElementById('pProgress').value = '';
-    document.getElementById('pTags').value = '';
-    document.getElementById('pGithub').value = '';
+    document.getElementById('pProg').value = '';
   }
-  document.getElementById('projectModal').classList.add('active');
+  document.getElementById('projModal').classList.add('open');
 }
 
-function closeModal() {
-  document.getElementById('projectModal').classList.remove('active');
-}
+function closeModal() { document.getElementById('projModal').classList.remove('open'); }
 
-function saveProject() {
+function saveProj() {
   const name = document.getElementById('pName').value.trim();
-  if (!name) { alert('Project name is required'); return; }
-  const data = {
-    name,
-    desc: document.getElementById('pDesc').value.trim(),
+  if (!name) { alert('Project name required'); return; }
+  const d = {
+    name, desc: document.getElementById('pDesc').value.trim(),
     status: document.getElementById('pStatus').value,
-    progress: parseInt(document.getElementById('pProgress').value) || (document.getElementById('pStatus').value === 'completed' ? 100 : 0),
+    progress: parseInt(document.getElementById('pProg').value)||0,
     tags: document.getElementById('pTags').value.split(',').map(t=>t.trim()).filter(Boolean),
     github: document.getElementById('pGithub').value.trim()
   };
   if (editingId) {
-    const idx = projects.findIndex(p => p.id === editingId);
-    projects[idx] = { ...projects[idx], ...data };
-  } else {
-    data.id = Date.now();
-    projects.push(data);
-  }
-  saveProjects();
+    const i = PROJECTS.findIndex(p=>p.id===editingId);
+    PROJECTS[i] = {...PROJECTS[i],...d};
+  } else { d.id = Date.now(); PROJECTS.push(d); }
   renderProjects();
   closeModal();
 }
 
-function editProject(id) { openModal(id); }
-
-function deleteProject(id) {
+function editProj(id) { openModal(id); }
+function delProj(id) {
   if (confirm('Delete this project?')) {
-    projects = projects.filter(p => p.id !== id);
-    saveProjects();
+    PROJECTS = PROJECTS.filter(p=>p.id!==id);
     renderProjects();
   }
 }
 
-// ── GITHUB ─────────────────────────────────────────────────────────────
-async function loadGithub() {
-  const ghEl = document.getElementById('ghUsername');
-  const user = ghEl ? ghEl.value.trim() : github_user;
-  if (!user) return;
-  const emptyEl = document.getElementById('githubEmpty');
-  if (emptyEl) emptyEl.textContent = 'Loading...';
-  try {
-    const res = await fetch(`https://api.github.com/users/${user}`);
-    if (!res.ok) throw new Error('User not found');
-    const data = await res.json();
-    
-    document.getElementById('ghRepos').textContent = data.public_repos;
-    document.getElementById('ghFollowers').textContent = data.followers;
-    document.getElementById('ghFollowing').textContent = data.following;
-    document.getElementById('ghProfileLink').href = data.html_url;
-    document.getElementById('ghProfileLink').textContent = `View @${user} on GitHub →`;
-    if(document.getElementById('ghConnectDisplay')) document.getElementById('ghConnectDisplay').textContent = `@${user} — ${data.public_repos} repos · ${data.followers} followers`;
-    if(document.getElementById('ghConnectLink')) document.getElementById('ghConnectLink').href = data.html_url;
-
-    localStorage.setItem('portfolio_gh', user);
-    github_user = user;
-
-    // Fetch repos for languages
-    const reposRes = await fetch(`https://api.github.com/users/${user}/repos?sort=updated&per_page=30`);
-    const repos = await reposRes.json();
-    const langCount = {};
-    repos.forEach(r => { if (r.language) langCount[r.language] = (langCount[r.language]||0) + 1; });
-    
-    const sorted = Object.entries(langCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
-    const total = sorted.reduce((s,[,v])=>s+v,0);
-    const colors = ['#7c3aed','#06d6a0','#f72585','#ffd166','#58a6ff'];
-    const fixedLangs=[['Python',45],['SQL',30],['HTML',20],['JavaScript',5]];
-    document.getElementById('ghLangs').innerHTML = fixedLangs.map(([lang,pct],i)=>`
-      <div class="lang-row">
-        <div class="lang-name">${lang}</div>
-        <div class="lang-bar"><div class="lang-fill" style="width:${pct}%;background:${colors[i]}"></div></div>
-        <div class="lang-pct">${pct}%</div>
-      </div>`).join('');
-
-    // Generate fake activity grid for visual
-    let cells = '';
-    for (let i = 0; i < 140; i++) {
-      const r = Math.random();
-      const lvl = r > 0.85 ? 'l4' : r > 0.7 ? 'l3' : r > 0.55 ? 'l2' : r > 0.45 ? 'l1' : '';
-      cells += `<div class="activity-cell ${lvl}"></div>`;
-    }
-    document.getElementById('activityGrid').innerHTML = cells;
-
-    document.getElementById('githubContent').style.display = 'block';
-    if(document.getElementById('githubEmpty')) document.getElementById('githubEmpty').style.display = 'none';
-  } catch(e) {
-    if(document.getElementById('githubEmpty')) document.getElementById('githubEmpty').textContent = `Error: ${e.message}.`;
-    if(document.getElementById('githubEmpty')) document.getElementById('githubEmpty').style.display = 'block';
-    document.getElementById('githubContent').style.display = 'none';
-  }
-}
-
-// ── LEETCODE ───────────────────────────────────────────────────────────
-function updateLeetCode() {
-  const easy = parseInt(document.getElementById('lcEasy').value) || 0;
-  const medium = parseInt(document.getElementById('lcMedium').value) || 0;
-  const hard = parseInt(document.getElementById('lcHard').value) || 0;
-  const rank = document.getElementById('lcRank').value || '—';
+// ══════════════════════════════════════════════════════
+// LEETCODE
+// ══════════════════════════════════════════════════════
+function renderLeetcode() {
+  const {easy, medium, hard, rank} = LC;
   const total = easy + medium + hard;
-
   document.getElementById('lcTotal').textContent = total;
-  document.getElementById('lcEasyDisplay').textContent = easy;
-  document.getElementById('lcMediumDisplay').textContent = medium;
-  document.getElementById('lcHardDisplay').textContent = hard;
-  document.getElementById('lcRankDisplay').textContent = rank;
-  document.getElementById('lcEasyStat').textContent = easy;
-  document.getElementById('lcMediumStat').textContent = medium;
-  document.getElementById('lcHardStat').textContent = hard;
+  document.getElementById('lcEasyD').textContent = easy;
+  document.getElementById('lcMedD').textContent  = medium;
+  document.getElementById('lcHardD').textContent = hard;
+  document.getElementById('lcRankD').textContent = rank;
+  document.getElementById('lcES').textContent    = easy;
+  document.getElementById('lcMS').textContent    = medium;
+  document.getElementById('lcHS').textContent    = hard;
 
-  const maxRef = 3860;
-  const dashLen = Math.min(total / maxRef, 1) * (2 * Math.PI * 50);
-  document.getElementById('lcRingEasy').style.strokeDasharray = `${dashLen} 314`;
+  // Ring
+  const dash = Math.min(total/3860,1) * (2*Math.PI*50);
+  document.getElementById('lcRing').style.strokeDasharray = `${dash} 314`;
 
-  // Bars
+  // Distribution bars
   if (total > 0) {
-    const ep = Math.round(easy/total*100), mp = Math.round(medium/total*100), hp = 100-ep-mp;
-    document.getElementById('lcEasyBar').style.width = ep + '%';
-    document.getElementById('lcMediumBar').style.width = mp + '%';
-    document.getElementById('lcHardBar').style.width = hp + '%';
-    document.getElementById('lcEasyPct').textContent = ep + '%';
-    document.getElementById('lcMediumPct').textContent = mp + '%';
-    document.getElementById('lcHardPct').textContent = hp + '%';
+    const ep=Math.round(easy/total*100), mp=Math.round(medium/total*100), hp=100-ep-mp;
+    document.getElementById('lcEB').style.width=ep+'%'; document.getElementById('lcEP').textContent=ep+'%';
+    document.getElementById('lcMB').style.width=mp+'%'; document.getElementById('lcMP').textContent=mp+'%';
+    document.getElementById('lcHB').style.width=hp+'%'; document.getElementById('lcHP').textContent=hp+'%';
   }
-
-  localStorage.setItem('portfolio_lc', JSON.stringify({easy, medium, hard, rank}));
 }
 
-function saveEmail() {
-  const email = document.getElementById('emailInput').value.trim();
-  document.getElementById('emailLink').href = email ? `mailto:${email}` : '#';
-  localStorage.setItem('portfolio_email', email);
+// ══════════════════════════════════════════════════════
+// GITHUB
+// ══════════════════════════════════════════════════════
+function renderGhLangs() {
+  const colors = ['#7c3aed','#06d6a0','#f72585','#ffd166','#58a6ff'];
+  const langs = [['Python',45],['SQL',30],['HTML',20],['JavaScript',5]];
+  document.getElementById('ghLangs').innerHTML = langs.map(([l,p],i)=>`
+    <div class="lang-row">
+      <div class="lang-name">${l}</div>
+      <div class="lang-bar"><div class="lang-fill" style="width:${p}%;background:${colors[i]}"></div></div>
+      <div class="lang-pct">${p}%</div>
+    </div>`).join('');
+  let cells='';
+  for(let i=0;i<140;i++){const r=Math.random();cells+=`<div class="acell ${r>.85?'l4':r>.7?'l3':r>.55?'l2':r>.45?'l1':''}"></div>`;}
+  document.getElementById('actGrid').innerHTML = cells;
 }
 
-function saveLi() {
-  const url = document.getElementById('liUrl').value.trim();
-  document.getElementById('liLink').href = url || '#';
-  localStorage.setItem('portfolio_li', url);
+async function loadGithub() {
+  renderGhLangs(); // always render langs immediately
+  try {
+    const res = await fetch(`https://api.github.com/users/${GITHUB_USER}`);
+    if (!res.ok) return;
+    const d = await res.json();
+    document.getElementById('ghRepos').textContent    = d.public_repos;
+    document.getElementById('ghFollowers').textContent= d.followers;
+    document.getElementById('ghFollowing').textContent= d.following;
+  } catch(e) { /* silently ignore — section already visible */ }
 }
 
-// ── INIT ───────────────────────────────────────────────────────────────
-(function init() {
-  // Footer date
-  document.getElementById('footerDate').textContent = `// ${new Date().getFullYear()}`;
-
-  // Load saved LeetCode
-  document.getElementById('lcEasy').value = leetcode.easy || '';
-  document.getElementById('lcMedium').value = leetcode.medium || '';
-  document.getElementById('lcHard').value = leetcode.hard || '';
-  document.getElementById('lcRank').value = leetcode.rank || '';
-  updateLeetCode();
-
-  // Auto-load GitHub stats silently
-  loadGithub();
-
-  // Secret admin trigger: triple-click footer text
-  let _fc = 0, _ft;
-  document.getElementById('footerSecret').addEventListener('click', () => {
-    clearTimeout(_ft);
-    _fc++;
-    if (_fc >= 3) { _fc = 0; openAdminLogin(); }
-    else _ft = setTimeout(() => _fc = 0, 1400);
-  });
-
-  // Render projects
-  renderProjects();
-  updateBadges();
-
-  // Close modal on overlay click
-  document.getElementById('projectModal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-  });
-})();
-</script>
-
-<script>
-// ── ADMIN PANEL ────────────────────────────────────────────────────────
-const ADMIN_PASS = 'ssvtforever@2205';
-let _adminUnlocked = false, _adminEditId = null;
-
-function openAdminLogin() {
-  if (_adminUnlocked) { openAdminPanel(); return; }
-  document.getElementById('adLoginOverlay').classList.add('active');
-  document.getElementById('adPassInput').value = '';
-  document.getElementById('adLoginErr').textContent = '';
-  setTimeout(() => document.getElementById('adPassInput').focus(), 100);
+// ══════════════════════════════════════════════════════
+// ADMIN
+// ══════════════════════════════════════════════════════
+function openLogin() {
+  if (adminUnlocked) { openAdmin(); return; }
+  document.getElementById('adminLogin').classList.add('open');
+  document.getElementById('adminPass').value='';
+  document.getElementById('loginErr').textContent='';
+  setTimeout(()=>document.getElementById('adminPass').focus(),100);
 }
-function submitAdminLogin() {
-  if (document.getElementById('adPassInput').value === ADMIN_PASS) {
-    _adminUnlocked = true;
-    document.getElementById('adLoginOverlay').classList.remove('active');
-    openAdminPanel();
+function closeLogin() { document.getElementById('adminLogin').classList.remove('open'); }
+function doLogin() {
+  if (document.getElementById('adminPass').value === ADMIN_PASS) {
+    adminUnlocked = true;
+    closeLogin();
+    openAdmin();
   } else {
-    document.getElementById('adLoginErr').textContent = 'Incorrect password.';
-    document.getElementById('adPassInput').value = '';
+    document.getElementById('loginErr').textContent = 'Incorrect password.';
+    document.getElementById('adminPass').value='';
   }
 }
-function openAdminPanel() {
-  document.getElementById('adPanelOverlay').classList.add('active');
-  renderAdminProjects();
-  const lc = JSON.parse(localStorage.getItem('portfolio_lc') || JSON.stringify({easy:28,medium:11,hard:1,rank:'2,867,630'}));
-  document.getElementById('ad_easy').value = lc.easy;
-  document.getElementById('ad_medium').value = lc.medium;
-  document.getElementById('ad_hard').value = lc.hard;
-  document.getElementById('ad_rank').value = lc.rank;
-}
-function closeAdminPanel() { document.getElementById('adPanelOverlay').classList.remove('active'); }
 
-function saveAdminLeetcode() {
-  const lc = {
-    easy: parseInt(document.getElementById('ad_easy').value)||0,
-    medium: parseInt(document.getElementById('ad_medium').value)||0,
-    hard: parseInt(document.getElementById('ad_hard').value)||0,
-    rank: document.getElementById('ad_rank').value.trim()
+function openAdmin() {
+  document.getElementById('adminPanel').classList.add('open');
+  document.getElementById('adEasy').value = LC.easy;
+  document.getElementById('adMed').value  = LC.medium;
+  document.getElementById('adHard').value = LC.hard;
+  document.getElementById('adRank').value = LC.rank;
+  renderAdminProjs();
+}
+function closeAdmin() { document.getElementById('adminPanel').classList.remove('open'); }
+
+function saveLeetcode() {
+  LC = {
+    easy:   parseInt(document.getElementById('adEasy').value)||0,
+    medium: parseInt(document.getElementById('adMed').value)||0,
+    hard:   parseInt(document.getElementById('adHard').value)||0,
+    rank:   document.getElementById('adRank').value.trim()
   };
-  localStorage.setItem('portfolio_lc', JSON.stringify(lc));
-  leetcode = lc;
-  document.getElementById('lcEasy').value = lc.easy;
-  document.getElementById('lcMedium').value = lc.medium;
-  document.getElementById('lcHard').value = lc.hard;
-  document.getElementById('lcRank').value = lc.rank;
-  updateLeetCode();
-  document.getElementById('ad_lcMsg').textContent = '✓ Updated!';
-  setTimeout(()=>document.getElementById('ad_lcMsg').textContent='',2000);
+  renderLeetcode();
+  document.getElementById('lcMsg').textContent='✓ Updated live!';
+  setTimeout(()=>document.getElementById('lcMsg').textContent='',2500);
 }
 
-function renderAdminProjects() {
-  document.getElementById('adProjList').innerHTML = projects.map(p=>`
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.7rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.4rem">
-      <div><div style="font-weight:700;font-size:0.88rem">${p.name}</div>
-      <div style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--text-muted)">${p.status} · ${p.progress}%</div></div>
-      <div style="display:flex;gap:0.4rem">
-        <button class="card-btn" onclick="adEditProj(${p.id})">✎</button>
-        <button class="card-btn del" onclick="adDelProj(${p.id})">✕</button>
+function renderAdminProjs() {
+  document.getElementById('adminProjList').innerHTML = PROJECTS.map(p=>`
+    <div class="proj-item">
+      <div class="proj-item-info">
+        <div class="pitem-name">${p.name}</div>
+        <div class="pitem-meta">${p.status} · ${p.progress}%</div>
       </div>
-    </div>`).join('')+`<button class="btn btn-primary" style="width:100%;margin-top:0.6rem" onclick="adEditProj(null)">+ Add Project</button>`;
+      <div class="proj-item-btns">
+        <button class="cbtn2" onclick="adminEditProj(${p.id})">✎</button>
+        <button class="cbtn2 del" onclick="adminDelProj(${p.id})">✕</button>
+      </div>
+    </div>`).join('')
+  + `<button class="btn btn-p" style="width:100%;margin-top:.6rem" onclick="adminEditProj(null)">+ Add Project</button>`;
 }
 
-function adEditProj(id) {
-  _adminEditId = id;
-  const f = document.getElementById('adProjForm');
-  f.style.display = 'block';
+function adminEditProj(id) {
+  adminEditId = id;
+  const f = document.getElementById('adminProjForm');
+  f.style.display='block';
   if (id) {
-    const p = projects.find(x=>x.id===id);
-    document.getElementById('ad_pname').value = p.name;
-    document.getElementById('ad_pdesc').value = p.desc;
-    document.getElementById('ad_pstatus').value = p.status;
-    document.getElementById('ad_pprogress').value = p.progress;
-    document.getElementById('ad_ptags').value = p.tags.join(', ');
-    document.getElementById('ad_pgithub').value = p.github||'';
+    const p = PROJECTS.find(x=>x.id===id);
+    document.getElementById('apName').value   = p.name;
+    document.getElementById('apDesc').value   = p.desc;
+    document.getElementById('apStatus').value = p.status;
+    document.getElementById('apProg').value   = p.progress;
+    document.getElementById('apTags').value   = p.tags.join(', ');
+    document.getElementById('apGithub').value = p.github||'';
   } else {
-    ['ad_pname','ad_pdesc','ad_ptags','ad_pgithub'].forEach(i=>document.getElementById(i).value='');
-    document.getElementById('ad_pstatus').value='ongoing';
-    document.getElementById('ad_pprogress').value='';
+    ['apName','apDesc','apTags','apGithub'].forEach(i=>document.getElementById(i).value='');
+    document.getElementById('apStatus').value='ongoing';
+    document.getElementById('apProg').value='';
   }
 }
 
-function adSaveProj() {
-  const name = document.getElementById('ad_pname').value.trim();
+function saveAdminProj() {
+  const name = document.getElementById('apName').value.trim();
   if (!name) { alert('Name required'); return; }
   const d = {
-    name, desc: document.getElementById('ad_pdesc').value.trim(),
-    status: document.getElementById('ad_pstatus').value,
-    progress: parseInt(document.getElementById('ad_pprogress').value)||0,
-    tags: document.getElementById('ad_ptags').value.split(',').map(t=>t.trim()).filter(Boolean),
-    github: document.getElementById('ad_pgithub').value.trim()
+    name, desc: document.getElementById('apDesc').value.trim(),
+    status: document.getElementById('apStatus').value,
+    progress: parseInt(document.getElementById('apProg').value)||0,
+    tags: document.getElementById('apTags').value.split(',').map(t=>t.trim()).filter(Boolean),
+    github: document.getElementById('apGithub').value.trim()
   };
-  if (_adminEditId) {
-    const i = projects.findIndex(p=>p.id===_adminEditId);
-    projects[i] = {...projects[i],...d};
-  } else { d.id = Date.now(); projects.push(d); }
-  saveProjects(); renderProjects(); renderAdminProjects();
-  document.getElementById('adProjForm').style.display='none';
-  _adminEditId = null;
+  if (adminEditId) {
+    const i = PROJECTS.findIndex(p=>p.id===adminEditId);
+    PROJECTS[i] = {...PROJECTS[i],...d};
+  } else { d.id = Date.now(); PROJECTS.push(d); }
+  renderProjects();
+  renderAdminProjs();
+  document.getElementById('adminProjForm').style.display='none';
+  adminEditId = null;
 }
 
-function adDelProj(id) {
+function adminDelProj(id) {
   if (confirm('Delete this project?')) {
-    projects = projects.filter(p=>p.id!==id);
-    saveProjects(); renderProjects(); renderAdminProjects();
+    PROJECTS = PROJECTS.filter(p=>p.id!==id);
+    renderProjects();
+    renderAdminProjs();
   }
 }
 
-function exportPortfolio() {
-  const btn = document.getElementById('adExportBtn');
+function doExport() {
+  const btn = document.getElementById('exportBtn');
+  const msg = document.getElementById('exportMsg');
+
+  // Inject current LC and PROJECTS into the source before copying
+  let src = document.documentElement.outerHTML;
+
+  // Update LC values in source
+  src = src.replace(
+    /let LC = \{[^}]+\};/,
+    `let LC = { easy: ${LC.easy}, medium: ${LC.medium}, hard: ${LC.hard}, rank: '${LC.rank}' };`
+  );
+
+  // Update PROJECTS array in source
+  src = src.replace(
+    /let PROJECTS = \[[\s\S]*?\];(?=\s*\nlet editingId)/,
+    `let PROJECTS = ${JSON.stringify(PROJECTS, null, 2)};`
+  );
+
   btn.textContent = 'Copying...';
-  navigator.clipboard.writeText(document.documentElement.outerHTML).then(()=>{
+  navigator.clipboard.writeText(src).then(() => {
     btn.textContent = '✓ Copied!';
-    document.getElementById('adExportMsg').textContent = 'Now: GitHub → index.html → ✏️ Edit → Ctrl+A → Ctrl+V → Commit';
-    setTimeout(()=>{ btn.textContent='⬇ Export & Copy'; document.getElementById('adExportMsg').textContent=''; },5000);
+    msg.textContent = 'Now: GitHub → index.html → ✏️ Edit → Ctrl+A → Ctrl+V → Commit Changes';
+    setTimeout(()=>{ btn.textContent='⬇ Export & Copy to Clipboard'; msg.textContent=''; },6000);
   }).catch(()=>{
     btn.textContent = '✗ Failed';
-    document.getElementById('adExportMsg').textContent = 'Use Chrome or Edge browser.';
+    msg.textContent = 'Copy failed. Please use Chrome or Edge.';
+    setTimeout(()=>{ btn.textContent='⬇ Export & Copy to Clipboard'; msg.textContent=''; },4000);
   });
 }
+
+function scrollSec(id) { document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
 </script>
-
-<!-- ADMIN LOGIN MODAL -->
-<div class="modal-overlay" id="adLoginOverlay" style="z-index:500">
-  <div class="modal" style="max-width:340px">
-    <h3 style="margin-bottom:1.2rem;font-size:1.1rem">🔐 Admin Access</h3>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" id="adPassInput" onkeydown="if(event.key==='Enter')submitAdminLogin()" style="letter-spacing:0.1em">
-    </div>
-    <div id="adLoginErr" style="color:var(--hard);font-size:0.78rem;min-height:1rem;margin-top:0.3rem"></div>
-    <div class="modal-actions">
-      <button class="btn btn-secondary" onclick="document.getElementById('adLoginOverlay').classList.remove('active')">Cancel</button>
-      <button class="btn btn-primary" onclick="submitAdminLogin()">Enter</button>
-    </div>
-  </div>
-</div>
-
-<!-- ADMIN PANEL MODAL -->
-<div class="modal-overlay" id="adPanelOverlay" style="z-index:501;align-items:flex-start;padding:2rem 1rem;overflow-y:auto">
-  <div class="modal" style="max-width:620px;width:100%;margin:0 auto 4rem">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
-      <h3 style="font-size:1.2rem">⚙️ Admin Panel</h3>
-      <button class="card-btn" onclick="closeAdminPanel()" style="width:30px;height:30px">✕</button>
-    </div>
-
-    <!-- LEETCODE -->
-    <div class="stat-label" style="margin-bottom:0.8rem">LeetCode Stats</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.8rem;margin-bottom:0.8rem">
-      <div class="form-group" style="margin:0"><label>Easy</label><input type="number" id="ad_easy" min="0"></div>
-      <div class="form-group" style="margin:0"><label>Medium</label><input type="number" id="ad_medium" min="0"></div>
-      <div class="form-group" style="margin:0"><label>Hard</label><input type="number" id="ad_hard" min="0"></div>
-      <div class="form-group" style="margin:0"><label>Rank</label><input type="text" id="ad_rank"></div>
-    </div>
-    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem">
-      <button class="btn btn-primary" onclick="saveAdminLeetcode()">Save LeetCode</button>
-      <span id="ad_lcMsg" style="font-family:'Space Mono',monospace;font-size:0.75rem;color:var(--accent2)"></span>
-    </div>
-
-    <div style="border-top:1px solid var(--border);margin-bottom:1.5rem"></div>
-
-    <!-- PROJECTS -->
-    <div class="stat-label" style="margin-bottom:0.8rem">Projects</div>
-    <div id="adProjList"></div>
-
-    <!-- PROJECT FORM -->
-    <div id="adProjForm" style="display:none;margin-top:1rem;padding:1.2rem;background:var(--surface2);border:1px solid var(--border);border-radius:8px">
-      <div class="form-group"><label>Name *</label><input type="text" id="ad_pname"></div>
-      <div class="form-group"><label>Description</label><textarea id="ad_pdesc" rows="3"></textarea></div>
-      <div class="form-row">
-        <div class="form-group"><label>Status</label>
-          <select id="ad_pstatus"><option value="ongoing">Ongoing</option><option value="completed">Completed</option><option value="future">Future</option></select>
-        </div>
-        <div class="form-group"><label>Progress %</label><input type="number" id="ad_pprogress" min="0" max="100"></div>
-      </div>
-      <div class="form-group"><label>Tech Stack (comma separated)</label><input type="text" id="ad_ptags"></div>
-      <div class="form-group"><label>GitHub URL (optional)</label><input type="text" id="ad_pgithub"></div>
-      <div class="modal-actions">
-        <button class="btn btn-secondary" onclick="document.getElementById('adProjForm').style.display='none'">Cancel</button>
-        <button class="btn btn-primary" onclick="adSaveProj()">Save</button>
-      </div>
-    </div>
-
-    <div style="border-top:1px solid var(--border);margin:1.5rem 0"></div>
-
-    <!-- EXPORT -->
-    <div class="stat-label" style="margin-bottom:0.5rem">Make Changes Permanent</div>
-    <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.7">After saving changes above, click Export. Then go to GitHub → your repo → index.html → ✏️ Edit → <strong>Ctrl+A</strong> → <strong>Ctrl+V</strong> → Commit. Done.</p>
-    <button id="adExportBtn" class="btn btn-primary" onclick="exportPortfolio()" style="background:var(--accent2);color:#000;font-weight:700;width:100%">⬇ Export & Copy to Clipboard</button>
-    <div id="adExportMsg" style="margin-top:0.7rem;font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--accent2);line-height:1.6"></div>
-  </div>
-</div>
 </body>
 </html>
