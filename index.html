@@ -912,7 +912,7 @@
       <span class="badge badge-pink" id="badgeFuture">◇ 0 Planned</span>
     </div>
     <div class="social-row">
-      <button class="social-btn btn-github" onclick="document.getElementById('ghUsername').focus(); scrollTo('github')">
+      <button class="social-btn btn-github" onclick="scrollTo('github')">
         <span>⬡</span> GitHub
       </button>
       <button class="social-btn btn-linkedin" onclick="document.getElementById('liUrl').focus(); scrollTo('connect')">
@@ -1316,9 +1316,11 @@ function deleteProject(id) {
 
 // ── GITHUB ─────────────────────────────────────────────────────────────
 async function loadGithub() {
-  const user = document.getElementById('ghUsername').value.trim();
+  const ghEl = document.getElementById('ghUsername');
+  const user = ghEl ? ghEl.value.trim() : github_user;
   if (!user) return;
-  document.getElementById('githubEmpty').textContent = 'Loading...';
+  const emptyEl = document.getElementById('githubEmpty');
+  if (emptyEl) emptyEl.textContent = 'Loading...';
   try {
     const res = await fetch(`https://api.github.com/users/${user}`);
     if (!res.ok) throw new Error('User not found');
@@ -1329,8 +1331,8 @@ async function loadGithub() {
     document.getElementById('ghFollowing').textContent = data.following;
     document.getElementById('ghProfileLink').href = data.html_url;
     document.getElementById('ghProfileLink').textContent = `View @${user} on GitHub →`;
-    document.getElementById('ghConnectDisplay').textContent = `@${user} — ${data.public_repos} repos · ${data.followers} followers`;
-    document.getElementById('ghConnectLink').href = data.html_url;
+    if(document.getElementById('ghConnectDisplay')) document.getElementById('ghConnectDisplay').textContent = `@${user} — ${data.public_repos} repos · ${data.followers} followers`;
+    if(document.getElementById('ghConnectLink')) document.getElementById('ghConnectLink').href = data.html_url;
 
     localStorage.setItem('portfolio_gh', user);
     github_user = user;
@@ -1362,10 +1364,10 @@ async function loadGithub() {
     document.getElementById('activityGrid').innerHTML = cells;
 
     document.getElementById('githubContent').style.display = 'block';
-    document.getElementById('githubEmpty').style.display = 'none';
+    if(document.getElementById('githubEmpty')) document.getElementById('githubEmpty').style.display = 'none';
   } catch(e) {
-    document.getElementById('githubEmpty').textContent = `Error: ${e.message}. Check the username.`;
-    document.getElementById('githubEmpty').style.display = 'block';
+    if(document.getElementById('githubEmpty')) document.getElementById('githubEmpty').textContent = `Error: ${e.message}.`;
+    if(document.getElementById('githubEmpty')) document.getElementById('githubEmpty').style.display = 'block';
     document.getElementById('githubContent').style.display = 'none';
   }
 }
@@ -1430,7 +1432,6 @@ function saveLi() {
   updateLeetCode();
 
   // Auto-load GitHub stats silently
-  document.getElementById('ghUsername').value = github_user;
   loadGithub();
 
   // Secret admin trigger: triple-click footer text
