@@ -1,8 +1,10 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shikhar Sharma</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;family=Syne:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0a0a0f;
@@ -906,14 +908,14 @@
     </p>
     <div class="hero-badges" id="heroBadges">
       <span class="badge badge-green" id="badgeOngoing">● 0 Active</span>
-      <span class="badge badge-purple" id="badgeCompleted">✓ 2 Done</span>
-      <span class="badge badge-pink" id="badgeFuture">◇ 1 Planned</span>
+      <span class="badge badge-purple" id="badgeCompleted">✓ 0 Done</span>
+      <span class="badge badge-pink" id="badgeFuture">◇ 0 Planned</span>
     </div>
     <div class="social-row">
-      <button class="social-btn btn-github" onclick="document.getElementById('ghUsername').focus(); scrollTo('github')" fdprocessedid="cvlb44">
+      <button class="social-btn btn-github" onclick="document.getElementById('ghUsername').focus(); scrollTo('github')">
         <span>⬡</span> GitHub
       </button>
-      <button class="social-btn btn-linkedin" onclick="document.getElementById('liUrl').focus(); scrollTo('connect')" fdprocessedid="auxgln">
+      <button class="social-btn btn-linkedin" onclick="document.getElementById('liUrl').focus(); scrollTo('connect')">
         <span>in</span> LinkedIn
       </button>
     </div>
@@ -927,75 +929,15 @@
     </div>
 
     <div class="filter-tabs">
-      <button class="filter-tab active" onclick="filterProjects('all', this)" fdprocessedid="oid9z5">All</button>
-      <button class="filter-tab" onclick="filterProjects('ongoing', this)" fdprocessedid="2pvoga">Ongoing</button>
-      <button class="filter-tab" onclick="filterProjects('completed', this)" fdprocessedid="r34fx">Completed</button>
-      <button class="filter-tab" onclick="filterProjects('future', this)" fdprocessedid="cexlg3">Future</button>
+      <button class="filter-tab active" onclick="filterProjects('all', this)">All</button>
+      <button class="filter-tab" onclick="filterProjects('ongoing', this)">Ongoing</button>
+      <button class="filter-tab" onclick="filterProjects('completed', this)">Completed</button>
+      <button class="filter-tab" onclick="filterProjects('future', this)">Future</button>
     </div>
 
     <div class="projects-grid" id="projectsGrid">
-    <div class="project-card completed" data-id="2">
-      <div class="card-actions">
-        <button class="card-btn" onclick="editProject(2);event.stopPropagation()" title="Edit" fdprocessedid="jev48">✎</button>
-        <button class="card-btn del" onclick="deleteProject(2);event.stopPropagation()" title="Delete" fdprocessedid="mghmbs">✕</button>
-      </div>
-      <div class="project-status status-completed">
-        <span class="status-dot"></span>
-        Completed
-      </div>
-      <div class="project-name">QueryForge — SQL Analytical Engine</div>
-      <div class="project-desc">Analytical query engine with performance benchmarking — 8x query optimization demonstrated. A production-grade analytical query engine built on DuckDB, designed to process and analyze 500k+ row real-world datasets. Features a Python-based query interface across 5 analytical modules covering regional performance, sales aggregation, customer segmentation, time-series trend analysis, and revenue contribution intelligence. Includes a benchmarking layer measuring query optimization gains through indexing, and a Streamlit dashboard for live data visualization.</div>
-      <div class="project-tags"><span class="tag">DuckDB</span><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Streamlit</span><span class="tag">SQL</span><span class="tag">Git</span></div>
-      <div style="margin-top:0.5rem"><a href="https://github.com/SHIKHAR122/Query_forge" target="_blank" style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--text-muted);text-decoration:none">⬡ View on GitHub</a></div>
-      <div class="project-progress">
-        <div class="progress-label"><span>Progress</span><span>0%</span></div>
-        <div class="progress-bar"><div class="progress-fill completed-fill" style="width:0%"></div></div>
-      </div>
+      <!-- Seeded example projects -->
     </div>
-  
-    <div class="project-card completed" data-id="1">
-      <div class="card-actions">
-        <button class="card-btn" onclick="editProject(1);event.stopPropagation()" title="Edit" fdprocessedid="rfdb1e">✎</button>
-        <button class="card-btn del" onclick="deleteProject(1);event.stopPropagation()" title="Delete" fdprocessedid="8j9jc">✕</button>
-      </div>
-      <div class="project-status status-completed">
-        <span class="status-dot"></span>
-        Completed
-      </div>
-      <div class="project-name">SQL Analytical Engine</div>
-      <div class="project-desc">SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.</div>
-      <div class="project-tags"><span class="tag">SQL</span><span class="tag">SQLite</span><span class="tag">Git</span><span class="tag">GitHub</span></div>
-      <div style="margin-top:0.5rem"><a href="https://github.com/SHIKHAR122/retail_business_intelligence" target="_blank" style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--text-muted);text-decoration:none">⬡ View on GitHub</a></div>
-      <div class="project-progress">
-        <div class="progress-label"><span>Progress</span><span>100%</span></div>
-        <div class="progress-bar"><div class="progress-fill completed-fill" style="width:100%"></div></div>
-      </div>
-    </div>
-  
-    <div class="project-card future" data-id="1773549103560">
-      <div class="card-actions">
-        <button class="card-btn" onclick="editProject(1773549103560);event.stopPropagation()" title="Edit" fdprocessedid="ui6t6v">✎</button>
-        <button class="card-btn del" onclick="deleteProject(1773549103560);event.stopPropagation()" title="Delete" fdprocessedid="29depo">✕</button>
-      </div>
-      <div class="project-status status-future">
-        <span class="status-dot"></span>
-        Future
-      </div>
-      <div class="project-name">VaultAPI</div>
-      <div class="project-desc">Production-grade REST API backend built with FastAPI, PostgreSQL, Redis, and Docker. Features JWT authentication, Redis caching, rate limiting, async endpoints, and full test coverage with Pytest.</div>
-      <div class="project-tags"><span class="tag">FastAPI  · PostgreSQL  · Redis  · JWT  · Pytest  · Docker  · Python</span></div>
-      
-      <div class="project-progress">
-        <div class="progress-label"><span>Progress</span><span>0%</span></div>
-        <div class="progress-bar"><div class="progress-fill future-fill" style="width:0%"></div></div>
-      </div>
-    </div>
-  
-    <div class="add-card" onclick="openModal()">
-      <span>+</span>
-      <p>Add new project</p>
-    </div>
-  </div>
   </section>
 
   <!-- GITHUB -->
@@ -1005,12 +947,12 @@
       <h2 class="section-title">GitHub Status</h2>
     </div>
 
-    <div class="github-input-row">
+    <div class="github-input-row" style="display:none">
       <div class="form-group">
         <label>GitHub Username</label>
-        <input type="text" id="ghUsername" placeholder="e.g. torvalds" onkeydown="if(event.key==='Enter') loadGithub()" fdprocessedid="ilv8f7">
+        <input type="text" id="ghUsername" placeholder="e.g. torvalds" onkeydown="if(event.key==='Enter') loadGithub()">
       </div>
-      <button class="btn btn-primary" onclick="loadGithub()" fdprocessedid="kteaj">Load Stats</button>
+      <button class="btn btn-primary" onclick="loadGithub()">Load Stats</button>
     </div>
 
     <div id="githubContent" style="display:none">
@@ -1064,19 +1006,19 @@
       <div class="lc-input-grid">
         <div class="form-group" style="margin:0">
           <label>Easy Solved</label>
-          <input type="number" id="lcEasy" min="0" placeholder="0" oninput="updateLeetCode()" fdprocessedid="mfp89">
+          <input type="number" id="lcEasy" min="0" placeholder="0" oninput="updateLeetCode()">
         </div>
         <div class="form-group" style="margin:0">
           <label>Medium Solved</label>
-          <input type="number" id="lcMedium" min="0" placeholder="0" oninput="updateLeetCode()" fdprocessedid="5b6c1i">
+          <input type="number" id="lcMedium" min="0" placeholder="0" oninput="updateLeetCode()">
         </div>
         <div class="form-group" style="margin:0">
           <label>Hard Solved</label>
-          <input type="number" id="lcHard" min="0" placeholder="0" oninput="updateLeetCode()" fdprocessedid="3suge3">
+          <input type="number" id="lcHard" min="0" placeholder="0" oninput="updateLeetCode()">
         </div>
         <div class="form-group" style="margin:0">
           <label>Rank</label>
-          <input type="text" id="lcRank" placeholder="e.g. 123456" oninput="updateLeetCode()" fdprocessedid="d473zr">
+          <input type="text" id="lcRank" placeholder="e.g. 123456" oninput="updateLeetCode()">
         </div>
       </div>
     </div>
@@ -1085,30 +1027,31 @@
       <div class="lc-ring-card">
         <div class="ring-wrap">
           <svg width="120" height="120" viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface2)" stroke-width="8"></circle>
-            <circle id="lcRingEasy" cx="60" cy="60" r="50" fill="none" stroke="var(--easy)" stroke-width="8" stroke-dasharray="0 314" stroke-linecap="round" style="transition: stroke-dasharray 1s; stroke-dasharray: 4.39497, 314;"></circle>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface2)" stroke-width="8"/>
+            <circle id="lcRingEasy" cx="60" cy="60" r="50" fill="none" stroke="var(--easy)" stroke-width="8"
+              stroke-dasharray="0 314" stroke-linecap="round" style="transition:stroke-dasharray 1s ease"/>
           </svg>
           <div class="ring-center">
-            <div class="ring-num" id="lcTotal" style="font-size:1.3rem">54</div>
+            <div class="ring-num" id="lcTotal" style="font-size:1.2rem">0</div>
             <div class="ring-total">/3860</div>
           </div>
         </div>
         <div class="lc-breakdown">
           <div class="lc-row">
             <span class="lc-label"><span class="dot-easy"></span>Easy</span>
-            <span class="lc-count lc-easy" id="lcEasyDisplay">42</span>
+            <span class="lc-count lc-easy" id="lcEasyDisplay">0</span>
           </div>
           <div class="lc-row">
             <span class="lc-label"><span class="dot-medium"></span>Medium</span>
-            <span class="lc-count lc-medium" id="lcMediumDisplay">11</span>
+            <span class="lc-count lc-medium" id="lcMediumDisplay">0</span>
           </div>
           <div class="lc-row">
             <span class="lc-label"><span class="dot-hard"></span>Hard</span>
-            <span class="lc-count lc-hard" id="lcHardDisplay">1</span>
+            <span class="lc-count lc-hard" id="lcHardDisplay">0</span>
           </div>
           <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
             <div class="stat-label">Rank</div>
-            <div style="font-weight:700;font-size:1rem" id="lcRankDisplay">2,318,980</div>
+            <div style="font-weight:700;font-size:1rem" id="lcRankDisplay">—</div>
           </div>
         </div>
       </div>
@@ -1116,15 +1059,15 @@
       <div class="lc-right">
         <div class="lc-stat-row">
           <div class="lc-stat-box">
-            <span class="lc-stat-num lc-easy" id="lcEasyStat">42</span>
+            <span class="lc-stat-num lc-easy" id="lcEasyStat">0</span>
             <span class="lc-stat-label">Easy</span>
           </div>
           <div class="lc-stat-box">
-            <span class="lc-stat-num lc-medium" id="lcMediumStat">11</span>
+            <span class="lc-stat-num lc-medium" id="lcMediumStat">0</span>
             <span class="lc-stat-label">Medium</span>
           </div>
           <div class="lc-stat-box">
-            <span class="lc-stat-num lc-hard" id="lcHardStat">1</span>
+            <span class="lc-stat-num lc-hard" id="lcHardStat">0</span>
             <span class="lc-stat-label">Hard</span>
           </div>
         </div>
@@ -1133,18 +1076,18 @@
           <div>
             <div class="lang-row">
               <div class="lang-name" style="color:var(--easy)">Easy</div>
-              <div class="lang-bar"><div class="lang-fill" id="lcEasyBar" style="width: 78%; background: var(--easy);"></div></div>
-              <div class="lang-pct" id="lcEasyPct">78%</div>
+              <div class="lang-bar"><div class="lang-fill" id="lcEasyBar" style="width:0%;background:var(--easy)"></div></div>
+              <div class="lang-pct" id="lcEasyPct">0%</div>
             </div>
             <div class="lang-row">
               <div class="lang-name" style="color:var(--medium)">Medium</div>
-              <div class="lang-bar"><div class="lang-fill" id="lcMediumBar" style="width: 20%; background: var(--medium);"></div></div>
-              <div class="lang-pct" id="lcMediumPct">20%</div>
+              <div class="lang-bar"><div class="lang-fill" id="lcMediumBar" style="width:0%;background:var(--medium)"></div></div>
+              <div class="lang-pct" id="lcMediumPct">0%</div>
             </div>
             <div class="lang-row">
               <div class="lang-name" style="color:var(--hard)">Hard</div>
-              <div class="lang-bar"><div class="lang-fill" id="lcHardBar" style="width: 2%; background: var(--hard);"></div></div>
-              <div class="lang-pct" id="lcHardPct">2%</div>
+              <div class="lang-bar"><div class="lang-fill" id="lcHardBar" style="width:0%;background:var(--hard)"></div></div>
+              <div class="lang-pct" id="lcHardPct">0%</div>
             </div>
           </div>
         </div>
@@ -1159,29 +1102,25 @@
       <h2 class="section-title">Connect</h2>
     </div>
 
-    <!-- Hidden inputs for JS compatibility -->
-    <input type="hidden" id="emailInput" value="shikharsharmafeb@gmail.com">
-    <input type="hidden" id="liUrl" value="https://www.linkedin.com/in/shikhar-sharma-b59370343">
-
     <div class="profile-cards" style="grid-template-columns: repeat(3, 1fr)">
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem">
         <div class="stat-label" style="margin-bottom:0.8rem">Email</div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--text);margin-bottom:1rem">shikharsharmafeb@gmail.com</div>
-        <a id="emailLink" href="mailto:shikharsharmafeb@gmail.com" class="social-btn" style="display:inline-flex;text-decoration:none;background:rgba(6,214,160,0.1);border:1px solid rgba(6,214,160,0.3);color:var(--accent2)">
+        <div style="font-family:'Space Mono',monospace;font-size:0.82rem;color:var(--text);margin-bottom:1rem;word-break:break-all">shikharsharmafeb@gmail.com</div>
+        <a href="mailto:shikharsharmafeb@gmail.com" class="social-btn" style="display:inline-flex;text-decoration:none;background:rgba(6,214,160,0.1);border:1px solid rgba(6,214,160,0.3);color:var(--accent2)">
           ✉ Send Email →
         </a>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem">
         <div class="stat-label" style="margin-bottom:0.8rem">LinkedIn</div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--text);margin-bottom:1rem">Shikhar Sharma</div>
-        <a id="liLink" href="https://www.linkedin.com/in/shikhar-sharma-b59370343" target="_blank" class="social-btn btn-linkedin" style="display:inline-flex;text-decoration:none">
+        <div style="font-family:'Space Mono',monospace;font-size:0.82rem;color:var(--text);margin-bottom:1rem">Shikhar Sharma</div>
+        <a href="https://www.linkedin.com/in/shikhar-sharma-b59370343" target="_blank" class="social-btn btn-linkedin" style="display:inline-flex;text-decoration:none">
           Open LinkedIn →
         </a>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem">
         <div class="stat-label" style="margin-bottom:0.8rem">GitHub Profile</div>
-        <div id="ghConnectDisplay" style="font-family:'Space Mono',monospace;font-size:0.85rem;color:var(--text-muted)">@SHIKHAR122</div>
-        <a id="ghConnectLink" href="https://github.com/SHIKHAR122" target="_blank" class="social-btn btn-github" style="display:inline-flex;text-decoration:none;margin-top:1rem">
+        <div style="font-family:'Space Mono',monospace;font-size:0.82rem;color:var(--text);margin-bottom:1rem">@SHIKHAR122</div>
+        <a href="https://github.com/SHIKHAR122" target="_blank" class="social-btn btn-github" style="display:inline-flex;text-decoration:none">
           Open GitHub →
         </a>
       </div>
@@ -1190,7 +1129,7 @@
 
   <footer>
     <span class="footer-text" id="footerSecret" style="cursor:default;user-select:none">// crafted with precision</span>
-    <span class="footer-text" id="footerDate">// 2026</span>
+    <span class="footer-text" id="footerDate"></span>
   </footer>
 </div>
 
@@ -1200,7 +1139,7 @@
     <h3 id="modalTitle">Add Project</h3>
     <div class="form-group">
       <label>Project Name *</label>
-      <input type="text" id="pName" placeholder="My Awesome Project" fdprocessedid="3zwi6s">
+      <input type="text" id="pName" placeholder="My Awesome Project">
     </div>
     <div class="form-group">
       <label>Description</label>
@@ -1209,7 +1148,7 @@
     <div class="form-row">
       <div class="form-group">
         <label>Status *</label>
-        <select id="pStatus" fdprocessedid="e2sue9">
+        <select id="pStatus">
           <option value="ongoing">Ongoing</option>
           <option value="completed">Completed</option>
           <option value="future">Future</option>
@@ -1217,20 +1156,20 @@
       </div>
       <div class="form-group">
         <label>Progress %</label>
-        <input type="number" id="pProgress" min="0" max="100" placeholder="50" fdprocessedid="ctsg2c">
+        <input type="number" id="pProgress" min="0" max="100" placeholder="50">
       </div>
     </div>
     <div class="form-group">
       <label>Tech Stack (comma separated)</label>
-      <input type="text" id="pTags" placeholder="React, Node.js, MongoDB" fdprocessedid="rghdcc">
+      <input type="text" id="pTags" placeholder="React, Node.js, MongoDB">
     </div>
     <div class="form-group">
       <label>GitHub URL (optional)</label>
-      <input type="text" id="pGithub" placeholder="https://github.com/..." fdprocessedid="outnlc">
+      <input type="text" id="pGithub" placeholder="https://github.com/...">
     </div>
     <div class="modal-actions">
-      <button class="btn btn-secondary" onclick="closeModal()" fdprocessedid="bg1b8v">Cancel</button>
-      <button class="btn btn-primary" onclick="saveProject()" fdprocessedid="jkxr7g">Save Project</button>
+      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveProject()">Save Project</button>
     </div>
   </div>
 </div>
@@ -1238,26 +1177,25 @@
 <script>
 // ── STATE ──────────────────────────────────────────────────────────────
 let projects = JSON.parse(localStorage.getItem('portfolio_projects') || '[]');
-let leetcode = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":42,"medium":11,"hard":1,"rank":"2,318,980"}');
-let github_user = localStorage.getItem('portfolio_gh') || 'SHIKHAR122';
-let li_url = localStorage.getItem('portfolio_li') || 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
-const default_email = 'shikharsharmafeb@gmail.com';
+// Always ensure real projects exist and fake ones are removed
+(function() {
+  const real = [
+    { id:1, name:'SQL Analytical Engine', desc:'SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.', status:'completed', progress:100, tags:['SQL','SQLite','Git','GitHub'], github:'https://github.com/SHIKHAR122/portfolio' },
+    { id:2, name:'QueryForge — SQL Analytical Engine', desc:'Analytical query engine with performance benchmarking — 8x query optimization demonstrated. Production-grade engine built on DuckDB to process 500k+ row datasets. Features Python-based query interface across 5 analytical modules. Includes benchmarking layer and Streamlit dashboard for live data visualization.', status:'completed', progress:100, tags:['DuckDB','Python','Pandas','Streamlit','SQL','Git'], github:'' },
+    { id:3, name:'VaultAPI', desc:'Production-grade REST API backend built with FastAPI, PostgreSQL, Redis, and Docker. Features JWT authentication, Redis caching, rate limiting, async endpoints, and full test coverage with Pytest.', status:'future', progress:0, tags:['FastAPI','PostgreSQL','Redis','JWT','Pytest','Docker','Python'], github:'' }
+  ];
+  const fake = ['Personal Portfolio','TaskFlow App','AI Code Reviewer'];
+  projects = projects.filter(p => !fake.includes(p.name));
+  real.forEach(r => { if (!projects.find(p => p.name === r.name)) projects.unshift(r); });
+  localStorage.setItem('portfolio_projects', JSON.stringify(projects));
+})();
+let leetcode = {"easy":42,"medium":11,"hard":1,"rank":"2,318,980"};
+let github_user = 'SHIKHAR122';
+let li_url = 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
 let editingId = null;
 let currentFilter = 'all';
 
-// Hardcoded real projects — always present
-const baseProjects = [
-  { id: 1, name: 'SQL Analytical Engine', desc: 'SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.', status: 'ongoing', progress: 45, tags: ['SQL', 'SQLite', 'Git', 'GitHub'], github: 'https://github.com/SHIKHAR122/portfolio' },
-  { id: 2, name: 'QueryForge — SQL Analytical Engine', desc: 'Analytical query engine with performance benchmarking — 8x query optimization demonstrated. A production-grade analytical query engine built on DuckDB, designed to process and analyze 500k+ row real-world datasets. Features a Python-based query interface across 5 analytical modules. Includes a benchmarking layer and a Streamlit dashboard for live data visualization.', status: 'future', progress: 0, tags: ['DuckDB', 'Python', 'Pandas', 'Streamlit', 'SQL', 'Git'], github: '' },
-];
-// Remove old fake seed projects and duplicates, then inject base projects
-const blockedNames = ['Personal Portfolio', 'TaskFlow App', 'AI Code Reviewer'];
-projects = projects.filter(p => !blockedNames.includes(p.name));
-const existingNames = projects.map(p => p.name);
-[...baseProjects].reverse().forEach(bp => {
-  if (!existingNames.includes(bp.name)) projects.unshift(bp);
-});
-saveProjects();
+// projects already initialized above
 
 // ── UTILS ──────────────────────────────────────────────────────────────
 function saveProjects() {
@@ -1403,16 +1341,16 @@ async function loadGithub() {
     const langCount = {};
     repos.forEach(r => { if (r.language) langCount[r.language] = (langCount[r.language]||0) + 1; });
     
+    const sorted = Object.entries(langCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
+    const total = sorted.reduce((s,[,v])=>s+v,0);
     const colors = ['#7c3aed','#06d6a0','#f72585','#ffd166','#58a6ff'];
-    const knownLangs = [['Python',45],['SQL',30],['HTML',20],['JavaScript',5]];
-    const knownTotal = knownLangs.reduce((s,[,v])=>s+v,0);
-    document.getElementById('ghLangs').innerHTML = knownLangs.map(([lang,pct],i) => `
+    const fixedLangs=[['Python',45],['SQL',30],['HTML',20],['JavaScript',5]];
+    document.getElementById('ghLangs').innerHTML = fixedLangs.map(([lang,pct],i)=>`
       <div class="lang-row">
         <div class="lang-name">${lang}</div>
-        <div class="lang-bar"><div class="lang-fill" style="width:${Math.round(pct/knownTotal*100)}%;background:${colors[i]}"></div></div>
-        <div class="lang-pct">${Math.round(pct/knownTotal*100)}%</div>
-      </div>
-    `).join('');
+        <div class="lang-bar"><div class="lang-fill" style="width:${pct}%;background:${colors[i]}"></div></div>
+        <div class="lang-pct">${pct}%</div>
+      </div>`).join('');
 
     // Generate fake activity grid for visual
     let cells = '';
@@ -1449,7 +1387,6 @@ function updateLeetCode() {
   document.getElementById('lcMediumStat').textContent = medium;
   document.getElementById('lcHardStat').textContent = hard;
 
-  // Ring (progress out of 3860 total LeetCode problems)
   const maxRef = 3860;
   const dashLen = Math.min(total / maxRef, 1) * (2 * Math.PI * 50);
   document.getElementById('lcRingEasy').style.strokeDasharray = `${dashLen} 314`;
@@ -1492,15 +1429,17 @@ function saveLi() {
   document.getElementById('lcRank').value = leetcode.rank || '';
   updateLeetCode();
 
-  // Auto-load GitHub stats
+  // Auto-load GitHub stats silently
+  document.getElementById('ghUsername').value = github_user;
   loadGithub();
 
-  // Footer secret trigger — triple click to open admin
-  let _fc = 0;
-  document.getElementById('footerSecret').addEventListener('click', function() {
+  // Secret admin trigger: triple-click footer text
+  let _fc = 0, _ft;
+  document.getElementById('footerSecret').addEventListener('click', () => {
+    clearTimeout(_ft);
     _fc++;
     if (_fc >= 3) { _fc = 0; openAdminLogin(); }
-    setTimeout(() => _fc = 0, 1500);
+    else _ft = setTimeout(() => _fc = 0, 1400);
   });
 
   // Render projects
@@ -1512,258 +1451,199 @@ function saveLi() {
     if (e.target === this) closeModal();
   });
 })();
+</script>
 
-// ── ADMIN PANEL ─────────────────────────────────────────────────────────
+<script>
+// ── ADMIN PANEL ────────────────────────────────────────────────────────
 const ADMIN_PASS = 'ssvtforever@2205';
-let adminUnlocked = false;
-let adminEditingId = null;
+let _adminUnlocked = false, _adminEditId = null;
 
 function openAdminLogin() {
-  if (adminUnlocked) { openAdminPanel(); return; }
-  document.getElementById('adminLoginOverlay').classList.add('active');
-  document.getElementById('adminPassInput').value = '';
-  document.getElementById('adminLoginError').textContent = '';
-  setTimeout(() => document.getElementById('adminPassInput').focus(), 100);
+  if (_adminUnlocked) { openAdminPanel(); return; }
+  document.getElementById('adLoginOverlay').classList.add('active');
+  document.getElementById('adPassInput').value = '';
+  document.getElementById('adLoginErr').textContent = '';
+  setTimeout(() => document.getElementById('adPassInput').focus(), 100);
 }
-
 function submitAdminLogin() {
-  if (document.getElementById('adminPassInput').value === ADMIN_PASS) {
-    adminUnlocked = true;
-    document.getElementById('adminLoginOverlay').classList.remove('active');
+  if (document.getElementById('adPassInput').value === ADMIN_PASS) {
+    _adminUnlocked = true;
+    document.getElementById('adLoginOverlay').classList.remove('active');
     openAdminPanel();
   } else {
-    document.getElementById('adminLoginError').textContent = 'Wrong password.';
-    document.getElementById('adminPassInput').value = '';
+    document.getElementById('adLoginErr').textContent = 'Incorrect password.';
+    document.getElementById('adPassInput').value = '';
   }
 }
-
 function openAdminPanel() {
-  document.getElementById('adminOverlay').classList.add('active');
-  loadAdminProjects();
-  loadAdminInfo();
+  document.getElementById('adPanelOverlay').classList.add('active');
+  renderAdminProjects();
+  const lc = JSON.parse(localStorage.getItem('portfolio_lc') || JSON.stringify({easy:28,medium:11,hard:1,rank:'2,867,630'}));
+  document.getElementById('ad_easy').value = lc.easy;
+  document.getElementById('ad_medium').value = lc.medium;
+  document.getElementById('ad_hard').value = lc.hard;
+  document.getElementById('ad_rank').value = lc.rank;
 }
+function closeAdminPanel() { document.getElementById('adPanelOverlay').classList.remove('active'); }
 
-function closeAdminPanel() {
-  document.getElementById('adminOverlay').classList.remove('active');
-}
-
-function loadAdminInfo() {
-  const lc = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":28,"medium":11,"hard":1,"rank":"2,867,630"}');
-  document.getElementById('adEasy').value = lc.easy;
-  document.getElementById('adMedium').value = lc.medium;
-  document.getElementById('adHard').value = lc.hard;
-  document.getElementById('adRank').value = lc.rank;
-  document.getElementById('adEmail').value = localStorage.getItem('portfolio_email') || 'shikharsharmafeb@gmail.com';
-  document.getElementById('adLinkedin').value = localStorage.getItem('portfolio_li') || 'https://www.linkedin.com/in/shikhar-sharma-b59370343';
-  document.getElementById('adGithub').value = localStorage.getItem('portfolio_gh') || 'SHIKHAR122';
-}
-
-function saveAdminInfo() {
+function saveAdminLeetcode() {
   const lc = {
-    easy: parseInt(document.getElementById('adEasy').value)||0,
-    medium: parseInt(document.getElementById('adMedium').value)||0,
-    hard: parseInt(document.getElementById('adHard').value)||0,
-    rank: document.getElementById('adRank').value
+    easy: parseInt(document.getElementById('ad_easy').value)||0,
+    medium: parseInt(document.getElementById('ad_medium').value)||0,
+    hard: parseInt(document.getElementById('ad_hard').value)||0,
+    rank: document.getElementById('ad_rank').value.trim()
   };
   localStorage.setItem('portfolio_lc', JSON.stringify(lc));
-  localStorage.setItem('portfolio_email', document.getElementById('adEmail').value.trim());
-  localStorage.setItem('portfolio_li', document.getElementById('adLinkedin').value.trim());
-  localStorage.setItem('portfolio_gh', document.getElementById('adGithub').value.trim());
   leetcode = lc;
   document.getElementById('lcEasy').value = lc.easy;
   document.getElementById('lcMedium').value = lc.medium;
   document.getElementById('lcHard').value = lc.hard;
   document.getElementById('lcRank').value = lc.rank;
   updateLeetCode();
-  document.getElementById('adInfoMsg').textContent = '✓ Saved!';
-  setTimeout(() => document.getElementById('adInfoMsg').textContent = '', 2000);
+  document.getElementById('ad_lcMsg').textContent = '✓ Updated!';
+  setTimeout(()=>document.getElementById('ad_lcMsg').textContent='',2000);
 }
 
-function loadAdminProjects() {
-  document.getElementById('adProjectList').innerHTML = projects.map(p => `
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
-      <div>
-        <div style="font-weight:700;font-size:0.9rem">${p.name}</div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">${p.status} · ${p.progress}%</div>
+function renderAdminProjects() {
+  document.getElementById('adProjList').innerHTML = projects.map(p=>`
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.7rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.4rem">
+      <div><div style="font-weight:700;font-size:0.88rem">${p.name}</div>
+      <div style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--text-muted)">${p.status} · ${p.progress}%</div></div>
+      <div style="display:flex;gap:0.4rem">
+        <button class="card-btn" onclick="adEditProj(${p.id})">✎</button>
+        <button class="card-btn del" onclick="adDelProj(${p.id})">✕</button>
       </div>
-      <div style="display:flex;gap:0.5rem">
-        <button class="card-btn" onclick="adminEditProject(${p.id})">✎</button>
-        <button class="card-btn del" onclick="adminDeleteProject(${p.id})">✕</button>
-      </div>
-    </div>
-  `).join('') + `<button class="btn btn-primary" style="width:100%;margin-top:0.5rem" onclick="adminEditProject(null)">+ Add Project</button>`;
+    </div>`).join('')+`<button class="btn btn-primary" style="width:100%;margin-top:0.6rem" onclick="adEditProj(null)">+ Add Project</button>`;
 }
 
-function adminEditProject(id) {
-  adminEditingId = id;
-  document.getElementById('adProjForm').style.display = 'block';
+function adEditProj(id) {
+  _adminEditId = id;
+  const f = document.getElementById('adProjForm');
+  f.style.display = 'block';
   if (id) {
-    const p = projects.find(x => x.id === id);
-    document.getElementById('adPName').value = p.name;
-    document.getElementById('adPDesc').value = p.desc;
-    document.getElementById('adPStatus').value = p.status;
-    document.getElementById('adPProgress').value = p.progress;
-    document.getElementById('adPTags').value = p.tags.join(', ');
-    document.getElementById('adPGithub').value = p.github || '';
+    const p = projects.find(x=>x.id===id);
+    document.getElementById('ad_pname').value = p.name;
+    document.getElementById('ad_pdesc').value = p.desc;
+    document.getElementById('ad_pstatus').value = p.status;
+    document.getElementById('ad_pprogress').value = p.progress;
+    document.getElementById('ad_ptags').value = p.tags.join(', ');
+    document.getElementById('ad_pgithub').value = p.github||'';
   } else {
-    ['adPName','adPDesc','adPTags','adPGithub'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('adPStatus').value = 'ongoing';
-    document.getElementById('adPProgress').value = '';
+    ['ad_pname','ad_pdesc','ad_ptags','ad_pgithub'].forEach(i=>document.getElementById(i).value='');
+    document.getElementById('ad_pstatus').value='ongoing';
+    document.getElementById('ad_pprogress').value='';
   }
 }
 
-function adminSaveProject() {
-  const name = document.getElementById('adPName').value.trim();
+function adSaveProj() {
+  const name = document.getElementById('ad_pname').value.trim();
   if (!name) { alert('Name required'); return; }
-  const data = {
-    name,
-    desc: document.getElementById('adPDesc').value.trim(),
-    status: document.getElementById('adPStatus').value,
-    progress: parseInt(document.getElementById('adPProgress').value)||0,
-    tags: document.getElementById('adPTags').value.split(',').map(t=>t.trim()).filter(Boolean),
-    github: document.getElementById('adPGithub').value.trim()
+  const d = {
+    name, desc: document.getElementById('ad_pdesc').value.trim(),
+    status: document.getElementById('ad_pstatus').value,
+    progress: parseInt(document.getElementById('ad_pprogress').value)||0,
+    tags: document.getElementById('ad_ptags').value.split(',').map(t=>t.trim()).filter(Boolean),
+    github: document.getElementById('ad_pgithub').value.trim()
   };
-  if (adminEditingId) {
-    const idx = projects.findIndex(p => p.id === adminEditingId);
-    projects[idx] = { ...projects[idx], ...data };
-  } else {
-    data.id = Date.now();
-    projects.push(data);
-  }
-  saveProjects(); renderProjects(); loadAdminProjects();
-  document.getElementById('adProjForm').style.display = 'none';
-  adminEditingId = null;
+  if (_adminEditId) {
+    const i = projects.findIndex(p=>p.id===_adminEditId);
+    projects[i] = {...projects[i],...d};
+  } else { d.id = Date.now(); projects.push(d); }
+  saveProjects(); renderProjects(); renderAdminProjects();
+  document.getElementById('adProjForm').style.display='none';
+  _adminEditId = null;
 }
 
-function adminDeleteProject(id) {
+function adDelProj(id) {
   if (confirm('Delete this project?')) {
-    projects = projects.filter(p => p.id !== id);
-    saveProjects(); renderProjects(); loadAdminProjects();
+    projects = projects.filter(p=>p.id!==id);
+    saveProjects(); renderProjects(); renderAdminProjects();
   }
 }
 
 function exportPortfolio() {
-  const lc = JSON.parse(localStorage.getItem('portfolio_lc') || '{"easy":28,"medium":11,"hard":1,"rank":"2,867,630"}');
-  let src = document.documentElement.outerHTML;
-  src = src.replace(
-    /localStorage\.getItem\('portfolio_lc'\) \|\| '\{[^']*\}'/,
-    `localStorage.getItem('portfolio_lc') || '${JSON.stringify(lc).replace(/'/g,"\\'")}'`
-  );
-  navigator.clipboard.writeText(src).then(() => {
-    document.getElementById('exportMsg').textContent = '✓ Copied! Go to GitHub → index.html → ✏️ edit → Ctrl+A → Ctrl+V → Commit.';
-    setTimeout(() => document.getElementById('exportMsg').textContent = '', 5000);
-  }).catch(() => {
-    document.getElementById('exportMsg').textContent = '✗ Copy failed. Try Chrome or Edge.';
+  const btn = document.getElementById('adExportBtn');
+  btn.textContent = 'Copying...';
+  navigator.clipboard.writeText(document.documentElement.outerHTML).then(()=>{
+    btn.textContent = '✓ Copied!';
+    document.getElementById('adExportMsg').textContent = 'Now: GitHub → index.html → ✏️ Edit → Ctrl+A → Ctrl+V → Commit';
+    setTimeout(()=>{ btn.textContent='⬇ Export & Copy'; document.getElementById('adExportMsg').textContent=''; },5000);
+  }).catch(()=>{
+    btn.textContent = '✗ Failed';
+    document.getElementById('adExportMsg').textContent = 'Use Chrome or Edge browser.';
   });
 }
 </script>
 
-<!-- ADMIN LOGIN -->
-<div class="modal-overlay" id="adminLoginOverlay" style="z-index:200">
-  <div class="modal" style="max-width:360px">
-    <h3 style="margin-bottom:1.2rem">🔐 Admin Access</h3>
+<!-- ADMIN LOGIN MODAL -->
+<div class="modal-overlay" id="adLoginOverlay" style="z-index:500">
+  <div class="modal" style="max-width:340px">
+    <h3 style="margin-bottom:1.2rem;font-size:1.1rem">🔐 Admin Access</h3>
     <div class="form-group">
       <label>Password</label>
-      <input type="password" id="adminPassInput" onkeydown="if(event.key==='Enter') submitAdminLogin()" fdprocessedid="nmtui">
+      <input type="password" id="adPassInput" onkeydown="if(event.key==='Enter')submitAdminLogin()" style="letter-spacing:0.1em">
     </div>
-    <div id="adminLoginError" style="color:var(--hard);font-size:0.8rem;min-height:1.2rem;margin-top:0.3rem"></div>
+    <div id="adLoginErr" style="color:var(--hard);font-size:0.78rem;min-height:1rem;margin-top:0.3rem"></div>
     <div class="modal-actions">
-      <button class="btn btn-secondary" onclick="document.getElementById('adminLoginOverlay').classList.remove('active')" fdprocessedid="dnhyn">Cancel</button>
-      <button class="btn btn-primary" onclick="submitAdminLogin()" fdprocessedid="ms0w6h">Enter</button>
+      <button class="btn btn-secondary" onclick="document.getElementById('adLoginOverlay').classList.remove('active')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitAdminLogin()">Enter</button>
     </div>
   </div>
 </div>
 
-<!-- ADMIN PANEL -->
-<div class="modal-overlay active" id="adminOverlay" style="z-index:201;align-items:flex-start;padding:2rem;overflow-y:auto">
-  <div class="modal" style="max-width:640px;width:100%;margin:auto">
+<!-- ADMIN PANEL MODAL -->
+<div class="modal-overlay" id="adPanelOverlay" style="z-index:501;align-items:flex-start;padding:2rem 1rem;overflow-y:auto">
+  <div class="modal" style="max-width:620px;width:100%;margin:0 auto 4rem">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
-      <h3>⚙️ Admin Panel</h3>
-      <button class="card-btn" onclick="closeAdminPanel()" style="width:32px;height:32px;font-size:1rem" fdprocessedid="k67fk">✕</button>
+      <h3 style="font-size:1.2rem">⚙️ Admin Panel</h3>
+      <button class="card-btn" onclick="closeAdminPanel()" style="width:30px;height:30px">✕</button>
     </div>
 
-    <div class="stat-label" style="margin-bottom:1rem">Profile &amp; Links</div>
-    <div class="form-row" style="margin-bottom:1rem">
-      <div class="form-group" style="margin:0"><label>Email</label><input type="text" id="adEmail" fdprocessedid="kp9298"></div>
-      <div class="form-group" style="margin:0"><label>GitHub Username</label><input type="text" id="adGithub" fdprocessedid="zdgdie"></div>
-    </div>
-    <div class="form-group" style="margin-bottom:1rem"><label>LinkedIn URL</label><input type="text" id="adLinkedin" fdprocessedid="2yrsy6"></div>
-
+    <!-- LEETCODE -->
     <div class="stat-label" style="margin-bottom:0.8rem">LeetCode Stats</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1rem">
-      <div class="form-group" style="margin:0"><label>Easy</label><input type="number" id="adEasy" fdprocessedid="dqhrnm"></div>
-      <div class="form-group" style="margin:0"><label>Medium</label><input type="number" id="adMedium" fdprocessedid="mh75ss"></div>
-      <div class="form-group" style="margin:0"><label>Hard</label><input type="number" id="adHard" fdprocessedid="60b1v"></div>
-      <div class="form-group" style="margin:0"><label>Rank</label><input type="text" id="adRank" fdprocessedid="bxg74q"></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.8rem;margin-bottom:0.8rem">
+      <div class="form-group" style="margin:0"><label>Easy</label><input type="number" id="ad_easy" min="0"></div>
+      <div class="form-group" style="margin:0"><label>Medium</label><input type="number" id="ad_medium" min="0"></div>
+      <div class="form-group" style="margin:0"><label>Hard</label><input type="number" id="ad_hard" min="0"></div>
+      <div class="form-group" style="margin:0"><label>Rank</label><input type="text" id="ad_rank"></div>
     </div>
     <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem">
-      <button class="btn btn-primary" onclick="saveAdminInfo()" fdprocessedid="fwjcl">Save Info</button>
-      <span id="adInfoMsg" style="color:var(--accent2);font-size:0.8rem;font-family:'Space Mono',monospace"></span>
+      <button class="btn btn-primary" onclick="saveAdminLeetcode()">Save LeetCode</button>
+      <span id="ad_lcMsg" style="font-family:'Space Mono',monospace;font-size:0.75rem;color:var(--accent2)"></span>
     </div>
 
     <div style="border-top:1px solid var(--border);margin-bottom:1.5rem"></div>
 
-    <div class="stat-label" style="margin-bottom:1rem">Projects</div>
-    <div id="adProjectList">
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
-      <div>
-        <div style="font-weight:700;font-size:0.9rem">QueryForge — SQL Analytical Engine</div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">completed · 0%</div>
-      </div>
-      <div style="display:flex;gap:0.5rem">
-        <button class="card-btn" onclick="adminEditProject(2)" fdprocessedid="v9xmfd">✎</button>
-        <button class="card-btn del" onclick="adminDeleteProject(2)" fdprocessedid="du5vsh">✕</button>
-      </div>
-    </div>
-  
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
-      <div>
-        <div style="font-weight:700;font-size:0.9rem">SQL Analytical Engine</div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">completed · 100%</div>
-      </div>
-      <div style="display:flex;gap:0.5rem">
-        <button class="card-btn" onclick="adminEditProject(1)" fdprocessedid="fcgvjb">✎</button>
-        <button class="card-btn del" onclick="adminDeleteProject(1)" fdprocessedid="hf7da8">✕</button>
-      </div>
-    </div>
-  
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:6px;margin-bottom:0.5rem">
-      <div>
-        <div style="font-weight:700;font-size:0.9rem">VaultAPI</div>
-        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--text-muted);margin-top:0.2rem">future · 0%</div>
-      </div>
-      <div style="display:flex;gap:0.5rem">
-        <button class="card-btn" onclick="adminEditProject(1773549103560)" fdprocessedid="85rzmh">✎</button>
-        <button class="card-btn del" onclick="adminDeleteProject(1773549103560)" fdprocessedid="0twnmv">✕</button>
-      </div>
-    </div>
-  <button class="btn btn-primary" style="width:100%;margin-top:0.5rem" onclick="adminEditProject(null)" fdprocessedid="pydngt">+ Add Project</button></div>
-    <div id="adProjForm" style="display: none; margin-top: 1rem; padding: 1.2rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;">
-      <div class="form-group"><label>Project Name *</label><input type="text" id="adPName"></div>
-      <div class="form-group"><label>Description</label><textarea id="adPDesc" rows="2"></textarea></div>
+    <!-- PROJECTS -->
+    <div class="stat-label" style="margin-bottom:0.8rem">Projects</div>
+    <div id="adProjList"></div>
+
+    <!-- PROJECT FORM -->
+    <div id="adProjForm" style="display:none;margin-top:1rem;padding:1.2rem;background:var(--surface2);border:1px solid var(--border);border-radius:8px">
+      <div class="form-group"><label>Name *</label><input type="text" id="ad_pname"></div>
+      <div class="form-group"><label>Description</label><textarea id="ad_pdesc" rows="3"></textarea></div>
       <div class="form-row">
         <div class="form-group"><label>Status</label>
-          <select id="adPStatus"><option value="ongoing">Ongoing</option><option value="completed">Completed</option><option value="future">Future</option></select>
+          <select id="ad_pstatus"><option value="ongoing">Ongoing</option><option value="completed">Completed</option><option value="future">Future</option></select>
         </div>
-        <div class="form-group"><label>Progress %</label><input type="number" id="adPProgress" min="0" max="100"></div>
+        <div class="form-group"><label>Progress %</label><input type="number" id="ad_pprogress" min="0" max="100"></div>
       </div>
-      <div class="form-group"><label>Tech Stack (comma separated)</label><input type="text" id="adPTags"></div>
-      <div class="form-group"><label>GitHub URL (optional)</label><input type="text" id="adPGithub"></div>
+      <div class="form-group"><label>Tech Stack (comma separated)</label><input type="text" id="ad_ptags"></div>
+      <div class="form-group"><label>GitHub URL (optional)</label><input type="text" id="ad_pgithub"></div>
       <div class="modal-actions">
         <button class="btn btn-secondary" onclick="document.getElementById('adProjForm').style.display='none'">Cancel</button>
-        <button class="btn btn-primary" onclick="adminSaveProject()">Save Project</button>
+        <button class="btn btn-primary" onclick="adSaveProj()">Save</button>
       </div>
     </div>
 
     <div style="border-top:1px solid var(--border);margin:1.5rem 0"></div>
 
+    <!-- EXPORT -->
     <div class="stat-label" style="margin-bottom:0.5rem">Make Changes Permanent</div>
-    <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6">Click Export → copies updated code → GitHub → index.html → ✏️ edit → Ctrl+A → Ctrl+V → Commit. Done in 30 seconds.</p>
-    <button class="btn btn-primary" onclick="exportPortfolio()" style="background:var(--accent2);color:#000;font-weight:700" fdprocessedid="6qj8mf">⬇ Export &amp; Copy to Clipboard</button>
-    <div id="exportMsg" style="margin-top:0.8rem;color:var(--accent2);font-family:'Space Mono',monospace;font-size:0.75rem;line-height:1.6"></div>
+    <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.7">After saving changes above, click Export. Then go to GitHub → your repo → index.html → ✏️ Edit → <strong>Ctrl+A</strong> → <strong>Ctrl+V</strong> → Commit. Done.</p>
+    <button id="adExportBtn" class="btn btn-primary" onclick="exportPortfolio()" style="background:var(--accent2);color:#000;font-weight:700;width:100%">⬇ Export & Copy to Clipboard</button>
+    <div id="adExportMsg" style="margin-top:0.7rem;font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--accent2);line-height:1.6"></div>
   </div>
 </div>
-
-
-
-<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body></html>
+</body>
+</html>
