@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shikhar Sharma</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;family=Syne:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #0a0a0f;
@@ -264,7 +262,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0;display:flex;justify-co
   </p>
   <div class="badges">
     <span class="badge b-green" id="badgeOngoing">● 0 Active</span>
-    <span class="badge b-purple" id="badgeCompleted">✓ 0 Done</span>
+    <span class="badge b-purple" id="badgeCompleted">✓ 2 Done</span>
     <span class="badge b-pink" id="badgeFuture">◇ 0 Planned</span>
   </div>
   <div class="hero-btns">
@@ -280,12 +278,44 @@ footer{border-top:1px solid var(--border);padding:2rem 0;display:flex;justify-co
     <h2 class="sec-title">Projects</h2>
   </div>
   <div class="filter-tabs">
-    <button class="ftab active" onclick="filterProj('all',this)">All</button>
-    <button class="ftab" onclick="filterProj('ongoing',this)">Ongoing</button>
-    <button class="ftab" onclick="filterProj('completed',this)">Completed</button>
-    <button class="ftab" onclick="filterProj('future',this)">Future</button>
+    <button class="ftab active" onclick="filterProj('all',this)" fdprocessedid="umj77s">All</button>
+    <button class="ftab" onclick="filterProj('ongoing',this)" fdprocessedid="4jin9">Ongoing</button>
+    <button class="ftab" onclick="filterProj('completed',this)" fdprocessedid="gb5kee">Completed</button>
+    <button class="ftab" onclick="filterProj('future',this)" fdprocessedid="0t16n">Future</button>
   </div>
-  <div class="proj-grid" id="projGrid"></div>
+  <div class="proj-grid" id="projGrid">
+    <div class="pcard completed">
+      <div class="cactions">
+        <button class="cbtn2" onclick="editProj(1);event.stopPropagation()" title="Edit" fdprocessedid="z98vad">✎</button>
+        <button class="cbtn2 del" onclick="delProj(1);event.stopPropagation()" title="Delete" fdprocessedid="p2d3oc">✕</button>
+      </div>
+      <div class="pstatus s-completed"><span class="sdot"></span>Completed</div>
+      <div class="pname">SQL Analytical Engine</div>
+      <div class="pdesc">SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.</div>
+      <div class="ptags"><span class="ptag">SQL</span><span class="ptag">SQLite</span><span class="ptag">Git</span><span class="ptag">GitHub</span></div>
+      <div class="pgh"><a href="https://github.com/SHIKHAR122/retail_business_intelligence" target="_blank">⬡ View on GitHub</a></div>
+      <div class="prog">
+        <div class="prog-label"><span>Progress</span><span>100%</span></div>
+        <div class="prog-bar"><div class="prog-fill" style="width:100%"></div></div>
+      </div>
+    </div>
+  
+    <div class="pcard completed">
+      <div class="cactions">
+        <button class="cbtn2" onclick="editProj(2);event.stopPropagation()" title="Edit" fdprocessedid="7931ig">✎</button>
+        <button class="cbtn2 del" onclick="delProj(2);event.stopPropagation()" title="Delete" fdprocessedid="2bwdvn">✕</button>
+      </div>
+      <div class="pstatus s-completed"><span class="sdot"></span>Completed</div>
+      <div class="pname">QueryForge — SQL Analytical Engine</div>
+      <div class="pdesc">Analytical query engine with performance benchmarking — 8x query optimization demonstrated. Production-grade engine built on DuckDB to process 500k+ row datasets. Features Python-based query interface across 5 analytical modules. Includes benchmarking layer and Streamlit dashboard for live data visualization.</div>
+      <div class="ptags"><span class="ptag">DuckDB</span><span class="ptag">Python</span><span class="ptag">Pandas</span><span class="ptag">Streamlit</span><span class="ptag">SQL</span><span class="ptag">Git</span></div>
+      <div class="pgh"><a href="https://github.com/SHIKHAR122/Query_forge" target="_blank">⬡ View on GitHub</a></div>
+      <div class="prog">
+        <div class="prog-label"><span>Progress</span><span>100%</span></div>
+        <div class="prog-bar"><div class="prog-fill" style="width:100%"></div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- GITHUB -->
@@ -313,9 +343,29 @@ footer{border-top:1px solid var(--border);padding:2rem 0;display:flex;justify-co
       <div>
         <div class="scard" style="height:100%">
           <div class="slabel">Top Languages</div>
-          <div id="ghLangs" style="margin-top:1.5rem"></div>
+          <div id="ghLangs" style="margin-top:1.5rem">
+    <div class="lang-row">
+      <div class="lang-name">Python</div>
+      <div class="lang-bar"><div class="lang-fill" style="width:45%;background:#7c3aed"></div></div>
+      <div class="lang-pct">45%</div>
+    </div>
+    <div class="lang-row">
+      <div class="lang-name">SQL</div>
+      <div class="lang-bar"><div class="lang-fill" style="width:30%;background:#06d6a0"></div></div>
+      <div class="lang-pct">30%</div>
+    </div>
+    <div class="lang-row">
+      <div class="lang-name">HTML</div>
+      <div class="lang-bar"><div class="lang-fill" style="width:20%;background:#f72585"></div></div>
+      <div class="lang-pct">20%</div>
+    </div>
+    <div class="lang-row">
+      <div class="lang-name">JavaScript</div>
+      <div class="lang-bar"><div class="lang-fill" style="width:5%;background:#ffd166"></div></div>
+      <div class="lang-pct">5%</div>
+    </div></div>
           <div class="slabel" style="margin-top:2rem">Contribution Activity</div>
-          <div class="act-grid" id="actGrid"></div>
+          <div class="act-grid" id="actGrid"><div class="acell "></div><div class="acell l1"></div><div class="acell "></div><div class="acell l4"></div><div class="acell "></div><div class="acell "></div><div class="acell l2"></div><div class="acell l1"></div><div class="acell l3"></div><div class="acell l4"></div><div class="acell l3"></div><div class="acell l3"></div><div class="acell l3"></div><div class="acell l3"></div><div class="acell "></div><div class="acell l2"></div><div class="acell l2"></div><div class="acell l3"></div><div class="acell l2"></div><div class="acell l1"></div><div class="acell "></div><div class="acell "></div><div class="acell l2"></div><div class="acell l1"></div><div class="acell l1"></div><div class="acell l3"></div><div class="acell "></div><div class="acell "></div><div class="acell "></div><div class="acell l4"></div><div class="acell l4"></div><div class="acell "></div><div class="acell l2"></div><div class="acell l4"></div><div class="acell "></div><div class="acell l2"></div><div class="acell l4"></div><div class="acell "></div><div class="acell "></div><div class="acell l2"></div><div class="acell "></div><div class="acell l3"></div><div class="acell l3"></div><div class="acell l4"></div><div class="acell "></div><div class="acell "></div><div class="acell "></div><div class="acell "></div><div class="acell l4"></div><div class="acell "></div><div class="acell "></div><div class="acell "></div><div class="acell "></div><div class="acell l1"></div><div class="acell "></div><div class="acell "></div><div class="acell "></div><div class="acell "></div><div class="acell "></div><div class="acell l4"></div><div class="acell "></div><div class="acell l1"></div><div class="acell l3"></div><div class="acell "></div><div class="acell l2"></div><div class="acell l4"></div><div class="acell l3"></div><div class="acell l2"></div><div class="acell l3"></div><div class="acell l4"></div><div class="acell "></div><div class="acell "></div><div class="acell "></div><div class="acell "></div><div class="acell "></div><div class="acell l2"></div><div class="acell l2"></div><div class="acell l4"></div><div class="acell l4"></div><div class="acell l3"></div><div class="acell l2"></div><div class="acell "></div><div class="acell "></div><div class="acell l3"></div><div class="acell l2"></div><div class="acell l1"></div><div class="acell "></div><div class="acell l2"></div><div class="acell l4"></div><div class="acell l4"></div><div class="acell l3"></div><div class="acell l4"></div><div class="acell l1"></div><div class="acell l1"></div><div class="acell "></div><div class="acell l1"></div><div class="acell l2"></div><div class="acell l2"></div><div class="acell l3"></div><div class="acell "></div><div class="acell "></div><div class="acell l4"></div><div class="acell "></div><div class="acell "></div><div class="acell "></div><div class="acell l3"></div><div class="acell l2"></div><div class="acell l3"></div><div class="acell "></div><div class="acell "></div><div class="acell l3"></div><div class="acell "></div><div class="acell l4"></div><div class="acell l3"></div><div class="acell "></div><div class="acell l2"></div><div class="acell "></div><div class="acell "></div><div class="acell l1"></div><div class="acell "></div><div class="acell l3"></div><div class="acell "></div><div class="acell l2"></div><div class="acell "></div><div class="acell l4"></div><div class="acell "></div><div class="acell "></div><div class="acell "></div><div class="acell l2"></div><div class="acell l4"></div><div class="acell l3"></div><div class="acell "></div><div class="acell "></div><div class="acell l2"></div><div class="acell "></div><div class="acell l4"></div><div class="acell l3"></div><div class="acell "></div><div class="acell l2"></div><div class="acell l4"></div></div>
         </div>
       </div>
     </div>
@@ -338,55 +388,55 @@ footer{border-top:1px solid var(--border);padding:2rem 0;display:flex;justify-co
     <div class="lc-ring-card">
       <div class="ring-wrap">
         <svg width="120" height="120" viewBox="0 0 120 120">
-          <circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface2)" stroke-width="8"/>
-          <circle id="lcRing" cx="60" cy="60" r="50" fill="none" stroke="var(--easy)" stroke-width="8" stroke-dasharray="0 314" stroke-linecap="round" style="transition:stroke-dasharray 1.2s ease"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface2)" stroke-width="8"></circle>
+          <circle id="lcRing" cx="60" cy="60" r="50" fill="none" stroke="var(--easy)" stroke-width="8" stroke-dasharray="0 314" stroke-linecap="round" style="transition: stroke-dasharray 1.2s; stroke-dasharray: 12.6966, 314;"></circle>
         </svg>
         <div class="ring-center">
-          <div class="ring-num" id="lcTotal">0</div>
+          <div class="ring-num" id="lcTotal">156</div>
           <div class="ring-sub">/3860</div>
         </div>
       </div>
       <div class="lc-rows">
         <div class="lc-row">
           <span class="lc-label"><span class="dot de"></span>Easy</span>
-          <span class="lc-count ce" id="lcEasyD">0</span>
+          <span class="lc-count ce" id="lcEasyD">98</span>
         </div>
         <div class="lc-row">
           <span class="lc-label"><span class="dot dm"></span>Medium</span>
-          <span class="lc-count cm" id="lcMedD">0</span>
+          <span class="lc-count cm" id="lcMedD">51</span>
         </div>
         <div class="lc-row">
           <span class="lc-label"><span class="dot dh"></span>Hard</span>
-          <span class="lc-count ch" id="lcHardD">0</span>
+          <span class="lc-count ch" id="lcHardD">7</span>
         </div>
         <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
           <div class="slabel">Global Rank</div>
-          <div style="font-weight:700;font-size:1rem;margin-top:.3rem" id="lcRankD">—</div>
+          <div style="font-weight:700;font-size:1rem;margin-top:.3rem" id="lcRankD">10,86,939</div>
         </div>
       </div>
     </div>
     <div class="lc-right">
       <div class="lc-stat-row">
-        <div class="lc-box"><span class="lc-box-num ce" id="lcES">0</span><span class="lc-box-label">Easy</span></div>
-        <div class="lc-box"><span class="lc-box-num cm" id="lcMS">0</span><span class="lc-box-label">Medium</span></div>
-        <div class="lc-box"><span class="lc-box-num ch" id="lcHS">0</span><span class="lc-box-label">Hard</span></div>
+        <div class="lc-box"><span class="lc-box-num ce" id="lcES">98</span><span class="lc-box-label">Easy</span></div>
+        <div class="lc-box"><span class="lc-box-num cm" id="lcMS">51</span><span class="lc-box-label">Medium</span></div>
+        <div class="lc-box"><span class="lc-box-num ch" id="lcHS">7</span><span class="lc-box-label">Hard</span></div>
       </div>
       <div class="dist-card">
         <div class="slabel" style="margin-bottom:1rem">Difficulty Distribution</div>
         <div class="lang-row">
           <div class="lang-name" style="color:var(--easy)">Easy</div>
-          <div class="lang-bar"><div class="lang-fill" id="lcEB" style="width:0%;background:var(--easy)"></div></div>
-          <div class="lang-pct" id="lcEP">0%</div>
+          <div class="lang-bar"><div class="lang-fill" id="lcEB" style="width: 63%; background: var(--easy);"></div></div>
+          <div class="lang-pct" id="lcEP">63%</div>
         </div>
         <div class="lang-row">
           <div class="lang-name" style="color:var(--medium)">Medium</div>
-          <div class="lang-bar"><div class="lang-fill" id="lcMB" style="width:0%;background:var(--medium)"></div></div>
-          <div class="lang-pct" id="lcMP">0%</div>
+          <div class="lang-bar"><div class="lang-fill" id="lcMB" style="width: 33%; background: var(--medium);"></div></div>
+          <div class="lang-pct" id="lcMP">33%</div>
         </div>
         <div class="lang-row">
           <div class="lang-name" style="color:var(--hard)">Hard</div>
-          <div class="lang-bar"><div class="lang-fill" id="lcHB" style="width:0%;background:var(--hard)"></div></div>
-          <div class="lang-pct" id="lcHP">0%</div>
+          <div class="lang-bar"><div class="lang-fill" id="lcHB" style="width: 4%; background: var(--hard);"></div></div>
+          <div class="lang-pct" id="lcHP">4%</div>
         </div>
       </div>
     </div>
@@ -435,7 +485,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0;display:flex;justify-co
 
 <footer>
   <span class="foot-text" id="footerTrigger" style="cursor:default;user-select:none">// crafted with precision</span>
-  <span class="foot-text" id="footerYear"></span>
+  <span class="foot-text" id="footerYear">// 2026</span>
 </footer>
 
 </div><!-- /wrap -->
@@ -444,24 +494,24 @@ footer{border-top:1px solid var(--border);padding:2rem 0;display:flex;justify-co
 <div class="overlay" id="projModal">
   <div class="modal">
     <h3 id="modalTitle">Add Project</h3>
-    <div class="fg"><label>Project Name *</label><input type="text" id="pName"></div>
+    <div class="fg"><label>Project Name *</label><input type="text" id="pName" fdprocessedid="orep5e"></div>
     <div class="fg"><label>Description</label><textarea id="pDesc" rows="3"></textarea></div>
     <div class="frow">
       <div class="fg">
         <label>Status *</label>
-        <select id="pStatus">
+        <select id="pStatus" fdprocessedid="54hthh">
           <option value="ongoing">Ongoing</option>
           <option value="completed">Completed</option>
           <option value="future">Future</option>
         </select>
       </div>
-      <div class="fg"><label>Progress %</label><input type="number" id="pProg" min="0" max="100"></div>
+      <div class="fg"><label>Progress %</label><input type="number" id="pProg" min="0" max="100" fdprocessedid="287qms"></div>
     </div>
-    <div class="fg"><label>Tech Stack (comma separated)</label><input type="text" id="pTags"></div>
-    <div class="fg"><label>GitHub URL (optional)</label><input type="text" id="pGithub"></div>
+    <div class="fg"><label>Tech Stack (comma separated)</label><input type="text" id="pTags" fdprocessedid="2bemh"></div>
+    <div class="fg"><label>GitHub URL (optional)</label><input type="text" id="pGithub" fdprocessedid="4pxhq"></div>
     <div class="mactions">
-      <button class="btn btn-s" onclick="closeModal()">Cancel</button>
-      <button class="btn btn-p" onclick="saveProj()">Save Project</button>
+      <button class="btn btn-s" onclick="closeModal()" fdprocessedid="74sts">Cancel</button>
+      <button class="btn btn-p" onclick="saveProj()" fdprocessedid="en7a6c">Save Project</button>
     </div>
   </div>
 </div>
@@ -470,34 +520,34 @@ footer{border-top:1px solid var(--border);padding:2rem 0;display:flex;justify-co
 <div class="overlay" id="adminLogin" style="z-index:300">
   <div class="modal" style="max-width:360px">
     <h3>🔐 Admin Access</h3>
-    <div class="fg"><label>Password</label><input type="password" id="adminPass" onkeydown="if(event.key==='Enter')doLogin()" style="letter-spacing:.1em"></div>
-    <div id="loginErr" style="color:var(--hard);font-size:.78rem;min-height:1rem;margin-top:.2rem"></div>
+    <div class="fg"><label>Password</label><input type="password" id="adminPass" onkeydown="if(event.key==='Enter')doLogin()" style="letter-spacing:.1em" fdprocessedid="jgx8g"></div>
+    <div id="loginErr" style="color:var(--hard);font-size:.78rem;min-height:1rem;margin-top:.2rem">Incorrect password.</div>
     <div class="mactions">
-      <button class="btn btn-s" onclick="closeLogin()">Cancel</button>
-      <button class="btn btn-p" onclick="doLogin()">Enter</button>
+      <button class="btn btn-s" onclick="closeLogin()" fdprocessedid="9yde6s">Cancel</button>
+      <button class="btn btn-p" onclick="doLogin()" fdprocessedid="m738c7">Enter</button>
     </div>
   </div>
 </div>
 
 <!-- ADMIN PANEL -->
-<div class="admin-overlay" id="adminPanel">
+<div class="admin-overlay open" id="adminPanel">
   <div class="admin-panel">
     <div class="admin-head">
       <h3>⚙️ Admin Panel</h3>
-      <button class="cbtn2" onclick="closeAdmin()" style="width:30px;height:30px;font-size:1rem">✕</button>
+      <button class="cbtn2" onclick="closeAdmin()" style="width:30px;height:30px;font-size:1rem" fdprocessedid="fsbeuh">✕</button>
     </div>
 
     <!-- LEETCODE -->
     <div class="admin-section">
       <div class="admin-section-title">LeetCode Stats</div>
       <div class="admin-4grid">
-        <div class="fg" style="margin:0"><label>Easy</label><input type="number" id="adEasy" min="0"></div>
-        <div class="fg" style="margin:0"><label>Medium</label><input type="number" id="adMed" min="0"></div>
-        <div class="fg" style="margin:0"><label>Hard</label><input type="number" id="adHard" min="0"></div>
-        <div class="fg" style="margin:0"><label>Rank</label><input type="text" id="adRank"></div>
+        <div class="fg" style="margin:0"><label>Easy</label><input type="number" id="adEasy" min="0" fdprocessedid="m5a60f"></div>
+        <div class="fg" style="margin:0"><label>Medium</label><input type="number" id="adMed" min="0" fdprocessedid="07x6hq"></div>
+        <div class="fg" style="margin:0"><label>Hard</label><input type="number" id="adHard" min="0" fdprocessedid="1s31h"></div>
+        <div class="fg" style="margin:0"><label>Rank</label><input type="text" id="adRank" fdprocessedid="vtkt2"></div>
       </div>
       <div style="display:flex;align-items:center;gap:1rem">
-        <button class="btn btn-p" onclick="saveLeetcode()">Save LeetCode</button>
+        <button class="btn btn-p" onclick="saveLeetcode()" fdprocessedid="h0615n">Save LeetCode</button>
         <span class="msg" id="lcMsg"></span>
       </div>
     </div>
@@ -507,7 +557,27 @@ footer{border-top:1px solid var(--border);padding:2rem 0;display:flex;justify-co
     <!-- PROJECTS -->
     <div class="admin-section">
       <div class="admin-section-title">Projects</div>
-      <div id="adminProjList"></div>
+      <div id="adminProjList">
+    <div class="proj-item">
+      <div class="proj-item-info">
+        <div class="pitem-name">SQL Analytical Engine</div>
+        <div class="pitem-meta">completed · 100%</div>
+      </div>
+      <div class="proj-item-btns">
+        <button class="cbtn2" onclick="adminEditProj(1)" fdprocessedid="zgvlbf">✎</button>
+        <button class="cbtn2 del" onclick="adminDelProj(1)" fdprocessedid="nmvw8">✕</button>
+      </div>
+    </div>
+    <div class="proj-item">
+      <div class="proj-item-info">
+        <div class="pitem-name">QueryForge — SQL Analytical Engine</div>
+        <div class="pitem-meta">completed · 100%</div>
+      </div>
+      <div class="proj-item-btns">
+        <button class="cbtn2" onclick="adminEditProj(2)" fdprocessedid="j0uuki">✎</button>
+        <button class="cbtn2 del" onclick="adminDelProj(2)" fdprocessedid="et82k4">✕</button>
+      </div>
+    </div><button class="btn btn-p" style="width:100%;margin-top:.6rem" onclick="adminEditProj(null)" fdprocessedid="k01vzf">+ Add Project</button></div>
       <div class="proj-form" id="adminProjForm">
         <div class="fg"><label>Name *</label><input type="text" id="apName"></div>
         <div class="fg"><label>Description</label><textarea id="apDesc" rows="3"></textarea></div>
@@ -532,7 +602,7 @@ footer{border-top:1px solid var(--border);padding:2rem 0;display:flex;justify-co
     <div class="admin-section">
       <div class="admin-section-title">Publish Changes</div>
       <p class="export-note">After saving your changes above, click Export. It copies the full updated code to your clipboard. Then go to GitHub → your repo → index.html → ✏️ Edit → <strong>Ctrl+A</strong> → <strong>Ctrl+V</strong> → Commit. Your site updates in ~2 minutes.</p>
-      <button class="export-btn" id="exportBtn" onclick="doExport()">⬇ Export & Copy to Clipboard</button>
+      <button class="export-btn" id="exportBtn" onclick="doExport()" fdprocessedid="lugoap">⬇ Export &amp; Copy to Clipboard</button>
       <div class="msg" id="exportMsg" style="margin-top:.8rem;line-height:1.6"></div>
     </div>
 
@@ -547,13 +617,40 @@ const GITHUB_USER = 'SHIKHAR122';
 const ADMIN_PASS  = 'ssvtforever@2205';
 
 // LeetCode — update these via admin panel
-let LC = { easy: 42, medium: 11, hard: 1, rank: '2,318,980' };
+let LC = { easy: 98, medium: 51, hard: 7, rank: '10,86,939' };
 
 // Projects — update these via admin panel
 let PROJECTS = [
-  { id:1, name:'SQL Analytical Engine', desc:'SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.', status:'completed', progress:100, tags:['SQL','SQLite','Git','GitHub'], github:'https://github.com/SHIKHAR122/retail_business_intelligence' },
-  { id:2, name:'QueryForge — SQL Analytical Engine', desc:'Analytical query engine with performance benchmarking — 8x query optimization demonstrated. Production-grade engine built on DuckDB to process 500k+ row datasets. Features Python-based query interface across 5 analytical modules. Includes benchmarking layer and Streamlit dashboard for live data visualization.', status:'completed', progress:100, tags:['DuckDB','Python','Pandas','Streamlit','SQL','Git'], github:'https://github.com/SHIKHAR122/Query_forge' },
-  { id:3, name:'VaultAPI', desc:'Production-grade REST API backend built with FastAPI, PostgreSQL, Redis, and Docker. Features JWT authentication, Redis caching, rate limiting, async endpoints, and full test coverage with Pytest.', status:'future', progress:0, tags:['FastAPI','PostgreSQL','Redis','JWT','Pytest','Docker','Python'], github:'' },
+  {
+    "id": 1,
+    "name": "SQL Analytical Engine",
+    "desc": "SQL-based business intelligence system analyzing revenue, profit, and discount impact on retail transactions.",
+    "status": "completed",
+    "progress": 100,
+    "tags": [
+      "SQL",
+      "SQLite",
+      "Git",
+      "GitHub"
+    ],
+    "github": "https://github.com/SHIKHAR122/retail_business_intelligence"
+  },
+  {
+    "id": 2,
+    "name": "QueryForge — SQL Analytical Engine",
+    "desc": "Analytical query engine with performance benchmarking — 8x query optimization demonstrated. Production-grade engine built on DuckDB to process 500k+ row datasets. Features Python-based query interface across 5 analytical modules. Includes benchmarking layer and Streamlit dashboard for live data visualization.",
+    "status": "completed",
+    "progress": 100,
+    "tags": [
+      "DuckDB",
+      "Python",
+      "Pandas",
+      "Streamlit",
+      "SQL",
+      "Git"
+    ],
+    "github": "https://github.com/SHIKHAR122/Query_forge"
+  }
 ];
 
 let editingId = null, adminEditId = null, adminUnlocked = false, curFilter = 'all';
@@ -864,5 +961,6 @@ function doExport() {
 
 function scrollSec(id) { document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
 </script>
-</body>
-</html>
+
+
+<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body></html>
